@@ -1,0 +1,312 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: My Day Email\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-23 20:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.4; wp-6.3\n"
+"X-Domain: my-day-email"
+
+#: admin/partials/name-day-email-admin-display.php:334
+#: admin/partials/name-day-email-admin-display.php:343
+msgid "Add multiple emails separated by comma ( , )."
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:106
+msgid "Austrian calendar"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:339
+msgid "BCC and Test email address"
+msgstr ""
+
+#: admin/partials/my-day-admin-display.php:18
+msgid "Birth Day"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:140
+#: admin/partials/name-day-email-admin-display.php:141
+#: admin/partials/name-day-email-admin-display.php:142
+#: admin/partials/name-day-email-admin-display.php:143
+#: admin/partials/name-day-email-admin-display.php:144
+#: admin/partials/name-day-email-admin-display.php:145
+msgid "characters"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:147
+msgid "Choose how many characters will be in generated coupons."
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:108
+msgid "Choose the calendar country to be used"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:405
+msgid "Clear Log"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:137
+msgid "Count of coupon characters"
+msgstr ""
+
+#: my-day-email.php:107
+msgctxt "Coupon category"
+msgid "name-day"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:300
+msgid "Coupon category slug"
+msgstr ""
+
+#: my-day-email.php:97
+msgctxt "Coupon description"
+msgid "Name Day {fname}: {email}"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:191
+msgid "Coupon expires in days"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:390
+msgid "Create a test"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:104
+msgid "Czech calendar"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:152
+msgid "Delete unused coupons in days after expiration"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:133
+msgid "Description will be used in Coupons page."
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:109
+msgid "Download csv"
+msgstr ""
+
+#: my-day-email.php:100
+msgctxt "Email Body"
+msgid ""
+"<p style='font-size: 20px;font-weight:600;'>Have a nice name day, {fname}!"
+"</p>\n"
+"<p style='font-size: 18px;'>Take advantage of this name day discount code:"
+"</p>\n"
+"<p style='font-size: 24px;font-weight:800;'>{coupon}</p>\n"
+"<p style='font-size: 18px;'>During the next {expires_in_days} days you can "
+"use it in our online store {site_name_url} and get a special discount of "
+"<strong>{percent}%</strong> on {products_cnt} non-discounted products.</p>\n"
+"<p style='font-size: 18px;font-weight:600;'>ALL THE BEST !</p>\n"
+"<p style='font-size: 18px;'>The Team of {site_name}</p>\n"
+"<p style='font-size: 14px;'>The coupon can only be used after logging into "
+"your account and cannot be used with other discounts. Some products are "
+"exluded from the discount.</p>"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:331
+msgid "Email CC"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:324
+msgid "Email from address"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:318
+msgid "Email from name"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:359
+msgid "Email header"
+msgstr ""
+
+#: my-day-email.php:85
+msgctxt "Email Header"
+msgid "Congratulations"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:353
+msgid "Email subject"
+msgstr ""
+
+#: my-day-email.php:84
+msgctxt "Email Subject"
+msgid "{fname}, here is your name day gift"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:88
+msgid "Enable auto sending emails"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:375
+msgid "Enable logs"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:293
+msgid "Exclude discounted products"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:205
+msgid "Good only for products"
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://starlogic.net/"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:105
+msgid "Hungarian calendar"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:155
+msgid ""
+"Leave empty and coupons will not be deleted. Otherwise enter number of days "
+"after expiration when unused coupons will be deleted."
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:194
+msgid "Leave empty for coupon with no expiration date."
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:110
+msgid "Make sure the selection is saved before download."
+msgstr ""
+
+#: admin/class-name-day-email-admin.php:68
+msgctxt "menu"
+msgid "My Day Emails"
+msgstr ""
+
+#. Name of the plugin
+msgid "My Day Email"
+msgstr ""
+
+#: admin/partials/my-day-admin-display.php:12
+msgid "My Day Settings"
+msgstr ""
+
+#: admin/partials/my-day-admin-display.php:22
+msgid "Name Day"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:100
+msgid "Name days calendar"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:380
+msgid "Placeholders"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:72
+msgid "Restore Defaults"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:94
+msgid "Run in test mode"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:114
+msgid "Send email days before name day"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:121
+msgid "Send email every day at"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Send email with a coupon to users from Slovakia, Czechia and Austria who "
+"celebrate name day."
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:166
+msgid "Set the discount type."
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:77
+msgctxt "Setting"
+msgid "Name Day Emails Settings"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:315
+msgctxt "Setting section"
+msgid "Email message setting"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:396
+msgctxt "Setting section"
+msgid "Logs"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:103
+msgid "Slovak calendar"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:201
+msgid ""
+"The generated coupon could be used for maximum number of products. Leave "
+"empty for no limit."
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:310
+msgid ""
+"This could be used only by plugin Advanced Coupons for WooCommerce (free) "
+"plugin. Enter coupon category slug, which has to exist."
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:343
+msgid ""
+"This is email address used when testing as well as for all email messages as "
+"blind copy address."
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:364
+msgid "This is short text on the top of the email."
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:117
+msgid "This is UTC time when cron send the email messages."
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:90
+msgid "Turn on and off the automatic functionality of email sending"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:96
+msgid ""
+"Turn on when testing. The user will not get emails. All emails will be sent "
+"to BCC/Test address."
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:349
+msgid ""
+"Turn on when you want to have your email look the same as regular "
+"WooCommerce email."
+msgstr ""
+
+#: admin/partials/my-day-admin-display.php:25
+msgid "Universary Day"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:347
+msgid "Use WooCommerce email template"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:381
+msgid "Use {fname5} for Czech salutation."
+msgstr ""
+
+#. Author of the plugin
+msgid "Vlado Laco"
+msgstr ""

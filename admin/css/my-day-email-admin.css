@@ -1,0 +1,40 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+ <style>
+#namedaysemail-setting .form-table {
+ 	font-size: 12px;
+ }
+ #namedaysemail-setting .form-table th,  #email-table .form-table th, #coupon-table .form-table th, #log-table .form-table th  {
+ 	padding: 10px;
+ 	width: 300px;
+ }
+  #namedaysemail-setting .form-table tr td {
+ 	padding: 10px;
+ }
+  #namedaysemail-setting .form-table {
+ 	margin: 20px;
+ }
+
+  #namedaysemail-setting textarea {
+ 	width: 100%;
+ }
+  #namedaysemail-setting select {
+  	line-height: normal;
+  	vertical-align: initial;
+  }
+  
+  #email-table .textarea_,   #log-table .textarea_ {
+ 	width: 100%;
+ }
+ 
+ #email-table input, #log-table input, #namedaysemail-setting input, #coupon-table input {
+ 	vertical-align: initial;
+ }
+ 
+ #restore_values_btn, #restore_uni_values_btn, #restore_bd_values_btn {
+    float: right;
+    margin-right: 5%;
+}
+ </style>
