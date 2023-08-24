@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       My Day Email
  * Plugin URI:        https://starlogic.net/
- * Description:       Send email with a coupon to users from Slovakia, Czechia and Austria who celebrate name day.
+ * Description:       Send email with a coupon to users on birth day, name day and order universary.
  * Version:           0.2.2
  * Author:            Vlado Laco
  * Author URI:        https://starlogic.net/

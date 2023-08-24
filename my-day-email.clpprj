@@ -12,7 +12,8 @@
  <removed value=";"/>
  <added value=""/>
  <lastopfiles>
-  <lastactivefile name=""/>
+  <file name="C:\PHP Code\my-day-email\README.md"/>
+  <lastactivefile name="C:\PHP Code\perties-sales-dashboard\sales-dashboard.php"/>
  </lastopfiles>
  <errors version="1.12.0"/>
  <cakedata/>
@@ -28,5 +29,5 @@
   </todofile>
  </todoblock>
  <dbgurls/>
- <lasttime value="1692860904"/>
+ <lasttime value="1692872902"/>
 </project>

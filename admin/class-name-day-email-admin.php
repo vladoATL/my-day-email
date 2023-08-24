@@ -81,7 +81,8 @@ class My_Day_Email_Admin {
 			array('sanitize_callback' => array( $this, 'namedayemail_validate_log_options' ),) 
 		 );	 
 	}
-	function mydayemail_validate_options($input) {
+	function namedayemail_validate_options($input)
+	{
 		return $input;
 	}
 	function namedayemail_validate_log_options($input) {
