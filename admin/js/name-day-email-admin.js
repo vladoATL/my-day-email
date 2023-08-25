@@ -19,13 +19,6 @@
 	 * $( window ).load(function() {
 	 *
 	 * });
-	 *
-	 * ...and/or other possibilities.
-	 *
-	 * Ideally, it is not considered best practise to attach more than a
-	 * single DOM-ready or window-load handler for a particular page.
-	 * Although scripts in the WordPress core, Plugins and Themes may be
-	 * practising this, we should strive to set a better example in our own work.
 	 */
 	 
 	 	jQuery( document ).on(
@@ -62,6 +55,38 @@
 	 
 	 	jQuery( document ).on(
 	"click",
+	"#birthdaysemail-setting #restore_bd_values_btn",
+	function() {
+		event.preventDefault();
+		var nonce = jQuery( this ).attr( 'attr-nonce' );
+		var data  = {
+			action: 'birthdayemail_restore_settings',
+			nonce: nonce,
+		};
+		jQuery.ajax(
+		{
+			type: "post",
+			url: ajaxurl,
+			data: data,
+			beforeSend: function(response) {
+				jQuery( "#birthdaysemail-setting .loader_cover" ).addClass( 'active' );
+				jQuery( "#birthdaysemail-setting .birthdays_loader" ).addClass( 'loader' );
+			},
+			complete: function(response) {
+				jQuery( "#birthdaysemail-setting .loader_cover" ).removeClass( 'active' );
+				jQuery( "#birthdaysemail-setting .birthdays_loader" ).removeClass( 'loader' );
+			},
+			success: function(response) {
+				location.reload();
+			}
+		}
+		);
+		return false;
+	}
+	);
+		 
+	 	jQuery( document ).on(
+	"click",
 	"#namedaysemail-setting #download_btn",
 	function() {
 		event.preventDefault();
@@ -94,12 +119,12 @@
 		 
 	 	jQuery( document ).on(
 		"click",
-		"#form_log #clear_log_btn",
+		"#clear_log_btn",
 		function(){
 			event.preventDefault();
 			var nonce = jQuery( this ).attr( 'attr-nonce' );
 			var data  = {
-				action: 'namedayemail_clear_log',
+				action: 'mydayemail_clear_log',
 				nonce: nonce,
 			};
 			jQuery.ajax(
@@ -154,8 +179,42 @@
 			);
 			return false;
 		}
+	);	
+
+
+jQuery( document ).on(
+"click",
+"#birthdaysemail-setting #test_bd_btn",
+function() {
+	event.preventDefault();
+	var nonce = jQuery( this ).attr( 'attr-nonce' );
+	var data  = {
+		action: 'birthdayemail_make_test',
+		nonce: nonce,
+	};
+	jQuery.ajax(
+	{
+		type: "post",
+		url: ajaxurl,
+		data: data,
+		beforeSend: function(response) {
+			jQuery( "#birthdaysemail-setting .loader_cover" ).addClass( 'active' );
+			jQuery( "#birthdaysemail-setting .birthdays_loader" ).addClass( 'loader' );
+		},
+		complete: function(response) {
+			jQuery( "#birthdaysemail-setting .loader_cover" ).removeClass( 'active' );
+			jQuery( "#birthdaysemail-setting .birthdays_loader" ).removeClass( 'loader' );
+		},
+		success: function(response) {
+			location.reload();
+		}
+	}
 	);
-	
+	return false;
+}
+);
+
+
 })( jQuery );
 
 jQuery( function( $ ) {

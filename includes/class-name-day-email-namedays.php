@@ -209,8 +209,8 @@ class NameDays
         "21.7.": "Daniel, Dan, Dalina",
         "22.7.": "Magdaléna, Magda, Mahuliena, Majda",
         "23.7.": "Oľga, Apolinár, Libérius, Libor, Liborius, Apolinára, Libora, Lilien",
-        "24.7.": "Vladimír, Kinga",
-        "25.7.": "Jakub, Žakelína",
+        "24.7.": "Vladimír, Vlado, Kinga",
+        "25.7.": "Jakub, Kubo, Žakelína",
         "26.7.": "Anna, Hana, Aneta, Anica, Anita, Annamária, Naneta",
         "27.7.": "Božena, Gorazd, Pantaleon",
         "28.7.": "Krištof, Inocent, Svätomír, Svätoš, Inocencia, Nausika, Svätomíra",
@@ -245,7 +245,7 @@ class NameDays
         "26.8.": "Samuel, Samo, Zemfír, Samuela, Tália, Zemfíra",
         "27.8.": "Silvia, Silvio, Silvius",
         "28.8.": "Augustín, August, Augusta, Augustína, Gustína",
-        "29.8.": "Nikola, Nikolaj, Koleta, Nikoleta",
+        "29.8.": "Nikola, Nikolaj, Koleta, Nikoleta, Nikol",
         "30.8.": "Ružena, Ružica",
         "31.8.": "Nora, Rajmund, Ramón, Rajmunda, Ramona",
         "1.9.": "Drahoslava, Egid, Egídius",
@@ -1509,8 +1509,10 @@ class NameDays
 	
    	public function get_names_for_day( $d, $m, $with_alt = true) {
    		$options = get_option('namedayemail_options'); 
-   		$language = $options['language'];
    		
+		if (! isset($options['language']) )
+			   return;
+	    $language = $options['language'];
    		switch ($language) {
    			case 1:
    				$names = $this->get_slovak_namedays_array();
@@ -1524,9 +1526,9 @@ class NameDays
    			case 4:
    				$names = $this->get_austrian_namedays_array();
    				break;   							
-   		} 
+   		}
    		$names_str = $names->{"$d" . "." . "$m" . "."};
-   		
+		  
    		if ($with_alt == true)	
    		{
    			$names_str = $names_str . ", " . $this->remove_accents($names_str);
@@ -1536,10 +1538,8 @@ class NameDays
    			$names_str = implode(',', array_unique($trimmed_array));
    			
    		} 	
-		return ($names_str);      					
+		   return ($names_str);      					
 	}
-
-
 
 	public function get_celebrating_users($d, $m, $with_alt = true){
 		global $wpdb;

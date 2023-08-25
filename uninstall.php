@@ -31,4 +31,4 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 delete_option('namedayemail_options');
-delete_option('namedayemail_logs');
+delete_option('mydayemail_logs');

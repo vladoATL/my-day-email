@@ -19,10 +19,7 @@ global $woocommerce, $post;
 if ( isset( $_GET['export'] ) ) {
 	$options = get_option('namedayemail_options');
 	$language = $options['language'];
-	$table_head = array( 'Date', 'Name' );
 
-	$csv = implode( ';' , $table_head );
-	$csv .= "\n"; // important! Make sure to use use double quotation marks.
 	$namedays = new NameDays();
 
 	switch ($language) {
@@ -39,7 +36,10 @@ if ( isset( $_GET['export'] ) ) {
 			$table_body = $namedays->get_austrian_namedays_array();
 			break;
 	}
-
+	ob_end_clean();
+	$table_head = array( 'Date', 'Name' );
+	$csv = implode( ';' , $table_head );
+	$csv .= "\n";
 	foreach ( $table_body as $key => $value ) {
 		$arr    = explode(',', $value);
 		$trimmed_array = array_map('trim', $arr);
@@ -50,9 +50,7 @@ if ( isset( $_GET['export'] ) ) {
 	}
 
 	$filename = 'name_days.csv';
-
-	header('Content-Description: File Transfer');
-	header('Content-Type: application/octet-stream');
+	header('Content-Type: application/csv');
 	header('Content-Disposition: attachment; filename="' . $filename .'"');
 	header('Content-Transfer-Encoding: binary');
 	header('Expires: 0');
@@ -60,7 +58,7 @@ if ( isset( $_GET['export'] ) ) {
 	header('Pragma: public');
 	echo "\xEF\xBB\xBF"; // UTF-8 BOM
 	echo $csv;
-	exit();
+	exit();	
 }
 
 ?>
@@ -111,16 +109,20 @@ namedayemail_run_cron();
 		</td>
 	</tr>
 	<tr>
-		<th class="titledesc"><?php echo __( 'Send email days before name day', 'my-day-email' ); ?>:</th>
+		<th class="titledesc"><?php echo __( 'Send email X days before name day', 'my-day-email' ); ?>:</th>
 		<td>
 			<input type="number" id="namedayemail_options[days_before]" name="namedayemail_options[days_before]"  style="width: 60px;" value="<?php echo $options['days_before'] ?? ''; ?>"</input>
-			<?php  echo wc_help_tip(__( 'This is UTC time when cron send the email messages.', 'my-day-email' ), false); ?>
+			<?php 
+			$funcs = new EmailFunctions("namedayemail");
+			echo $funcs->namedayemail_get_next_names(); ?>		
 		</td>
 	</tr>
+
 	<tr>
 		<th class="titledesc"><?php echo __( 'Send email every day at', 'my-day-email' ); ?>:</th>
 		<td>
 			<input type="time" id="namedayemail_options[send_time]" name="namedayemail_options[send_time]"  style="width: 100px;" value="<?php echo $options['send_time'] ?? ''; ?>"</input>
+			<?php  echo wc_help_tip(__( 'This is time when cron sends the email messages.', 'my-day-email' ), false); ?>
 		</td>
 	</tr>
 </table>
@@ -148,13 +150,6 @@ namedayemail_run_cron();
 	</td>
 </tr>
 
-<tr>
-	<th class="titledesc"><?php echo __( 'Delete unused coupons in days after expiration', 'my-day-email' ); ?>:</th>
-	<td>
-		<input type="number" id="namedayemail_options[days_delete]" name="namedayemail_options[days_delete]"  style="width: 60px;" value="<?php echo $options['days_delete'] ?? ''; ?>"</input>
-		<?php  echo wc_help_tip(__( 'Leave empty and coupons will not be deleted. Otherwise enter number of days after expiration when unused coupons will be deleted.', 'my-day-email' ), false); ?>
-	</td>
-</tr>
 <tr valign="top">
 	<th class="titledesc"><?php echo __( 'Discount type', 'woocommerce' ); ?>:</th>
 	<td>
@@ -370,19 +365,15 @@ namedayemail_run_cron();
 				<tr>
 					<td colspan="2">						
 						<?php
-							$args = array("textarea_name" => "namedayemail_options[namedayemail_body]",);
-							$content_text  = $options['namedayemail_body'] ?? '';
-							wp_editor( $content_text, "namedayemail_body", $args );
+							$args = array("textarea_name" => "namedayemail_options[email_body]",);
+							$content_text  = $options['email_body'] ?? '';
+							wp_editor( $content_text, "email_body", $args );
 						?>
 					</td>
 				</tr>			
-				<tr valign="top">
-					<th scope="row" class="titledesc"><?php echo __( 'Enable logs', 'my-day-email' ); ?>:</th>
-					<td><input type="checkbox" name="namedayemail_options[enable_logs]" id="namedayemail_options[enable_logs]"  value="1" <?php echo checked( 1, $options['enable_logs'] ?? '', false ) ?? '' ; ?>></td>
-				</tr>
 				<tfoot><tr><td colspan="2">
 					<p class="description">
-					<?php echo __( 'Placeholders', 'my-day-email' ); ?>:  <i>{fname}, {fname5}, {coupon}, {percent}, {products_cnt}, {expires}, {expires_in_days}, {name_day_date}, {site_name}, {site_url}, {site_name_url}<br>
+						<?php echo __( 'Placeholders', 'my-day-email' ); ?>:  <i>{fname}, {fname5}, {lname}, {coupon}, {percent}, {products_cnt}, {expires}, {expires_in_days}, {my_day_date}, {site_name}, {site_url}, {site_name_url}<br>
 					<small><?php echo __( 'Use {fname5} for Czech salutation.', 'my-day-email' ); ?></small>
 					</i>								
 					</p></td>
@@ -393,25 +384,6 @@ namedayemail_run_cron();
 			</p>
 		</form>
 			<input type="button" value="<?php echo  __( 'Create a test', 'my-day-email' ); ?>" class="button button-primary" attr-nonce="<?php echo esc_attr( wp_create_nonce( '_namedayemail_nonce_test' ) ); ?>" id="test_btn" />		
-		<form method="post" id="form_log" name="form_log">
-			<?php 
-				settings_fields('namedayemail_plugin_log_options'); 
-				$options = get_option('namedayemail_logs'); 
-			?>	
-			<h3><?php echo _x('Logs','Setting section', 'my-day-email'); ?> </h3>
-			<table id="log-table" class="form-table">	
-				<tr>
-					<td colspan="2" class="textarea_">						
-						<textarea class="textarea_" id="namedayemail_logs[logs]" name="namedayemail_logs[logs]" rows="15" type='textarea'><?php echo $options['logs'] ?? ''; ?></textarea>
-					</td>
-				</tr>			
-			</table>
-			<p class="submit">
-			<input type="button" value="<?php echo  __( 'Clear Log', 'my-day-email' ); ?>" class="button button-primary" 
-			attr-nonce="<?php echo esc_attr( wp_create_nonce( '_namedayemail_nonce_log' ) ); ?>" 
-			id="clear_log_btn" />						
-			</p>
 			
-		</form>
 	</div>
 	</div>

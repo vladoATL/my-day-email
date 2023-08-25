@@ -16,25 +16,45 @@ $tab = isset($_GET['tab']) ? $_GET['tab'] : $default_tab;
 <nav class="nav-tab-wrapper">
 	<a href="?page=mydayemail" class="nav-tab <?php
 	if ($tab===null) : ?>nav-tab-active<?php
-	endif; ?>"><?php echo  __( 'Birth Day', 'my-day-email' ); ?></a>
-	<a href="?page=mydayemail&tab=name-day" class="nav-tab <?php
-		if ($tab==='name-day') : ?>nav-tab-active
-		<?php endif; ?>">
-		<?php echo  __( 'Name Day', 'my-day-email' ); ?></a>
-		<a href="?page=mydayemail&tab=universary" class="nav-tab <?php
-			if ($tab==='universary') : ?>nav-tab-active<?php
-	endif; ?>"><?php echo  __( 'Order Universary Day', 'my-day-email' ); ?></a>
+	endif; ?>"><?php echo  __( 'Common Settings', 'my-day-email' ); ?></a>
+	<a href="?page=mydayemail&tab=birth-day" class="nav-tab
+		<?php
+	if ($tab==='birth-day') : ?>nav-tab-active<?php
+	endif; ?>"> <?php echo  __( 'Birthday', 'my-day-email' ); ?></a>	
+	<a href="?page=mydayemail&tab=name-day" class="nav-tab 
+		<?php if ($tab==='name-day') : ?>nav-tab-active<?php endif; ?>"> <?php echo  __( 'Name Day', 'my-day-email' ); ?></a>
+	<a href="?page=mydayemail&tab=anniversary" class="nav-tab <?php
+			if ($tab==='anniversary') : ?>nav-tab-active<?php
+	endif; ?>"><?php echo  __( 'Order Anniversary Day', 'my-day-email' ); ?></a>
+	<a href="?page=mydayemail&tab=one-time" class="nav-tab
+		<?php
+	if ($tab==='name-day') : ?>nav-tab-active<?php
+	endif; ?>"> <?php echo  __( 'One Time', 'my-day-email' ); ?></a>	
 </nav>
 	
 <div class="tab-content">
 	<?php
-	switch ($tab) :
-	case 'universary':
+switch ($tab) :
+case 'one-time':
+	?>
+	<div class="metabox-holder">
+
+	</div>
+	<?php
+break;	
+case 'birth-day':
+	?>
+	<div class="metabox-holder">
+		<?php include('birth-day-email-admin-display.php'); ?>
+	</div>
+	<?php
+	break;		
+case 'anniversary':
 
 	?>
 
 	<div class="metabox-holder">
-		<?php include('universary-email-admin-display.php'); ?>
+		<?php include('anniversary-email-admin-display.php'); ?>
 	</div>
 
 	<?php
@@ -50,7 +70,7 @@ default:
 
 	?>
 	<div class="metabox-holder">
-		<?php include('birth-day-email-admin-display.php'); ?>
+		<?php include('common-settings-admin-display.php'); ?>
 	</div>
 
 	<?php

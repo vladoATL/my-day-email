@@ -17,9 +17,10 @@
  	margin: 20px;
  }
 
-  #namedaysemail-setting textarea {
+  #namedaysemail-setting textarea,  #birthdaysemail-setting textarea {
  	width: 100%;
  }
+ 
   #namedaysemail-setting select {
   	line-height: normal;
   	vertical-align: initial;

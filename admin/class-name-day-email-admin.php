@@ -77,45 +77,74 @@ class My_Day_Email_Admin {
 		register_setting( 'namedayemail_plugin_options', 'namedayemail_options', 
 		    array('sanitize_callback' => array( $this, 'namedayemail_validate_options' ),)
 		 );
-		register_setting( 'mydayemail_plugin_log_options', 'namedayemail_logs', 
+		register_setting( 'mydayemail_plugin_log_options', 'mydayemail_logs', 
 			array('sanitize_callback' => array( $this, 'namedayemail_validate_log_options' ),) 
-		 );	 
+		 );	
+		 register_setting( 'mydayemail_plugin_options', 'mydayemail_options',
+		 array('sanitize_callback' => array( $this, 'mydayemail_validate_options' ),)
+		 );		
+		 register_setting( 'birtdayemail_plugin_options', 'birthdayemail_options',
+		 array('sanitize_callback' => array( $this, 'birthdayemail_validate_options' ),)
+		 );		   
 	}
-	function namedayemail_validate_options($input)
-	{
+	function namedayemail_validate_options($input) 	{
 		return $input;
 	}
+	function birthdayemail_validate_options($input)
+	{
+		return $input;
+	}	
 	function namedayemail_validate_log_options($input) {
 		return $input;
 	}
-
- 	public function namedayemail_clear_log() {
- 		if ( isset( $_POST['nonce'] ) && '' !== $_POST['nonce'] && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), '_namedayemail_nonce_log' ) ) 
+	function mydayemail_validate_options($input)
+	{
+		return $input;
+	}
+ 	public function mydayemail_clear_log() {
+ 		if ( isset( $_POST['nonce'] ) && '' !== $_POST['nonce'] && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), '_mydayemail_nonce_log' ) ) 
 		{
-	 		delete_option( 'namedayemail_logs' );
+	 		delete_option( 'mydayemail_logs' );
 	 		die();
 		}
 	}
 	
- 	public function namedayemail_make_test() {
+ 	public function namedayemail_make_test() {		 
  		if ( isset( $_POST['nonce'] ) && '' !== $_POST['nonce'] && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), '_namedayemail_nonce_test' ) ) 
 		{
 			$user = wp_get_current_user();
-	 		namedayemail_create($user, true);
+			$funcs = new EmailFunctions("namedayemail");
+			$funcs->	mydayemail_create($user, true);
 	 		die();
 		}
 	}
+		
+	public function birthdayemail_make_test()
+	{
+		if ( isset( $_POST['nonce'] ) && '' !== $_POST['nonce'] && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), '_birthdayemail_nonce_test' ) ) {
+			$user = wp_get_current_user();
+			$funcs = new EmailFunctions("birthdayemail");
+			$funcs->	mydayemail_create($user, true);
+			die();
+		}
+	}		
 		
  	public function namedayemail_restore_settings($add_new = false) {
 		if ( isset( $_POST['nonce'] ) && '' !== $_POST['nonce'] && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), '_namedayemail_nonce' ) || $add_new == true) 
 		{
-			namedayemail_save_defaults($add_new);
-			
+			namedayemail_save_defaults($add_new);			
+			die();
+		}
+	}		
+	
+	public function birthdayemail_restore_settings($add_new = false)
+	{
+		if ( isset( $_POST['nonce'] ) && '' !== $_POST['nonce'] && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), '_birthdayemail_nonce' ) || $add_new == true) {
+			birthdayemail_save_defaults($add_new);
 			die();
 		}
 	}	
-	
-		
+			
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
