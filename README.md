@@ -8,6 +8,7 @@
 ### **Funkcie**
 - pridané pole Narodeniny pre zákazníka
 - voľne konfigurovateľný text emailu
+- jednorazové emaily s vygenerovanými kupónmi
 - emailový text je vložený buď do **WooCommerce šablóny** alebo jednoducho v HTML
 - generovanie **unikátnych kupónov" s ľubovoľnou hodnotou a exspiráciou
 - konfigurácia kupónov: platný na max počet produktov, neplatný na zľavnené produkty, počet znakov...
@@ -21,7 +22,6 @@
 - možnosť vytvoriť kategóriu kupónov ak je nainštalovaný plugin [Advanced Coupons Free](https://wordpress.org/plugins/advanced-coupons-for-woocommerce-free/)
 - meninový kalendár pre rôzne krajiny
 - plugin je momentálne preložený do slovnčiny. Ďalšie preklady sú vítané
-
 
 ### **Inštalácia**
 
