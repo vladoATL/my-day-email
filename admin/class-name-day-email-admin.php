@@ -85,8 +85,22 @@ class My_Day_Email_Admin {
 		 );		
 		 register_setting( 'birtdayemail_plugin_options', 'birthdayemail_options',
 		 array('sanitize_callback' => array( $this, 'birthdayemail_validate_options' ),)
-		 );		   
+		 );	
+		 register_setting( 'onetimeemail_plugin_options', 'onetimeemail_options',
+		 array('sanitize_callback' => array( $this, 'onetimeemail_validate_options' ),)
+		 );	
+		 register_setting( 'anniversaryemail_plugin_options', 'anniversaryemail_options',
+		 array('sanitize_callback' => array( $this, 'anniversaryemail_validate_options' ),)
+		 );			 		 	   
 	}
+	function onetimeemail_validate_options($input)
+	{
+		return $input;
+	}
+	function anniversaryemail_validate_options($input)
+	{
+		return $input;
+	}		
 	function namedayemail_validate_options($input) 	{
 		return $input;
 	}
@@ -137,6 +151,22 @@ class My_Day_Email_Admin {
 		}
 	}		
 	
+	public function anniversaryemail_restore_settings($add_new = false)
+	{
+		if ( isset( $_POST['nonce'] ) && '' !== $_POST['nonce'] && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), '_anniversaryemail_nonce' ) || $add_new == true) {
+			anniversaryemail_save_defaults($add_new);
+			die();
+		}
+	}
+	
+	public function onetimeemail_restore_settings($add_new = false)
+	{
+		if ( isset( $_POST['nonce'] ) && '' !== $_POST['nonce'] && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), '_onetimeemail_nonce' ) || $add_new == true) {
+			onetimeemail_save_defaults($add_new);
+			die();
+		}
+	}
+			
 	public function birthdayemail_restore_settings($add_new = false)
 	{
 		if ( isset( $_POST['nonce'] ) && '' !== $_POST['nonce'] && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), '_birthdayemail_nonce' ) || $add_new == true) {

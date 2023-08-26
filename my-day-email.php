@@ -16,7 +16,7 @@
  * Plugin Name:       My Day Email
  * Plugin URI:        https://starlogic.net/
  * Description:       Send email with a coupon to users on birthday, name day and order anniversary.
- * Version:           0.2.4
+ * Version:           0.2.5
  * Author:            Vlado Laco
  * Author URI:        https://starlogic.net/
  * License:           GPL-2.0+
@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'MY_DAY_EMAIL_VERSION', '0.2.4' );
+define( 'MY_DAY_EMAIL_VERSION', '0.2.5.13' );
 
 /**
  * The code that runs during plugin activation.
@@ -101,8 +101,9 @@ function birthdayemail_save_defaults($add_new = false)
 	'days_before'	=>	1,
 	'characters' =>	7,
 	'wc_template' =>	1,
+	'once_year' =>	1,
 	'test' =>	1,
-	'send_time'  =>	'05:00',
+	'send_time'  =>	'05:30',
 	'expires'	=>	14,
 	'from_name'	=>	get_bloginfo('name'),
 	'from_address'	=>	get_bloginfo('admin_email'),
@@ -110,7 +111,7 @@ function birthdayemail_save_defaults($add_new = false)
 	'email_footer' => '{site_name_url}',
 	'disc_type' => 1,
 	'description' => _x('Birthday {fname} {lname}: {email}','Coupon description','my-day-email') ,
-	'coupon_amount'	=>	10,
+	'coupon_amount'	=>	25,
 	'email_body'	=> _x("<p style='font-size: 20px;font-weight:600;'>Have a nice birthday, {fname}!</p>
 <p style='font-size: 18px;'>Take advantage of this birthday discount code:</p>
 <p style='font-size: 24px;font-weight:800;'>{coupon}</p>
@@ -124,6 +125,78 @@ function birthdayemail_save_defaults($add_new = false)
 		add_option( 'birthdayemail_options', $option_array );
 	} else {
 		update_option( 'birthdayemail_options', $option_array );
+	}
+}
+
+function anniversaryemail_save_defaults($add_new = false)
+{
+	$current_user = wp_get_current_user();
+
+	$option_array = array(
+	'subject'	=>	_x('{fname}, here is your gift','Email Subject','my-day-email') ,
+	'header'  =>	_x('Your discount','Email Header','my-day-email') ,
+	'days_before'	=>	1,
+	'characters' =>	7,
+	'wc_template' =>	1,
+	'test' =>	1,
+	'send_time'  =>	'05:00',
+	'expires'	=>	14,
+	'from_name'	=>	get_bloginfo('name'),
+	'from_address'	=>	get_bloginfo('admin_email'),
+	'bcc_address' => $current_user->user_email,
+	'email_footer' => '{site_name_url}',
+	'disc_type' => 1,
+	'description' => _x('Anniversary {fname} {lname}: {email}','Coupon description','my-day-email') ,
+	'coupon_amount'	=>	10,
+	'email_body'	=> _x("<p style='font-size: 20px;font-weight:600;'>Have a nice birthday, {fname}!</p>
+<p style='font-size: 18px;'>Take advantage of this birthday discount code:</p>
+<p style='font-size: 24px;font-weight:800;'>{coupon}</p>
+<p style='font-size: 18px;'>During the next {expires_in_days} days you can use it in our online store {site_name_url} and get a special discount of <strong>{percent}%</strong> on {products_cnt} non-discounted products.</p>
+<p style='font-size: 18px;font-weight:600;'>ALL THE BEST !</p>
+<p style='font-size: 18px;'>The Team of {site_name}</p>
+<p style='font-size: 14px;'>The coupon can only be used after logging into your account and cannot be used with other discounts. Some products are exluded from the discount.</p>" ,'Email Body', 'my-day-email'	) ,
+	'category' =>	_x('anniversary','Coupon category', 'my-day-email'	) ,
+	);
+	if ($add_new == true) {
+		add_option( 'anniversaryemail_options', $option_array );
+	} else {
+		update_option( 'anniversaryemail_options', $option_array );
+	}
+}
+
+function onetimeemail_save_defaults($add_new = false)
+{
+	$current_user = wp_get_current_user();
+
+	$option_array = array(
+	'subject'	=>	_x('{fname}, here is your discount coupon','Email Subject','my-day-email') ,
+	'header'  =>	_x('Your discount','Email Header','my-day-email') ,
+	'days_before'	=>	1,
+	'characters' =>	7,
+	'wc_template' =>	1,
+	'test' =>	1,
+	'send_time'  =>	'05:00',
+	'expires'	=>	14,
+	'from_name'	=>	get_bloginfo('name'),
+	'from_address'	=>	get_bloginfo('admin_email'),
+	'bcc_address' => $current_user->user_email,
+	'email_footer' => '{site_name_url}',
+	'disc_type' => 1,
+	'description' => _x('One time {fname} {lname}: {email}','Coupon description','my-day-email') ,
+	'coupon_amount'	=>	10,
+	'email_body'	=> _x("<p style='font-size: 20px;font-weight:600;'>We have a special discount for you, {fname}!</p>
+<p style='font-size: 18px;'>Take advantage of this discount code:</p>
+<p style='font-size: 24px;font-weight:800;'>{coupon}</p>
+<p style='font-size: 18px;'>During the next {expires_in_days} days you can use it in our online store {site_name_url} and get a special discount of <strong>{percent}%</strong> on {products_cnt} non-discounted products.</p>
+<p style='font-size: 18px;font-weight:600;'>ALL THE BEST !</p>
+<p style='font-size: 18px;'>The Team of {site_name}</p>
+<p style='font-size: 14px;'>The coupon can only be used after logging into your account and cannot be used with other discounts. Some products are exluded from the discount.</p>" ,'Email Body', 'my-day-email'	) ,
+	'category' =>	_x('one-time','Coupon category', 'my-day-email'	) ,
+	);
+	if ($add_new == true) {
+		add_option( 'onetimeemail_options', $option_array );
+	} else {
+		update_option( 'onetimeemail_options', $option_array );
 	}
 }
 

@@ -15,7 +15,7 @@
 ?>
 
 <div class="wrap woocommerce">
-<div id="namedaysemail-setting">
+	<div id="namedaysemail-setting"  class="myday-setting">
 
 <div class="icon32" id="icon-options-general"><br></div>
 <h2><?php echo _x('Common Settings','Setting', 'my-day-email'); ?> </h2>
@@ -42,10 +42,7 @@ $options = get_option('mydayemail_options');
 <p class="submit">
 <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
 </p>
-</form>
-
-
-	
+</form>	
 		<form method="post" id="form_log" name="form_log">
 			<?php 
 				settings_fields('mydayemail_plugin_log_options'); 

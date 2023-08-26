@@ -16,7 +16,7 @@ global $woocommerce, $post;
 
 
 // Process export
-if ( isset( $_GET['export'] ) ) {
+if ( isset( $_GET['namesexport'] ) ) {
 	$options = get_option('namedayemail_options');
 	$language = $options['language'];
 
@@ -64,7 +64,7 @@ if ( isset( $_GET['export'] ) ) {
 ?>
 
 <div class="wrap woocommerce">
-<div id="namedaysemail-setting">
+<div id="namedaysemail-setting"  class="myday-setting">
 <div class="loader_cover">
 	<div class="namedays_loader"></div> </div>
 <input type="button" value="<?php echo  __( 'Restore Defaults', 'my-day-email' ); ?>" class="button button-primary"
@@ -104,7 +104,7 @@ namedayemail_run_cron();
 				<option value='4' <?php selected( $options['language'] ?? '', 4 ); ?>><?php echo __( 'Austrian calendar', 'my-day-email' ); ?>&nbsp;</option>
 			</select>
 			<?php  echo wc_help_tip(__( 'Choose the calendar country to be used', 'my-day-email' ), false); ?>
-			<a class="button button-primary" href="admin.php?page=mydayemail&tab=name-day&export=table&noheader=1"><?php echo __( 'Download csv', 'my-day-email' ); ?></a>
+			<a class="button button-primary" href="admin.php?page=mydayemail&tab=name-day&namesexport=table&noheader=1"><?php echo __( 'Download csv', 'my-day-email' ); ?></a>
 			<?php  echo wc_help_tip(__( 'Make sure the selection is saved before download.', 'my-day-email' ), false); ?>
 		</td>
 	</tr>
@@ -126,7 +126,7 @@ namedayemail_run_cron();
 		</td>
 	</tr>
 </table>
-<h3><?php echo __('Coupon data', 'woocommerce'); ?> </h3>
+<h3><?php echo __('Coupon settings', 'my-day-email'); ?> </h3>
 <table id="coupon-table" class="form-table">
 <tr>
 	<th class="titledesc"><?php echo __( 'Description', 'woocommerce' ); ?>:</th>
@@ -365,7 +365,7 @@ namedayemail_run_cron();
 				<tr>
 					<td colspan="2">						
 						<?php
-							$args = array("textarea_name" => "namedayemail_options[email_body]",);
+						$args = array("textarea_name" => "namedayemail_options[email_body]", 'editor_class' => 'textarea_');
 							$content_text  = $options['email_body'] ?? '';
 							wp_editor( $content_text, "email_body", $args );
 						?>

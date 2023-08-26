@@ -16,9 +16,30 @@ class EmailFunctions
 		$this->options_name = $type . '_options';
 		$this->options_array = get_option($this->options_name);
 	}
+	
+	public function getBirthdaySentMetaKey()
+	{
+		return 'dob-coupon-sent';
+	}	
+	
+	function mydayemail_set_sent($user, $istest = false)
+	{		
+		if (! $istest) {
+			$id = $user->user_id;
+
+			$check = get_user_meta( $id, $this->getBirthdaySentMetaKey(), true );
+			if ( empty( $check )) {
+				add_user_meta($id, $this->getBirthdaySentMetaKey(), date('Y'));
+			} else {
+				update_user_meta($id, $this->getBirthdaySentMetaKey(), date('Y'));
+			}			
+			
+		}
+	}
 		
 	function mydayemail_create($user, $istest = false)
 	{
+		$success = true;
 		$options = $this->options_array;
 		$subject_user = $options['subject'];
 		$html_body = $options['email_body'];
@@ -39,7 +60,8 @@ class EmailFunctions
 			
 			if (empty($coupon)) {
 				$this->mydayemail_add_log("No available coupons to create.");
-				return;
+				$success = false;
+				return $success;
 			}
 			$html_body = str_replace('{coupon}',$coupon,$html_body);
 		}
@@ -59,11 +81,13 @@ class EmailFunctions
 
 				if ($istest == true) {
 					$this->mydayemail_add_log("Test email sent to" . ': ' . $email . ' coupon: ' . $coupon ) ;
+					$success = false;
 				} else {
 					$this->mydayemail_add_log("Email sent to" . ': ' . $email . ' coupon: ' . $coupon  ) ;
 				}
 			} else {
 				$this->mydayemail_add_log("Trying to send to incorrect or missing email address"  . ': ' . $email ) ;
+				$success = false;
 			}
 		} else {
 			if (isset($options['bcc_address'])) {
@@ -78,7 +102,9 @@ class EmailFunctions
 				$sendmail_user = wp_mail( $admin_email, $subject_user, $html_body, $headers_user );
 			}
 			$this->mydayemail_add_log("Email has been sent as Test to"  . ' ' . $admin_email . " instead of to " . $email) ;
+			$success = false;
 		}
+		return $success;
 	}
 
 	function mydayemail_replace_placeholders($content, $user, $options)
@@ -129,10 +155,11 @@ class EmailFunctions
 			}
 			$entry =$this->type . ": " . current_time( 'mysql' ) . " " .  $entry  ;
 			$options = get_option('mydayemail_logs');
-			$log = $options['logs'];
+			
 			if (empty($options)) {
 				add_option( 'mydayemail_logs', array('logs'	=>	$entry) );
 			} else {
+				$log = $options['logs'];
 				update_option( 'mydayemail_logs',array('logs'	=>	$log . "\n" .  $entry) );
 			}
 		}
@@ -244,7 +271,8 @@ class EmailFunctions
 			update_post_meta( $new_coupon_id, '_acfw_schedule_end', $expiry_date );
 		}
 
-		$cat_id = $this->mydayemail_coupon_category($new_coupon_id, $options['category']);
+		if (isset($options['category']))
+			$cat_id = $this->mydayemail_coupon_category($new_coupon_id, $options['category']);
 		return $generated_code;
 	}
 

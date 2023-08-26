@@ -3,38 +3,44 @@
  * included in this file.
  */
  <style>
-#namedaysemail-setting .form-table {
+
+.myday-setting .form-table {
  	font-size: 12px;
  }
- #namedaysemail-setting .form-table th,  #email-table .form-table th, #coupon-table .form-table th, #log-table .form-table th  {
- 	padding: 10px;
- 	width: 300px;
+ .myday-setting .form-table th  {
+ 	padding: 5px;
+ 	width: 350px;
  }
-  #namedaysemail-setting .form-table tr td {
- 	padding: 10px;
+  .myday-setting .form-table tr td {
+ 	padding: 5px;
  }
-  #namedaysemail-setting .form-table {
+  .myday-setting .form-table {
  	margin: 20px;
  }
-
-  #namedaysemail-setting textarea,  #birthdaysemail-setting textarea {
- 	width: 100%;
- }
  
-  #namedaysemail-setting select {
+  .myday-setting input[type=checkbox] {
+	   transform : scale(1.4);
+	   margin: 8px 4px;
+}
+ 
+  .myday-setting select {
   	line-height: normal;
   	vertical-align: initial;
   }
   
-  #email-table .textarea_,   #log-table .textarea_ {
- 	width: 100%;
+ .myday-setting .textarea_,  #log-table .textarea_ {
+ 	width: 100% !important;
  }
  
- #email-table input, #log-table input, #namedaysemail-setting input, #coupon-table input {
- 	vertical-align: initial;
+ .myday-setting input,  .myday-setting select  {
+	 vertical-align: initial  !important;
  }
  
- #restore_values_btn, #restore_uni_values_btn, #restore_bd_values_btn {
+  .myday-setting input,  .myday-setting .select2-container {
+	vertical-align: middle  !important;
+}
+ 
+ #restore_values_btn, #restore_anni_values_btn, #restore_bd_values_btn, #restore_one_values_btn {
     float: right;
     margin-right: 5%;
 }

@@ -2,16 +2,54 @@
 /*$bd = new Birthdays();
 echo var_dump($bd->get_celebrating_users(20,9));*/
 
+// Process export
+if ( isset( $_GET['dobexport'] ) ) {
+	global $wpdb;
+	ob_end_clean();
+	$table_head = array( 'Day', 'First Name', 'Last Name', 'Email', 'User ID', 'Age', 'Year Sent' );
+	$csv = implode( ';' , $table_head );
+	$csv .= "\n";
+	$sql = "SELECT  SUBSTRING(m.meta_value FROM 6)  as day, fmu.meta_value AS fname, lmu.meta_value AS lname, u.user_email AS email, m.user_id AS id,
+			TIMESTAMPDIFF(YEAR, m.meta_value, CURDATE()) AS age, dmu.meta_value AS sent
+			FROM $wpdb->users  AS u
+			JOIN $wpdb->usermeta AS m ON u.ID = m.user_id AND m.meta_key = 'billing_birth_date'
+			JOIN $wpdb->usermeta AS fmu ON u.ID = fmu.user_id AND fmu.meta_key = 'billing_first_name'
+			JOIN $wpdb->usermeta AS lmu ON u.ID = lmu.user_id AND lmu.meta_key = 'billing_last_name'
+			LEFT JOIN $wpdb->usermeta AS dmu ON u.ID = dmu.user_id AND dmu.meta_key = 'dob-coupon-sent'
+			WHERE TIMESTAMPDIFF(YEAR, m.meta_value, CURDATE()) != ''
+			ORDER BY SUBSTRING(m.meta_value FROM 6) ";
+			
+	$result = $wpdb->get_results($sql, ARRAY_A);		
+			
+	foreach ( $result as $key => $value ) {
+		$csv .=   implode(';', $value);  
+		$csv .= "\n";
+	}
+	$csv .= "\n";
+	$filename = 'birth_days.csv';
+	header('Content-Type: application/csv');
+	header('Content-Disposition: attachment; filename="' . $filename .'"');
+	header('Content-Transfer-Encoding: binary');
+	header('Expires: 0');
+	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+	header('Pragma: public');
+	echo "\xEF\xBB\xBF"; // UTF-8 BOM
+	echo $csv;
+	exit();
+}
+
+
 birthdayemail_run_cron();
 ?>
 
 <div class="wrap woocommerce">
-<div id="birthdaysemail-setting">
+<div id="birthdaysemail-setting" class="myday-setting">
 <div class="loader_cover">
 	<div class="birthdays_loader"></div> </div>
 <input type="button" value="<?php echo  __( 'Restore Defaults', 'my-day-email' ); ?>" class="button button-primary"
 attr-nonce="<?php echo esc_attr( wp_create_nonce( '_birthdayemail_nonce' ) ); ?>"
 id="restore_bd_values_btn" />
+
 <h2><?php echo _x('Birthday Emails Settings','Setting', 'my-day-email'); ?> </h2>
 <form method="post" id="form2" name="form2" action="options.php">
 	<?php
@@ -37,7 +75,6 @@ id="restore_bd_values_btn" />
 				<input type="number" id="birthdayemail_options[days_before]" name="birthdayemail_options[days_before]"  style="width: 60px;" value="<?php echo $options['days_before'] ?? ''; ?>"</input>
 			</td>
 		</tr>
-
 		<tr>
 			<th class="titledesc"><?php echo __( 'Send email every day at', 'my-day-email' ); ?>:</th>
 			<td>
@@ -45,8 +82,22 @@ id="restore_bd_values_btn" />
 				<?php  echo wc_help_tip(__( 'This is time when cron sends the email messages.', 'my-day-email' ), false); ?>
 			</td>
 		</tr>
+		<tr valign="top">
+			<th class="titledesc"><?php echo __( 'Send it onle one time in a year', 'my-day-email' ); ?>:</th>
+			<td><input type="checkbox" name="birthdayemail_options[once_year]" id="birthdayemail_options[once_year]"  value="1" <?php echo checked( 1, $options['once_year'] ?? '', false ) ?? '' ; ?>>
+				<?php  echo wc_help_tip(__( 'Send the email with coupon only once in a year to customer even though the DOB was changed.', 'my-day-email' ), false); ?>
+			</td>
+		</tr>		
+		<tr>
+			<th class="titledesc"><?php echo __( 'Download file with all users', 'my-day-email' ); ?>:</th>
+			<td>
+				<a class="button button-primary" href="admin.php?page=mydayemail&tab=birth-day&dobexport=table&noheader=1"><?php echo __( 'Download csv', 'my-day-email' ); ?></a>
+				<?php  echo wc_help_tip(__( 'Download csv file with brith days of users.', 'my-day-email' ), false); ?>
+			</td>
+		</tr>		
+		
 	</table>
-	<h3><?php echo __('Coupon data', 'woocommerce'); ?> </h3>
+	<h3><?php echo __('Coupon settings', 'my-day-email'); ?> </h3>
 	<table id="coupon-table" class="form-table">
 		<tr>
 			<th class="titledesc"><?php echo __( 'Description', 'woocommerce' ); ?>:</th>
@@ -285,7 +336,7 @@ id="restore_bd_values_btn" />
 		<tr>
 			<td colspan="2">
 				<?php
-				$args = array("textarea_name" => "birthdayemail_options[email_body]",);
+				$args = array("textarea_name" => "birthdayemail_options[email_body]", 'editor_class' => 'textarea_');
 				$content_text  = $options['email_body'] ?? '';
 				wp_editor( $content_text, "email_body", $args );
 				?>

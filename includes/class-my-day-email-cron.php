@@ -34,8 +34,10 @@ function birthdayemail_event()
 function birthdayemail_event_setup($type)
 {
 	$options = get_option($type .'_options');
+	$success = false;
 	if ( !empty($options['enabled']) && '1' == $options['enabled'] ) {
 		$str_nameday =  date('Y-m-d',strtotime('+' . $options['days_before'] . ' day'));
+		$once_year = $options['once_year'];		
 		$dateValue = strtotime($str_nameday);
 		$m = intval(date("m", $dateValue));
 		$d = intval(date("d", $dateValue));
@@ -43,7 +45,23 @@ function birthdayemail_event_setup($type)
 		$celebrating =  new Birthdays();
 		$users = $celebrating->get_celebrating_users($d,$m);
 		foreach ($users as $user) {
-			$funcs->mydayemail_create($user);
+			$runit = false;
+			if ($once_year == 1) {
+				$check = get_user_meta( $user->user_id, $funcs->getBirthdaySentMetaKey(), true );
+				if ( empty( $check )  || $check != date("Y") ) $runit = true;
+			} else {
+				$runit = true;
+			}
+			if ( $runit) {
+				$success = $funcs->mydayemail_create($user);
+				if ( $success) {
+					$funcs->mydayemail_set_sent($user);
+				} else {
+					$funcs->mydayemail_add_log("Birth day coupon flag has not been updated for" . " " . $user->user_email);
+				}			
+			} else {
+				$funcs->mydayemail_add_log("User has already received birth day coupon this year" . " " . $user->user_email);
+			}	
 		}
 		$funcs->mydayemail_delete_expired();
 	}
@@ -66,10 +84,11 @@ function mydayemail_run_cron_setup($type)
 		}		
 		//$res = wp_schedule_event( $tm, 'daily', $type . '_cron' );
 		$res = wp_reschedule_event( $tm, 'daily', $type . '_cron' );
-		if ($res == 1 )
+/*		if ($res == 1 )
 			$logs->mydayemail_add_log("Cron scheduled " . date("T H:i", $tm));
-		else
+			else				
 			$logs->mydayemail_add_log("Cron scheduling error" );
+			*/
 	} else {
 		wp_clear_scheduled_hook( $type . '_cron' );
 	}	
