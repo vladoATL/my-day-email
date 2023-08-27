@@ -3,7 +3,7 @@ msgstr ""
 "Language: sk_SK\n"
 "Plural-Forms: nplurals=3; plural=( n == 1 ) ? 0 : ( n >= 2 && n <= 4 ) ? 1 : "
 "2;\n"
-"PO-Revision-Date: 2023-08-24 21:00+0000\n"
+"PO-Revision-Date: 2023-08-27 17:01+0000\n"
 "POT-Creation-Date: 2023-08-17 17:31+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "Project-Id-Version: Name Day Email\n"
@@ -15,8 +15,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Loco-Version: 2.6.4; wp-6.3"
 
-#: admin/partials/name-day-email-admin-display.php:332
-#: admin/partials/name-day-email-admin-display.php:341
+#: admin/partials/birth-day-email-admin-display.php:293
+#: admin/partials/birth-day-email-admin-display.php:302
+#: admin/partials/reorder-email-admin-display.php:290
+#: admin/partials/reorder-email-admin-display.php:299
+#: admin/partials/name-day-email-admin-display.php:333
+#: admin/partials/name-day-email-admin-display.php:342
+#: admin/partials/onetime-email-admin-display.php:237
+#: admin/partials/onetime-email-admin-display.php:246
 msgid "Add multiple emails separated by comma ( , )."
 msgstr "Pridajte emailové adresy oddelené čiarkou ( , )."
 
@@ -24,24 +30,54 @@ msgstr "Pridajte emailové adresy oddelené čiarkou ( , )."
 msgid "Austrian calendar"
 msgstr "Rakúsky kalendár"
 
-#: admin/partials/name-day-email-admin-display.php:337
+#: admin/partials/birth-day-email-admin-display.php:298
+#: admin/partials/reorder-email-admin-display.php:295
+#: admin/partials/name-day-email-admin-display.php:338
+#: admin/partials/onetime-email-admin-display.php:242
 msgid "BCC and Test email address"
 msgstr "BCC a email pre testy"
 
-#: admin/partials/my-day-admin-display.php:23
-msgid "Birth Day"
+#: admin/partials/my-day-admin-display.php:21
+#| msgid "Birth Day"
+msgid "Birthday"
 msgstr "Narodeniny"
 
-#: admin/partials/name-day-email-admin-display.php:141
+#: admin/partials/birth-day-email-admin-display.php:102
+#: admin/partials/birth-day-email-admin-display.php:103
+#: admin/partials/birth-day-email-admin-display.php:104
+#: admin/partials/birth-day-email-admin-display.php:105
+#: admin/partials/birth-day-email-admin-display.php:106
+#: admin/partials/birth-day-email-admin-display.php:107
+#: admin/partials/reorder-email-admin-display.php:98
+#: admin/partials/reorder-email-admin-display.php:99
+#: admin/partials/reorder-email-admin-display.php:100
+#: admin/partials/reorder-email-admin-display.php:101
+#: admin/partials/reorder-email-admin-display.php:102
+#: admin/partials/reorder-email-admin-display.php:103
 #: admin/partials/name-day-email-admin-display.php:142
 #: admin/partials/name-day-email-admin-display.php:143
 #: admin/partials/name-day-email-admin-display.php:144
 #: admin/partials/name-day-email-admin-display.php:145
 #: admin/partials/name-day-email-admin-display.php:146
+#: admin/partials/name-day-email-admin-display.php:147
+#: admin/partials/onetime-email-admin-display.php:45
+#: admin/partials/onetime-email-admin-display.php:46
+#: admin/partials/onetime-email-admin-display.php:47
+#: admin/partials/onetime-email-admin-display.php:48
+#: admin/partials/onetime-email-admin-display.php:49
+#: admin/partials/onetime-email-admin-display.php:50
 msgid "characters"
 msgstr "znakov"
 
-#: admin/partials/name-day-email-admin-display.php:148
+#: includes/class-birthdayfield.php:44
+msgctxt "Check out"
+msgid "Date of birth - Year is not important but helps"
+msgstr "Dátum narodenia - rok nie je dôležitý ale pomôže"
+
+#: admin/partials/birth-day-email-admin-display.php:109
+#: admin/partials/reorder-email-admin-display.php:105
+#: admin/partials/name-day-email-admin-display.php:149
+#: admin/partials/onetime-email-admin-display.php:52
 msgid "Choose how many characters will be in generated coupons."
 msgstr "Zvoľte, koľko znakov bude vo vygenerovaných kupónoch"
 
@@ -49,39 +85,87 @@ msgstr "Zvoľte, koľko znakov bude vo vygenerovaných kupónoch"
 msgid "Choose the calendar country to be used"
 msgstr "Vyberte kalendár, ktorý má byť použitý"
 
-#: admin/partials/common-settings-admin-display.php:59
+#: admin/partials/common-settings-admin-display.php:60
 msgid "Clear Log"
 msgstr "Odstrániť záznamy"
 
-#: admin/partials/my-day-admin-display.php:19
-msgid "Common Settings"
-msgstr "Spoločné nastavenia"
+#: admin/partials/my-day-admin-display.php:17
+msgid "Common"
+msgstr "Spoločné"
 
-#: admin/partials/name-day-email-admin-display.php:138
+#: admin/partials/birth-day-email-admin-display.php:99
+#: admin/partials/reorder-email-admin-display.php:95
+#: admin/partials/name-day-email-admin-display.php:139
+#: admin/partials/onetime-email-admin-display.php:42
 msgid "Count of coupon characters"
 msgstr "Počet znakov kupónu"
 
-#: my-day-email.php:112
+#: my-day-email.php:124
+msgctxt "Coupon category"
+msgid "birth-day"
+msgstr "narodeniny"
+
+#: my-day-email.php:229
 #| msgid "Name day"
 msgctxt "Coupon category"
 msgid "name-day"
 msgstr "meniny"
 
-#: admin/partials/name-day-email-admin-display.php:298
+#: my-day-email.php:194
+msgctxt "Coupon category"
+msgid "one-time"
+msgstr "jednorazovy"
+
+#: my-day-email.php:160
+msgctxt "Coupon category"
+msgid "reorder"
+msgstr "preobjednanie"
+
+#: admin/partials/birth-day-email-admin-display.php:259
+#: admin/partials/reorder-email-admin-display.php:255
+#: admin/partials/name-day-email-admin-display.php:299
+#: admin/partials/onetime-email-admin-display.php:202
 #| msgid "Coupon category"
 msgid "Coupon category slug"
 msgstr "Slug kategórie kupónu"
 
-#: my-day-email.php:102
+#: my-day-email.php:115
+msgctxt "Coupon description"
+msgid "Birthday {fname} {lname}: {email}"
+msgstr "Narodeniny {fname} {lname}: {email}"
+
+#: my-day-email.php:220
 msgctxt "Coupon description"
 msgid "Name Day {fname}: {email}"
 msgstr "Meniny {fname}: {email}"
 
-#: admin/partials/name-day-email-admin-display.php:185
+#: my-day-email.php:185
+msgctxt "Coupon description"
+msgid "One time {fname} {lname}: {email}"
+msgstr "Jednorazovo {fname} {lname}: {email}"
+
+#: my-day-email.php:151
+msgctxt "Coupon description"
+msgid "Reorder {fname} {lname}: {email}"
+msgstr "Preobjednanie {fname} {lname}: {email}"
+
+#: admin/partials/birth-day-email-admin-display.php:146
+#: admin/partials/reorder-email-admin-display.php:142
+#: admin/partials/name-day-email-admin-display.php:186
+#: admin/partials/onetime-email-admin-display.php:89
 msgid "Coupon expires in days"
 msgstr "Kupón exspiruje po počte dní"
 
-#: admin/partials/name-day-email-admin-display.php:389
+#: admin/partials/birth-day-email-admin-display.php:89
+#: admin/partials/reorder-email-admin-display.php:84
+#: admin/partials/name-day-email-admin-display.php:129
+#: admin/partials/onetime-email-admin-display.php:31
+msgid "Coupon settings"
+msgstr "Nastavenie kupónu"
+
+#: admin/partials/birth-day-email-admin-display.php:349
+#: admin/partials/reorder-email-admin-display.php:347
+#: admin/partials/name-day-email-admin-display.php:386
 msgid "Create a test"
 msgstr "Testovať"
 
@@ -89,28 +173,95 @@ msgstr "Testovať"
 msgid "Czech calendar"
 msgstr "Český kalendár"
 
-#: includes/birthdayfield.php:44 includes/birthdayfield.php:53
-#: includes/birthdayfield.php:81 includes/birthdayfield.php:125
-msgid "Date of birth"
-msgstr "Dátum narodenia"
-
 #: admin/partials/common-settings-admin-display.php:31
 msgid "Delete unused coupons in days after expiration"
 msgstr "Zmazať nepoužité exspirované kupóny po dňoch"
 
-#: admin/partials/name-day-email-admin-display.php:134
+#: admin/partials/birth-day-email-admin-display.php:95
+#: admin/partials/reorder-email-admin-display.php:91
+#: admin/partials/name-day-email-admin-display.php:135
+#: admin/partials/onetime-email-admin-display.php:38
 msgid "Description will be used in Coupons page."
 msgstr "Popis bude použitý na stránke Zľavové kódy"
 
+#: includes/class-birthdayfield.php:54 includes/class-birthdayfield.php:84
+msgctxt "DOB note"
+msgid "Year is not important but helps"
+msgstr "Rok nie je dôležitý ale pomôže"
+
+#: admin/partials/birth-day-email-admin-display.php:84
+#: admin/partials/reorder-email-admin-display.php:79
 #: admin/partials/name-day-email-admin-display.php:107
 msgid "Download csv"
 msgstr "Stahnúť csv"
 
-#: admin/partials/name-day-email-admin-display.php:363
+#: admin/partials/birth-day-email-admin-display.php:85
+#: admin/partials/reorder-email-admin-display.php:80
+msgid "Download csv file with brith days of users."
+msgstr "Stiahnuť csv súbor s narodeninami používateľov."
+
+#: admin/partials/birth-day-email-admin-display.php:82
+msgid "Download file with all users"
+msgstr "Stiahnuť súbor so všetkými používateľmi"
+
+#: admin/partials/reorder-email-admin-display.php:77
+msgid "Download file with users to send email"
+msgstr "Stiahnuť súbor používateľmi, ktorý dostanú email"
+
+#: admin/partials/birth-day-email-admin-display.php:324
+#: admin/partials/reorder-email-admin-display.php:321
+#: admin/partials/name-day-email-admin-display.php:364
+#: admin/partials/onetime-email-admin-display.php:268
 msgid "Email body"
 msgstr "Text emailu"
 
-#: my-day-email.php:105
+#: my-day-email.php:117
+#| msgid ""
+#| "<p style='font-size: 20px;font-weight:600;'>Have a nice birthday, {fname}!"
+#| "</p>\n"
+#| "<p style='font-size: 18px;'>Take advantage of this birthday discount code:"
+#| "</p>\n"
+#| "<p style='font-size: 24px;font-weight:800;'>{coupon}</p>\n"
+#| "<p style='font-size: 18px;'>During the next {expires_in_days} days you "
+#| "can use it in our online store {site_name_url} and get a special discount "
+#| "of <strong>{percent}%</strong> on {products_cnt} non-discounted products."
+#| "</p>\n"
+#| "<p style='font-size: 18px;font-weight:600;'>ALL THE BEST !</p>\n"
+#| "<p style='font-size: 18px;'>The Team of {site_name}</p>\n"
+#| "<p style='font-size: 14px;'>The coupon can only be used after logging "
+#| "into your account and cannot be used with other discounts. Some products "
+#| "are exluded from the discount.</p>"
+msgctxt "Email Body"
+msgid ""
+"<p style='font-size: 20px;font-weight:600;'>Have a nice birthday, {fname}!"
+"</p>\n"
+"<p style='font-size: 18px;'>Take advantage of this birthday discount code:"
+"</p>\n"
+"<p style='font-size: 24px;font-weight:800;'>{coupon}</p>\n"
+"<p style='font-size: 18px;'>During the next {expires_in_days} days you can "
+"use it in our online store {site_name_url} and get a special discount of "
+"<strong>{percent}%</strong> on {products_cnt} non-discounted products.</p>\n"
+"<p style='font-size: 18px;font-weight:600;'>ENJOY !</p>\n"
+"<p style='font-size: 18px;'>The Team of {site_name}</p>\n"
+"<p style='font-size: 14px;'>The coupon can only be used after logging into "
+"your account and cannot be used with other discounts. Some products are "
+"exluded from the discount.</p>"
+msgstr ""
+"<p style='font-size: 20px;font-weight:600;'>Všetko najlepšie k narodeninám, "
+"{fname}!</p>\n"
+"<p style='font-size: 18px;'>Využi tento narodeninový kód na zľavu:</p>\n"
+"<p style='font-size: 24px;font-weight:800;'>{coupon}</p>\n"
+"<p style='font-size: 18px;'>Behom nasledujúcich {expires_in_days} dní ho "
+"môžeš použiť v našej online predajni {site_name_url} a získať mimoriadnu "
+"zľavu <strong>{percent}%</strong> na {products_cnt} nezľavnené produkty.</p>"
+"\n"
+"<p style='font-size: 18px;font-weight:600;'>BLAHOŽELÁME !</p>\n"
+"<p style='font-size: 18px;'>Tím {site_name}</p>\n"
+"<p style='font-size: 14px;'>Kupón sa dá použiť len po prihlásení sa do "
+"Tvojho účtu a nie je možné ho použiť s inými zľavami. Na niektoré produkty "
+"sa zľava nevzťahuje.</p>"
+
+#: my-day-email.php:222
 #| msgid ""
 #| "\n"
 #| "<p style='font-size: 20px;font-weight:600;'>Have a nice name day, {fname}!"
@@ -156,53 +307,160 @@ msgstr ""
 "Tvojho účtu a nie je možné ho použiť s inými zľavami. Na niektoré produkty "
 "sa zľava nevzťahuje.</p>"
 
-#: admin/partials/name-day-email-admin-display.php:329
+#: my-day-email.php:153
+msgctxt "Email Body"
+msgid ""
+"<p style='font-size: 20px;font-weight:600;'>We have a special discount for "
+"you, {fname}!</p>\n"
+"<p style='font-size: 18px;'>Take advantage of this  discount code and order "
+"again:</p>\n"
+"<p style='font-size: 24px;font-weight:800;'>{coupon}</p>\n"
+"<p style='font-size: 18px;'>During the next {expires_in_days} days you can "
+"use it in our online store {site_name_url} and get a special discount of "
+"<strong>{percent}%</strong> on {products_cnt} non-discounted products.</p>\n"
+"<p style='font-size: 18px;font-weight:600;'>ENJOY !</p>\n"
+"<p style='font-size: 18px;'>The Team of {site_name}</p>\n"
+"<p style='font-size: 14px;'>The coupon can only be used after logging into "
+"your account and cannot be used with other discounts. Some products are "
+"exluded from the discount.</p>"
+msgstr ""
+"<p style='font-size: 20px;font-weight:600;'>Máme pre Teba špeciálnu zľavu, "
+"{fname}!</p>\n"
+"<p style='font-size: 18px;'>Využi tento kód a opäť si u nás objednaj:</p>\n"
+"<p style='font-size: 24px;font-weight:800;'>{coupon}</p>\n"
+"<p style='font-size: 18px;'>Behom nasledujúcich {expires_in_days} dní ho "
+"môžeš použiť v našej online predajni {site_name_url} a získať mimoriadnu "
+"zľavu <strong>{percent}%</strong> na {products_cnt} nezľavnené produkty.</p>"
+"\n"
+"<p style='font-size: 18px;font-weight:600;'>UŽI SI TO!</p>\n"
+"<p style='font-size: 18px;'>Tím {site_name}</p>\n"
+"<p style='font-size: 14px;'>Kupón sa dá použiť len po prihlásení sa do "
+"Tvojho účtu a nie je možné ho použiť s inými zľavami. Na niektoré produkty "
+"sa zľava nevzťahuje.</p>"
+
+#: my-day-email.php:187
+msgctxt "Email Body"
+msgid ""
+"<p style='font-size: 20px;font-weight:600;'>We have a special discount for "
+"you, {fname}!</p>\n"
+"<p style='font-size: 18px;'>Take advantage of this discount code:</p>\n"
+"<p style='font-size: 24px;font-weight:800;'>{coupon}</p>\n"
+"<p style='font-size: 18px;'>During the next {expires_in_days} days you can "
+"use it in our online store {site_name_url} and get a special discount of "
+"<strong>{percent}%</strong> on {products_cnt} non-discounted products.</p>\n"
+"<p style='font-size: 18px;font-weight:600;'>ENJOY !</p>\n"
+"<p style='font-size: 18px;'>The Team of {site_name}</p>\n"
+"<p style='font-size: 14px;'>The coupon can only be used after logging into "
+"your account and cannot be used with other discounts. Some products are "
+"exluded from the discount.</p>"
+msgstr ""
+"<p style='font-size: 20px;font-weight:600;'>Máme pre Teba špeciálnu zľavu, "
+"{fname}!</p>\n"
+"<p style='font-size: 18px;'>Využi tento kód na zľavu:</p>\n"
+"<p style='font-size: 24px;font-weight:800;'>{coupon}</p>\n"
+"<p style='font-size: 18px;'>Behom nasledujúcich {expires_in_days} dní ho "
+"môžeš použiť v našej online predajni {site_name_url} a získať mimoriadnu "
+"zľavu <strong>{percent}%</strong> na {products_cnt} nezľavnené produkty.</p>"
+"\n"
+"<p style='font-size: 18px;font-weight:600;'>UŽI SI TO!</p>\n"
+"<p style='font-size: 18px;'>Tím {site_name}</p>\n"
+"<p style='font-size: 14px;'>Kupón sa dá použiť len po prihlásení sa do "
+"Tvojho účtu a nie je možné ho použiť s inými zľavami. Na niektoré produkty "
+"sa zľava nevzťahuje.</p>"
+
+#: admin/partials/birth-day-email-admin-display.php:290
+#: admin/partials/reorder-email-admin-display.php:287
+#: admin/partials/name-day-email-admin-display.php:330
+#: admin/partials/onetime-email-admin-display.php:234
 msgid "Email CC"
 msgstr "Email CC"
 
-#: admin/partials/name-day-email-admin-display.php:322
+#: admin/partials/birth-day-email-admin-display.php:283
+#: admin/partials/reorder-email-admin-display.php:280
+#: admin/partials/name-day-email-admin-display.php:323
+#: admin/partials/onetime-email-admin-display.php:227
 msgid "Email from address"
 msgstr "Odoslať z emailovej adresy"
 
-#: admin/partials/name-day-email-admin-display.php:316
+#: admin/partials/birth-day-email-admin-display.php:277
+#: admin/partials/reorder-email-admin-display.php:274
+#: admin/partials/name-day-email-admin-display.php:317
+#: admin/partials/onetime-email-admin-display.php:221
 msgid "Email from name"
 msgstr "Meno odosielateľa"
 
-#: admin/partials/name-day-email-admin-display.php:357
+#: admin/partials/birth-day-email-admin-display.php:318
+#: admin/partials/reorder-email-admin-display.php:315
+#: admin/partials/name-day-email-admin-display.php:358
+#: admin/partials/onetime-email-admin-display.php:262
 msgid "Email header"
 msgstr "Hlavička emailu"
 
-#: my-day-email.php:90
+#: my-day-email.php:102 my-day-email.php:208
 msgctxt "Email Header"
 msgid "Congratulations"
 msgstr "Blahoželáme!"
 
-#: admin/partials/name-day-email-admin-display.php:351
+#: my-day-email.php:139 my-day-email.php:175
+msgctxt "Email Header"
+msgid "Your discount"
+msgstr "Tvoja zľava"
+
+#: admin/partials/birth-day-email-admin-display.php:312
+#: admin/partials/reorder-email-admin-display.php:309
+#: admin/partials/name-day-email-admin-display.php:352
+#: admin/partials/onetime-email-admin-display.php:256
 msgid "Email subject"
 msgstr "Predmet emailu"
 
-#: my-day-email.php:89
+#: my-day-email.php:101
+msgctxt "Email Subject"
+msgid "{fname}, here is your birthday gift"
+msgstr "{fname}, tu je tvoj narodeninový darček"
+
+#: my-day-email.php:174
+msgctxt "Email Subject"
+msgid "{fname}, here is your discount coupon"
+msgstr "{fname}, tu je tvoj zľavový kupón"
+
+#: my-day-email.php:207
 msgctxt "Email Subject"
 msgid "{fname}, here is your name day gift"
 msgstr "{fname}, tu je tvoj meninový darček"
 
+#: my-day-email.php:138
+msgctxt "Email Subject"
+msgid "{fname}, it's time to order again"
+msgstr "{fname}, je čas si opäť objednať"
+
+#: admin/partials/birth-day-email-admin-display.php:51
+#: admin/partials/reorder-email-admin-display.php:51
 #: admin/partials/name-day-email-admin-display.php:86
 msgid "Enable auto sending emails"
 msgstr "Zapnúť automatické zasielanie správ"
 
-#: admin/partials/name-day-email-admin-display.php:374
+#: admin/partials/common-settings-admin-display.php:38
 msgid "Enable logs"
 msgstr "Zapnúť ukladanie záznamov"
 
-#: includes/birthdayfield.php:115
-msgid "Enter your date of birth, not your next birthday"
-msgstr "Vlož dátum narodenie, nie nasledujúce narodeniny."
+#: admin/partials/reorder-email-admin-display.php:66
+msgid ""
+"Enter number of day after last order when to send this email with coupon."
+msgstr ""
+"Vložte počet dní po poslednej objednávke zákazníka kedy mu má byť poslaný "
+"email s kupónom."
 
-#: admin/partials/name-day-email-admin-display.php:291
+#: admin/partials/birth-day-email-admin-display.php:252
+#: admin/partials/reorder-email-admin-display.php:248
+#: admin/partials/name-day-email-admin-display.php:292
+#: admin/partials/onetime-email-admin-display.php:195
 msgid "Exclude discounted products"
 msgstr "Neplatný pre zľavnené produkty"
 
-#: admin/partials/name-day-email-admin-display.php:199
+#: admin/partials/birth-day-email-admin-display.php:160
+#: admin/partials/reorder-email-admin-display.php:156
+#: admin/partials/name-day-email-admin-display.php:200
+#: admin/partials/onetime-email-admin-display.php:103
 msgid "Good only for products"
 msgstr "Kupón platný len pre produkty"
 
@@ -215,8 +473,8 @@ msgstr "https://starlogic.net/"
 msgid "Hungarian calendar"
 msgstr "Maďarský kalendár"
 
-#: includes/birthdayfield.php:66 includes/birthdayfield.php:99
-#: includes/birthdayfield.php:110
+#: includes/class-birthdayfield.php:68 includes/class-birthdayfield.php:102
+#: includes/class-birthdayfield.php:113
 msgid "Invalid date format for date of birth"
 msgstr "Nesprávny formát narodenín"
 
@@ -228,7 +486,10 @@ msgstr ""
 "Ak zostane prázdne, kupóny nebudú zmazané. Inak vložte počet dní, po ktorých "
 "sa zmažú exspirované nevyužité kupóny"
 
-#: admin/partials/name-day-email-admin-display.php:188
+#: admin/partials/birth-day-email-admin-display.php:149
+#: admin/partials/reorder-email-admin-display.php:145
+#: admin/partials/name-day-email-admin-display.php:189
+#: admin/partials/onetime-email-admin-display.php:92
 msgid "Leave empty for coupon with no expiration date."
 msgstr "Nechajte prázdne na vytvorenie kupónov bez exspirácie."
 
@@ -243,16 +504,21 @@ msgctxt "menu"
 msgid "My Day Emails"
 msgstr "Email na môj sviatok"
 
+#: includes/class-birthdayfield.php:83
+msgctxt "My account"
+msgid "Date of birth"
+msgstr "Dátum narodenia"
+
 #. Name of the plugin
 #| msgid "Name Day Email"
 msgid "My Day Email"
 msgstr "Email na môj sviatok"
 
 #: admin/partials/my-day-admin-display.php:13
-msgid "My Day Settings"
-msgstr "Email na môj sviatok - nastavenie"
+msgid "My Day Email Settings"
+msgstr "Email na môj sviatok - nastavenia"
 
-#: admin/partials/my-day-admin-display.php:25
+#: admin/partials/my-day-admin-display.php:23
 msgid "Name Day"
 msgstr "Meniny"
 
@@ -260,29 +526,48 @@ msgstr "Meniny"
 msgid "Name days calendar"
 msgstr "Kalendár s meninami"
 
-#: admin/partials/my-day-admin-display.php:28
-#| msgid "Order Universary Day"
-msgid "Order Anniversary Day"
-msgstr "Výročie objednávky"
+#: admin/partials/my-day-admin-display.php:30
+msgid "One Time"
+msgstr "Jedonrazovo"
 
-#: admin/partials/name-day-email-admin-display.php:379
+#: admin/partials/birth-day-email-admin-display.php:338
+#: admin/partials/reorder-email-admin-display.php:335
+#: admin/partials/name-day-email-admin-display.php:376
+#: admin/partials/onetime-email-admin-display.php:282
 msgid "Placeholders"
 msgstr "Zástupné reťazce"
 
-#: admin/partials/birth-day-email-admin-display.php:9
+#: includes/class-birthdayfield.php:128
+msgctxt "Profile"
+msgid "Date of birth"
+msgstr "Dátum narodenia"
+
+#: includes/class-birthdayfield.php:53
+msgctxt "Registration"
+msgid "Date of birth"
+msgstr "Dátum narodenia"
+
+#: admin/partials/my-day-admin-display.php:26
+msgid "Reorder"
+msgstr "Preobjednanie"
+
+#: admin/partials/birth-day-email-admin-display.php:39
+#: admin/partials/reorder-email-admin-display.php:37
 #: admin/partials/name-day-email-admin-display.php:70
 #: admin/partials/universary-email-admin-display.php:9
+#: admin/partials/onetime-email-admin-display.php:10
 msgid "Restore Defaults"
 msgstr "Obnoviť prednastavené"
 
+#: admin/partials/birth-day-email-admin-display.php:57
+#: admin/partials/reorder-email-admin-display.php:57
 #: admin/partials/name-day-email-admin-display.php:92
+#: admin/partials/onetime-email-admin-display.php:25
 msgid "Run in test mode"
 msgstr "Testovací mód"
 
-#: admin/partials/name-day-email-admin-display.php:112
-msgid "Send email days before name day"
-msgstr "Poslať email pred meninami (dni)"
-
+#: admin/partials/birth-day-email-admin-display.php:69
+#: admin/partials/reorder-email-admin-display.php:70
 #: admin/partials/name-day-email-admin-display.php:122
 #| msgid "Send email every day at (UTC)"
 msgid "Send email every day at"
@@ -290,44 +575,86 @@ msgstr "Posielať emaily každý deň v čase"
 
 #. Description of the plugin
 #| msgid ""
-#| "Send email with a coupon to users on birth day, name day and order "
-#| "universary."
+#| "Send email with a coupon to users on birthday, name day and order "
+#| "anniversary."
 msgid ""
-"Send email with a coupon to users on birth day, name day and order "
-"anniversary."
+"Send email with a coupon to users on birthday, name day and order reorder."
 msgstr ""
-"Posial emaily s kupónom na narodeniny, meniny a výročie predošlej objednávky."
+"Posiala emaily s kupónom na narodeniny, meniny a na opätovné objednanie."
 
-#: admin/partials/name-day-email-admin-display.php:160
+#: admin/partials/birth-day-email-admin-display.php:63
+msgid "Send email X days before birthday"
+msgstr "Poslať email X dní pred narodeninami"
+
+#: admin/partials/name-day-email-admin-display.php:112
+#| msgid "Send email days before name day"
+msgid "Send email X days before name day"
+msgstr "Poslať email X dní pred meninami"
+
+#: admin/partials/reorder-email-admin-display.php:349
+msgid "Send emails"
+msgstr "Poslať email"
+
+#: admin/partials/birth-day-email-admin-display.php:76
+msgid "Send it onle one time in a year"
+msgstr "Poslať iba raz do roka"
+
+#: admin/partials/birth-day-email-admin-display.php:78
+msgid ""
+"Send the email with coupon only once in a year to customer even though the "
+"DOB was changed."
+msgstr ""
+"Email s kupónom sa zašle zákazníkom len raz do roka aj v prípade, že zmenili "
+"svoj dátum narodenia."
+
+#: admin/partials/birth-day-email-admin-display.php:121
+#: admin/partials/reorder-email-admin-display.php:117
+#: admin/partials/name-day-email-admin-display.php:161
+#: admin/partials/onetime-email-admin-display.php:64
 msgid "Set the discount type."
 msgstr "Vyberte typ zľavy"
 
-#: admin/partials/birth-day-email-admin-display.php:14
+#: admin/partials/birth-day-email-admin-display.php:43
+#| msgid "Birth Day Emails Settings"
 msgctxt "Setting"
-msgid "Birth Day Emails Settings"
+msgid "Birthday Emails Settings"
 msgstr "Email na narodeniny - nastavenie"
 
 #: admin/partials/common-settings-admin-display.php:21
 msgctxt "Setting"
 msgid "Common Settings"
-msgstr "Všeobecné nastavenia"
+msgstr "Spoločné nastavenia"
 
 #: admin/partials/name-day-email-admin-display.php:75
 msgctxt "Setting"
 msgid "Name Day Emails Settings"
 msgstr "Email na meniny - nastavenie"
 
+#: admin/partials/onetime-email-admin-display.php:15
+msgctxt "Setting"
+msgid "One Time Emails Settings"
+msgstr "Jednorazový email - nastavenie"
+
 #: admin/partials/universary-email-admin-display.php:14
 msgctxt "Setting"
-msgid "Order Universary Emails Settings"
-msgstr "Email na výročie objednávky- nastavenie"
+msgid "Order anniversary Emails Settings"
+msgstr "Výročie objednávky - nastavenie"
 
-#: admin/partials/name-day-email-admin-display.php:313
+#: admin/partials/reorder-email-admin-display.php:42
+#| msgid "Order Anniversary Emails Settings"
+msgctxt "Setting"
+msgid "Order Reorder Emails Settings"
+msgstr "Email na preobjednanie - nastavenie"
+
+#: admin/partials/birth-day-email-admin-display.php:274
+#: admin/partials/reorder-email-admin-display.php:271
+#: admin/partials/name-day-email-admin-display.php:314
+#: admin/partials/onetime-email-admin-display.php:218
 msgctxt "Setting section"
 msgid "Email message setting"
 msgstr "Nastavenie emailovej správy"
 
-#: admin/partials/common-settings-admin-display.php:50
+#: admin/partials/common-settings-admin-display.php:51
 msgctxt "Setting section"
 msgid "Logs"
 msgstr "Záznamy"
@@ -336,7 +663,10 @@ msgstr "Záznamy"
 msgid "Slovak calendar"
 msgstr "Slovenský kalendár"
 
-#: admin/partials/name-day-email-admin-display.php:195
+#: admin/partials/birth-day-email-admin-display.php:156
+#: admin/partials/reorder-email-admin-display.php:152
+#: admin/partials/name-day-email-admin-display.php:196
+#: admin/partials/onetime-email-admin-display.php:99
 msgid ""
 "The generated coupon could be used for maximum number of products. Leave "
 "empty for no limit."
@@ -344,7 +674,10 @@ msgstr ""
 "Vygenerovaný kupón môže byť použitý pri tomto maximálnom počte produktov. "
 "Nechajte prázdne ak nemá byť použitý limit."
 
-#: admin/partials/name-day-email-admin-display.php:308
+#: admin/partials/birth-day-email-admin-display.php:269
+#: admin/partials/reorder-email-admin-display.php:265
+#: admin/partials/name-day-email-admin-display.php:309
+#: admin/partials/onetime-email-admin-display.php:212
 msgid ""
 "This could be used only by plugin Advanced Coupons for WooCommerce (free) "
 "plugin. Enter coupon category slug, which has to exist."
@@ -353,7 +686,10 @@ msgstr ""
 "WooCommerce (free). Vložte slug želanej kategórie kupónov, ktorá ale už musí "
 "existovať."
 
-#: admin/partials/name-day-email-admin-display.php:341
+#: admin/partials/birth-day-email-admin-display.php:302
+#: admin/partials/reorder-email-admin-display.php:299
+#: admin/partials/name-day-email-admin-display.php:342
+#: admin/partials/onetime-email-admin-display.php:246
 msgid ""
 "This is email address used when testing as well as for all email messages as "
 "blind copy address."
@@ -361,20 +697,26 @@ msgstr ""
 "Toto je emailová adresa, ktorá sa použije pri testovaní ako aj pri posielaní "
 "slepej kópie každého emailu."
 
-#: admin/partials/name-day-email-admin-display.php:360
+#: admin/partials/birth-day-email-admin-display.php:321
+#: admin/partials/reorder-email-admin-display.php:318
+#: admin/partials/name-day-email-admin-display.php:361
+#: admin/partials/onetime-email-admin-display.php:265
 msgid "This is short text on the top of the email."
 msgstr "Toto je krátky text v hlavičke na vrchu správy."
 
-#: admin/partials/name-day-email-admin-display.php:116
-msgid "This is UTC time when cron send the email messages."
-msgstr "Toto je UTC čas kedy bude cron posielať emailové správy."
+#: admin/partials/birth-day-email-admin-display.php:72
+#: admin/partials/reorder-email-admin-display.php:73
+#: admin/partials/name-day-email-admin-display.php:125
+#| msgid "This is UTC time when cron send the email messages."
+msgid "This is time when cron sends the email messages."
+msgstr "Toto je čas kedy bude cron posielať emailové správy."
 
-#: includes/class-name-day-email-functions.php:323
+#: includes/class-my-day-email-functions.php:358
 #, php-format
 msgid "Today %s is Name Day celebrated by"
 msgstr "Dnes %s meniny oslavuje"
 
-#: includes/class-name-day-email-functions.php:325
+#: includes/class-my-day-email-functions.php:360
 #, php-format
 msgid "Tomorrow is Name Day celebrated by"
 msgid_plural "In %s days is Name Day celebrated by"
@@ -382,11 +724,16 @@ msgstr[0] "Zajtra meniny oslavuje"
 msgstr[1] "Za %s dni meniny oslavuje"
 msgstr[2] "Za %s dní meniny oslavuje"
 
+#: admin/partials/birth-day-email-admin-display.php:53
+#: admin/partials/reorder-email-admin-display.php:53
 #: admin/partials/name-day-email-admin-display.php:88
 msgid "Turn on and off the automatic functionality of email sending"
 msgstr "Zapnutie a vypnutie automatického zasielania emailov."
 
+#: admin/partials/birth-day-email-admin-display.php:59
+#: admin/partials/reorder-email-admin-display.php:59
 #: admin/partials/name-day-email-admin-display.php:94
+#: admin/partials/onetime-email-admin-display.php:27
 msgid ""
 "Turn on when testing. The user will not get emails. All emails will be sent "
 "to BCC/Test address."
@@ -394,17 +741,26 @@ msgstr ""
 "Zapnite ak chcete len testovať generovanie kupónov a emailov. Emailové "
 "správy budú zasielanie na adresu BCC/Test nastaviteľnú dolu."
 
-#: admin/partials/name-day-email-admin-display.php:347
+#: admin/partials/birth-day-email-admin-display.php:308
+#: admin/partials/reorder-email-admin-display.php:305
+#: admin/partials/name-day-email-admin-display.php:348
+#: admin/partials/onetime-email-admin-display.php:252
 msgid ""
 "Turn on when you want to have your email look the same as regular "
 "WooCommerce email."
 msgstr "Po zaškrtnutí budú emaily používať rovnakú šablónu ako WooCommerce."
 
-#: admin/partials/name-day-email-admin-display.php:345
+#: admin/partials/birth-day-email-admin-display.php:306
+#: admin/partials/reorder-email-admin-display.php:303
+#: admin/partials/name-day-email-admin-display.php:346
+#: admin/partials/onetime-email-admin-display.php:250
 msgid "Use WooCommerce email template"
 msgstr "Použiť šablónu WooCommerce"
 
-#: admin/partials/name-day-email-admin-display.php:380
+#: admin/partials/birth-day-email-admin-display.php:340
+#: admin/partials/reorder-email-admin-display.php:337
+#: admin/partials/name-day-email-admin-display.php:377
+#: admin/partials/onetime-email-admin-display.php:284
 msgid "Use {fname5} for Czech salutation."
 msgstr "Pre české oslovenia použite reťazec {fname5}"
 
