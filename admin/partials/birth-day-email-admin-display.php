@@ -1,7 +1,5 @@
 <?php
-/*$bd = new Birthdays();
-echo var_dump($bd->get_celebrating_users(20,9));*/
-
+namespace MYDAYEMAIL;
 // Process export
 if ( isset( $_GET['dobexport'] ) ) {
 	global $wpdb;
@@ -9,18 +7,10 @@ if ( isset( $_GET['dobexport'] ) ) {
 	$table_head = array( 'Day', 'First Name', 'Last Name', 'Email', 'User ID', 'Age', 'Year Sent' );
 	$csv = implode( ';' , $table_head );
 	$csv .= "\n";
-	$sql = "SELECT  SUBSTRING(m.meta_value FROM 6)  as day, fmu.meta_value AS fname, lmu.meta_value AS lname, u.user_email AS email, m.user_id AS id,
-			TIMESTAMPDIFF(YEAR, m.meta_value, CURDATE()) AS age, dmu.meta_value AS sent
-			FROM $wpdb->users  AS u
-			JOIN $wpdb->usermeta AS m ON u.ID = m.user_id AND m.meta_key = 'billing_birth_date'
-			JOIN $wpdb->usermeta AS fmu ON u.ID = fmu.user_id AND fmu.meta_key = 'billing_first_name'
-			JOIN $wpdb->usermeta AS lmu ON u.ID = lmu.user_id AND lmu.meta_key = 'billing_last_name'
-			LEFT JOIN $wpdb->usermeta AS dmu ON u.ID = dmu.user_id AND dmu.meta_key = 'dob-coupon-sent'
-			WHERE TIMESTAMPDIFF(YEAR, m.meta_value, CURDATE()) != ''
-			ORDER BY SUBSTRING(m.meta_value FROM 6) ";
-			
-	$result = $wpdb->get_results($sql, ARRAY_A);		
-			
+	
+	$dobs = new \MYDAYEMAIL\Birthdays();
+	$result = $dobs->get_users_dob_list();
+					
 	foreach ( $result as $key => $value ) {
 		$csv .=   implode(';', $value);  
 		$csv .= "\n";
@@ -95,7 +85,6 @@ id="restore_bd_values_btn" />
 				<?php  echo wc_help_tip(__( 'Download csv file with brith days of users.', 'my-day-email' ), false); ?>
 			</td>
 		</tr>		
-		
 	</table>
 	<h3><?php echo __('Coupon settings', 'my-day-email'); ?> </h3>
 	<table id="coupon-table" class="form-table">

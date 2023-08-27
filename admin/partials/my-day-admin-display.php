@@ -21,9 +21,9 @@ $tab = isset($_GET['tab']) ? $_GET['tab'] : $default_tab;
 	endif; ?>"> <?php echo  __( 'Birthday', 'my-day-email' ); ?></a>	
 	<a href="?page=mydayemail&tab=name-day" class="nav-tab 
 		<?php if ($tab==='name-day') : ?>nav-tab-active<?php endif; ?>"> <?php echo  __( 'Name Day', 'my-day-email' ); ?></a>
-	<a href="?page=mydayemail&tab=anniversary" class="nav-tab <?php
-			if ($tab==='anniversary') : ?>nav-tab-active<?php
-	endif; ?>"><?php echo  __( 'Order Anniversary', 'my-day-email' ); ?></a>
+	<a href="?page=mydayemail&tab=reorder" class="nav-tab <?php
+			if ($tab==='reorder') : ?>nav-tab-active<?php
+	endif; ?>"><?php echo  __( 'Reorder', 'my-day-email' ); ?></a>
 	<a href="?page=mydayemail&tab=one-time" class="nav-tab
 		<?php
 		if ($tab==='one-time') : ?>nav-tab-active<?php
@@ -47,10 +47,10 @@ case 'birth-day':
 	</div>
 	<?php
 	break;		
-case 'anniversary':
+case 'reorder':
 	?>
 	<div class="metabox-holder">
-		<?php include('anniversary-email-admin-display.php'); ?>
+		<?php include('reorder-email-admin-display.php'); ?>
 	</div>
 	<?php
 	break;

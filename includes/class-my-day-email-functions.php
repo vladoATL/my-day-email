@@ -1,4 +1,5 @@
 <?php
+namespace MYDAYEMAIL;
 
 // don't call the file directly
 if ( !defined( 'ABSPATH' ) )
@@ -15,26 +16,6 @@ class EmailFunctions
 		$this->type = $type;
 		$this->options_name = $type . '_options';
 		$this->options_array = get_option($this->options_name);
-	}
-	
-	public function getBirthdaySentMetaKey()
-	{
-		return 'dob-coupon-sent';
-	}	
-	
-	function mydayemail_set_sent($user, $istest = false)
-	{		
-		if (! $istest) {
-			$id = $user->user_id;
-
-			$check = get_user_meta( $id, $this->getBirthdaySentMetaKey(), true );
-			if ( empty( $check )) {
-				add_user_meta($id, $this->getBirthdaySentMetaKey(), date('Y'));
-			} else {
-				update_user_meta($id, $this->getBirthdaySentMetaKey(), date('Y'));
-			}			
-			
-		}
 	}
 		
 	function mydayemail_create($user, $istest = false)
@@ -109,7 +90,11 @@ class EmailFunctions
 
 	function mydayemail_replace_placeholders($content, $user, $options)
 	{
-		$days_before = is_numeric($options['days_before']) ? $options['days_before'] : 0;
+		if (isset($options['days_before'])) {
+			$days_before = is_numeric($options['days_before']) ? $options['days_before'] : 0;
+		} else {
+			$days_before =0;
+		}
 		$inflection = new Inflection();
 		$replaced_text = str_replace(
 		array(
@@ -137,7 +122,7 @@ class EmailFunctions
 		ucfirst(strtolower($user->user_firstname)),
 		$inflection->inflect(ucfirst(strtolower($user->user_firstname)))[5],
 		ucfirst(strtolower($user->user_lastname)),
-		$options['max_products'],
+		isset($options['max_products'] ) ? $options['max_products'] : '' ,
 		strtolower($user-> user_email),
 		),
 		$content
@@ -223,14 +208,14 @@ class EmailFunctions
 
 		$expiration_date = $options['expires'] + 1;
 		$expiry_date   = date('Y-m-d', strtotime('+' . $expiration_date . ' days'));
-		$max_products = isset( $options['max_products']) ? $options['max_products'] : 0;
+		$max_products = isset( $options['max_products']) ? $options['max_products'] : '';
 		$description = $options['description'];
 		$description = $this->mydayemail_replace_placeholders($description, $user, $options);
 		$free_shipping = isset( $options['free_shipping']) ? "yes" : 'no';
 		$individual_use = isset( $options['individual_use']) ? "yes" : 'no';
 		$exclude_discounted = isset( $options['exclude_discounted']) ? "yes" : 'no';
-		$minimum_amount = $options['minimum_amount'];
-		$maximum_amount = $options['maximum_amount'];
+		$minimum_amount = isset( $options['$minimum_amount']) ? $options['$minimum_amount'] : '';
+		$maximum_amount = isset( $options['$maximum_amount']) ? $options['$maximum_amount'] : '';
 
 		$coupon = array(
 		'post_title' => $generated_code,
@@ -311,7 +296,12 @@ class EmailFunctions
 		$template = 'emails/nameday.php';
 		$mailer = WC()->mailer();
 		$options = $this->options_array;
-		$headers = $this->mydayemail_headers($options['from_name'], $options['from_address'], $options['cc_address'], $options['bcc_address'] );
+		$headers = $this->mydayemail_headers(
+					isset($options['from_name']) ? $options['from_name'] : '', 
+					isset($options['from_address']) ? $options['from_address'] : '', 
+					isset($options['cc_address']) ? $options['cc_address'] : '', 	
+					isset($options['bcc_address']) ? $options['bcc_address'] : ''
+					);
 		$content = wc_get_template_html( $template, array(
 		'email_heading' => $heading,
 		'sent_to_admin' => false,
@@ -365,7 +355,7 @@ class EmailFunctions
 		if (! isset($prior_days)) {
 			$prior_days = 0;
 		}
-		$nd = new NameDays();
+		$nd = new Namedays();
 		$names = $nd->get_names_for_day($d + $prior_days, $m , false );
 		if (empty($names))
 			return;
@@ -378,6 +368,6 @@ class EmailFunctions
 		} else {
 			return  $d . "." . $m . ". - " . sprintf( _n( 'Tomorrow is Name Day celebrated by', 'In %s days is Name Day celebrated by', $prior_days, 'my-day-email' ), $prior_days )  . " " . $names;
 		}
-	}
+	}	
 }
 ?>

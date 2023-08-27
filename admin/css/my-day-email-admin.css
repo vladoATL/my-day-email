@@ -40,7 +40,7 @@
 	vertical-align: middle  !important;
 }
  
- #restore_values_btn, #restore_anni_values_btn, #restore_bd_values_btn, #restore_one_values_btn {
+ #restore_values_btn, #restore_reorder_values_btn, #restore_bd_values_btn, #restore_one_values_btn {
     float: right;
     margin-right: 5%;
 }

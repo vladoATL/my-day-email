@@ -2,7 +2,7 @@
  WooCommerce My Day Email plugin
 
  ---
-**My Day Email** is a WooPress plugin designed to send emails with generated discount coupons to WooCommerce customers at a specified time before their birthday, name day and anniversary of the previous order.
+**My Day Email** is a WooPress plugin designed to send emails with generated discount coupons to WooCommerce customers at a specified time before their birthday, name day and reorder of the previous order.
 
 **Email na sviatok** je WooPress plugin určený na posialnie emailov s generovanými zľavovými kupónmi pre zákazníkov WooCommerce v určený čas pred ich narodeninami, meninami a výročím predchádzajúcej objednávky.
 

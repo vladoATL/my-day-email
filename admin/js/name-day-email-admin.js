@@ -87,12 +87,12 @@
 	
 	jQuery( document ).on(
 	"click",
-	"#anniversaryemail-setting #restore_anni_values_btn",
+	"#reorderemail-setting #restore_reorder_values_btn",
 	function() {
 		event.preventDefault();
 		var nonce = jQuery( this ).attr( 'attr-nonce' );
 		var data  = {
-			action: 'anniversaryemail_restore_settings',
+			action: 'reorderemail_restore_settings',
 			nonce: nonce,
 		};
 		jQuery.ajax(
@@ -101,12 +101,12 @@
 			url: ajaxurl,
 			data: data,
 			beforeSend: function(response) {
-				jQuery( "#anniversaryemail-setting .loader_cover" ).addClass( 'active' );
-				jQuery( "#anniversaryemail-setting .anniversary_loader" ).addClass( 'loader' );
+				jQuery( "#reorderemail-setting .loader_cover" ).addClass( 'active' );
+				jQuery( "#reorderemail-setting .reorder_loader" ).addClass( 'loader' );
 			},
 			complete: function(response) {
-				jQuery( "#anniversaryemail-setting .loader_cover" ).removeClass( 'active' );
-				jQuery( "#anniversaryemail-setting .anniversary_loader" ).removeClass( 'loader' );
+				jQuery( "#reorderemail-setting .loader_cover" ).removeClass( 'active' );
+				jQuery( "#reorderemail-setting .reorder_loader" ).removeClass( 'loader' );
 			},
 			success: function(response) {
 				location.reload();
@@ -278,6 +278,37 @@ function() {
 }
 );
 
+jQuery( document ).on(
+"click",
+"#reorderemail-setting #test_reorder_btn",
+function() {
+	event.preventDefault();
+	var nonce = jQuery( this ).attr( 'attr-nonce' );
+	var data  = {
+		action: 'reorderemail_make_test',
+		nonce: nonce,
+	};
+	jQuery.ajax(
+	{
+		type: "post",
+		url: ajaxurl,
+		data: data,
+		beforeSend: function(response) {
+			jQuery( "#reorderemail-setting .loader_cover" ).addClass( 'active' );
+			jQuery( "#reorderemail-setting .reorder_loader" ).addClass( 'loader' );
+		},
+		complete: function(response) {
+			jQuery( "#reorderemail-setting .loader_cover" ).removeClass( 'active' );
+			jQuery( "#reorderemail-setting .reorder_loader" ).removeClass( 'loader' );
+		},
+		success: function(response) {
+			location.reload();
+		}
+	}
+	);
+	return false;
+}
+);
 
 })( jQuery );
 

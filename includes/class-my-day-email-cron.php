@@ -1,79 +1,43 @@
 <?php
+
 add_action( 'namedayemail_cron', 'namedayemail_event' );
 add_action( 'birthdayemail_cron', 'birthdayemail_event' );
+add_action( 'reorderemail_cron', 'reorderemail_event' );
 
 function namedayemail_event(){
-	namedayemail_event_setup("namedayemail");
+	$celebrating =  new \MYDAYEMAIL\Namedays();
+	$celebrating->namedayemail_event_setup();	
 }
 
-function namedayemail_event_setup($type)
-{
-	$options = get_option($type .'_options');
-	if ( !empty($options['enabled']) && '1' == $options['enabled'] ) {
-		$str_nameday =  date('Y-m-d',strtotime('+' . $options['days_before'] . ' day'));
-		$dateValue = strtotime($str_nameday);
-		$m = intval(date("m", $dateValue));
-		$d = intval(date("d", $dateValue));
-		$funcs = new EmailFunctions($type);
-		$celebrating =  new NameDays();
-		$users = $celebrating->get_celebrating_users($d,$m);
-		foreach ($users as $user) {
-			$funcs->mydayemail_create($user);
-		}
-		$funcs->mydayemail_delete_expired();
-	}
-}
 function namedayemail_run_cron() {
 	mydayemail_run_cron_setup("namedayemail");
 }
 
 function birthdayemail_event()
 {
-	birthdayemail_event_setup("birthdayemail");
+	$celebrating =  new \MYDAYEMAIL\Birthdays();
+	$celebrating->birthdayemail_event_setup();
 }
-function birthdayemail_event_setup($type)
-{
-	$options = get_option($type .'_options');
-	$success = false;
-	if ( !empty($options['enabled']) && '1' == $options['enabled'] ) {
-		$str_nameday =  date('Y-m-d',strtotime('+' . $options['days_before'] . ' day'));
-		$once_year = $options['once_year'];		
-		$dateValue = strtotime($str_nameday);
-		$m = intval(date("m", $dateValue));
-		$d = intval(date("d", $dateValue));
-		$funcs = new EmailFunctions($type);
-		$celebrating =  new Birthdays();
-		$users = $celebrating->get_celebrating_users($d,$m);
-		foreach ($users as $user) {
-			$runit = false;
-			if ($once_year == 1) {
-				$check = get_user_meta( $user->user_id, $funcs->getBirthdaySentMetaKey(), true );
-				if ( empty( $check )  || $check != date("Y") ) $runit = true;
-			} else {
-				$runit = true;
-			}
-			if ( $runit) {
-				$success = $funcs->mydayemail_create($user);
-				if ( $success) {
-					$funcs->mydayemail_set_sent($user);
-				} else {
-					$funcs->mydayemail_add_log("Birth day coupon flag has not been updated for" . " " . $user->user_email);
-				}			
-			} else {
-				$funcs->mydayemail_add_log("User has already received birth day coupon this year" . " " . $user->user_email);
-			}	
-		}
-		$funcs->mydayemail_delete_expired();
-	}
-}
+
 function birthdayemail_run_cron() {
 	mydayemail_run_cron_setup("birthdayemail");
+}
+
+function reorderemail_event()
+{
+	$coupons =  new \MYDAYEMAIL\Reorders();
+	$coupons->reorderemail_event_setup();
+}
+
+function reorderemail_run_cron()
+{
+	mydayemail_run_cron_setup("reorderemail");
 }
 
 function mydayemail_run_cron_setup($type)
 {
 	$options = get_option($type . '_options');
-	$logs = new EmailFunctions($type);
+	$logs = new \MYDAYEMAIL\EmailFunctions($type);
 
 	if (isset($options['enabled'])) {
 		wp_clear_scheduled_hook($type . '_cron' );
@@ -84,20 +48,21 @@ function mydayemail_run_cron_setup($type)
 		}		
 		//$res = wp_schedule_event( $tm, 'daily', $type . '_cron' );
 		$res = wp_reschedule_event( $tm, 'daily', $type . '_cron' );
-/*		if ($res == 1 )
+		if ($res == 1 )
 			$logs->mydayemail_add_log("Cron scheduled " . date("T H:i", $tm));
-			else				
-			$logs->mydayemail_add_log("Cron scheduling error" );
-			*/
+			else
+				$logs->mydayemail_add_log("Cron scheduling error" );
+			
 	} else {
 		wp_clear_scheduled_hook( $type . '_cron' );
+		$logs->mydayemail_add_log("Cron removed" );
 	}	
 }
 
 function time_utc($dateTime)
 {
 	$timezone_from = wp_timezone_string();
-	$newDateTime = new DateTime($dateTime, new DateTimeZone($timezone_from));
+	$newDateTime = new \DateTime($dateTime, new \DateTimeZone($timezone_from));
 	if (!$newDateTime instanceof DateTime)
 		return "";
 	$newDateTime->setTimezone(new DateTimeZone("UTC"));

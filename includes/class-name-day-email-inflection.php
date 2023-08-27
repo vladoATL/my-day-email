@@ -1,6 +1,6 @@
 <?php
 
-
+namespace MYDAYEMAIL;
 /**
  * @author Pavel Sedlák 2009-2013 (patterns)
  * @url    : http://www.pteryx.net/sklonovani.html

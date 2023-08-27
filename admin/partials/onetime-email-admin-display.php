@@ -1,4 +1,5 @@
 <?php
+namespace MYDAYEMAIL;
 
 ?>
 
@@ -18,7 +19,15 @@ id="restore_one_values_btn" />
 	settings_fields('onetimeemail_plugin_options');
 	$options = get_option('onetimeemail_options');
 	?>
-	
+	<table class="form-table">
+
+		<tr valign="top">
+			<th class="titledesc"><?php echo __( 'Run in test mode', 'my-day-email' ); ?>:</th>
+			<td><input type="checkbox" name="onetimeemail_options[test]" id="onetimeemail_options[test]"  value="1" <?php echo checked( 1, $options['test'] ?? '', false ) ?? '' ; ?>>
+				<?php  echo wc_help_tip(__( 'Turn on when testing. The user will not get emails. All emails will be sent to BCC/Test address.', 'my-day-email' ), false); ?>
+			</td>
+		</tr>
+	</table>	
 	<h3><?php echo __('Coupon settings', 'my-day-email'); ?> </h3>
 	
 	<table id="coupon-table" class="form-table">
@@ -204,10 +213,87 @@ id="restore_one_values_btn" />
 			</td>
 		</tr>
 
+	</table>	
+	
+	<h3><?php echo _x('Email message setting','Setting section', 'my-day-email'); ?> </h3>
+	<table id="email-table" class="form-table">
+		<tr>
+			<th class="titledesc"><?php echo __( 'Email from name', 'my-day-email' ); ?>:</th>
+			<td>
+				<input type="text" id="reorderemail_options[from_name]" name="reorderemail_options[from_name]"  style="width: 200px;" value="<?php echo $options['from_name'] ?? ''; ?>"</input>
+			</td>
+		</tr>
+		<tr>
+			<th class="titledesc"><?php echo __( 'Email from address', 'my-day-email' ); ?>:</th>
+			<td>
+				<input type="email" id="reorderemail_options[from_address]" name="reorderemail_options[from_address]"  style="width: 200px;" value="<?php echo $options['from_address'] ?? ''; ?>"</input>
+
+			</td>
+		</tr>
+		<tr>
+			<th class="titledesc"><?php echo __( 'Email CC', 'my-day-email' ); ?>:</th>
+			<td>
+				<input type="email" id="reorderemail_options[cc_address]" name="reorderemail_options[cc_address]"  style="width: 200px;" value="<?php echo $options['cc_address'] ?? ''; ?>"</input>
+				<?php  echo wc_help_tip(__( 'Add multiple emails separated by comma ( , ).', 'my-day-email' ), false); ?>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row" class="titledesc">
+				<?php echo __( 'BCC and Test email address', 'my-day-email' ); ?>:
+			</th>
+			<td>
+				<input type="email" id="reorderemail_options[bcc_address]" name="reorderemail_options[bcc_address]"  style="width: 200px;" value="<?php echo $options['bcc_address'] ?? ''; ?>"</input>
+				<?php  echo wc_help_tip(__( 'This is email address used when testing as well as for all email messages as blind copy address.', 'my-day-email' ) . ' ' .  __( 'Add multiple emails separated by comma ( , ).', 'my-day-email' ), false); ?>
+			</td>
+		</tr>
+		<tr valign="top">
+			<th class="titledesc"><?php echo __( 'Use WooCommerce email template', 'my-day-email' ); ?>:</th>
+			<td><input type="checkbox" name="reorderemail_options[wc_template]" id="reorderemail_options[wc_template]"  value="1" <?php echo checked( 1, $options['wc_template'] ?? '', false ) ?? '' ; ?>>
+				<?php  echo wc_help_tip(__( 'Turn on when you want to have your email look the same as regular WooCommerce email.', 'my-day-email' ), false); ?>
+			</td>
+		</tr>
+		<tr>
+			<th class="titledesc"><?php echo __( 'Email subject', 'my-day-email' ); ?>:</th>
+			<td>
+				<input type="text" id="reorderemail_options[subject]" name="reorderemail_options[subject]"  style="width: 500px;" value="<?php echo $options['subject'] ?? ''; ?>"</input>
+			</td>
+		</tr>
+		<tr>
+			<th class="titledesc"><?php echo __( 'Email header', 'my-day-email' ); ?>:</th>
+			<td>
+				<input type="text" id="reorderemail_options[header]" name="reorderemail_options[header]"  style="width: 500px;" value="<?php echo $options['header'] ?? ''; ?>"</input>
+				<?php echo wc_help_tip(__( 'This is short text on the top of the email.', 'my-day-email' ), false); ?>
+			</td>
+		</tr>
+		<th class="titledesc" style="padding-bottom: 0px;"><?php echo __( 'Email body', 'my-day-email' ); ?> :</th>
+		<tr>
+			<td colspan="2">
+				<?php
+	$args = array("textarea_name" => "reorderemail_options[email_body]", 'editor_class' => 'textarea_');
+	$content_text  = $options['email_body'] ?? '';
+	wp_editor( $content_text, "email_body", $args );
+	?>
+			</td>
+		</tr>
+		<tfoot>
+			<tr>
+				<td colspan="2">
+					<p class="description">
+						<?php echo __( 'Placeholders', 'my-day-email' ); ?>:
+						<i>{fname}, {fname5}, {lname}, {coupon}, {percent}, {products_cnt}, {expires}, {expires_in_days}, {my_day_date}, {site_name}, {site_url}, {site_name_url}<br>
+							<small><?php echo __( 'Use {fname5} for Czech salutation.', 'my-day-email' ); ?></small>
+						</i>
+					</p></td>
+			</tr></tfoot>
 	</table>		
 	<p class="submit">
 		<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
 	</p>	
 </form>
+<p>
+	<input type="button" value="<?php echo  __( 'Create a test', 'my-day-email' ); ?>" class="button button-primary" attr-nonce="<?php echo esc_attr( wp_create_nonce( '_onetime_nonce_test' ) ); ?>" id="test_onetime_btn" />
+<input type="button" value="<?php echo  __( 'Send emails', 'my-day-email' ); ?>" class="button button-primary" 
+attr-nonce="<?php echo esc_attr( wp_create_nonce( '_onetime_nonce_send' ) ); ?>" id="send_onetime_btn" />
+</p>
 </div>
 </div>

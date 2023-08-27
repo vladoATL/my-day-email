@@ -1,5 +1,5 @@
 <?php
-
+namespace MYDAYEMAIL;
 /**
 * Provide a admin area view for the plugin
 *
@@ -20,7 +20,7 @@ if ( isset( $_GET['namesexport'] ) ) {
 	$options = get_option('namedayemail_options');
 	$language = $options['language'];
 
-	$namedays = new NameDays();
+	$namedays = new \MYDAYEMAIL\Calendars();
 
 	switch ($language) {
 		case 1:
@@ -383,7 +383,8 @@ namedayemail_run_cron();
 			<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
 			</p>
 		</form>
-			<input type="button" value="<?php echo  __( 'Create a test', 'my-day-email' ); ?>" class="button button-primary" attr-nonce="<?php echo esc_attr( wp_create_nonce( '_namedayemail_nonce_test' ) ); ?>" id="test_btn" />		
+			<input type="button" value="<?php echo  __( 'Create a test', 'my-day-email' ); ?>" class="button button-primary" 
+			attr-nonce="<?php echo esc_attr( wp_create_nonce( '_namedayemail_nonce_test' ) ); ?>" id="test_namedayemail_btn" />		
 			
 	</div>
 	</div>

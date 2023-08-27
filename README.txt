@@ -37,6 +37,9 @@ Name Day Email is officially compatible with the following plugins:
 - [Advanced Coupons](https://wordpress.org/plugins/advanced-coupons-for-woocommerce-free/)
 
 == Changelog ==
+= 0.2.6 =
+- Add Reorder email with coupon
+
 = 0.2.5 =
 - Send Birthday coupon only once a year
 

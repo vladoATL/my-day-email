@@ -7,8 +7,6 @@
 </treenode>
 <treenode node="RC_PSD_PLUGIN_URL;PHP:PHP Word;1179152931;f9;20;26;20;;;;vpos;;v;;a;;rplugin_dir_url( __FILE__;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
-<treenode node="anniversary-email-admin-display.php;PHP:PHP Include;2789621384;f17;52;52;52;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
-</treenode>
 <treenode node="averages.php;PHP:PHP Include;2682912466;f19;67;31;67;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
 <treenode node="birth-day-email-admin-display.php;PHP:PHP Include;2789621384;f17;45;50;45;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
@@ -43,6 +41,8 @@
 </treenode>
 <treenode node="purchase-orders.php;PHP:PHP Include;2682912466;f19;52;38;52;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
+<treenode node="reorder-email-admin-display.php;PHP:PHP Include;2789621384;f17;52;48;52;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
+</treenode>
 <treenode node="sales-chart-multi.php;PHP:PHP Include;2682912466;f19;75;40;75;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
 <treenode node="sales-chart.php;PHP:PHP Include;2682912466;f19;96;34;96;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
@@ -51,32 +51,36 @@
 </treenode>
 <treenode node="stock-value.php;PHP:PHP Include;2682912466;f19;51;34;51;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
-<treenode node="Birthdays;PHP:Class Name;1852325543;f0;1;1;21;;;;vpos;;v;;a;;r;;d0,2;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
-<treenode node="get_celebrating_users;PHP:Function Name;1852325543;f8;3;2;20;;;;vpos;;v;;a;;r;;d1,4;;b1,0;;m0;;e0;;i0;;o;;k;;ld;;pm;;p;;x;;x;;n">
+<treenode node="Birthdays;PHP:Class Name;1852325543;f0;1;1;22;;;;vpos;;v;;a;;r;;d0,2;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
+<treenode node="get_celebrating_users;PHP:Function Name;1852325543;f8;3;2;21;;;;vpos;;v;;a;;r;;d1,4;;b1,0;;m0;;e0;;i0;;o;;k;;ld;;pm;;p;;x;;x;;n">
 </treenode>
 </treenode>
-<treenode node="EmailFunctions;PHP:Class Name;662705607;f0;6;1;353;;;;vpos;;v;;a;;r;;d0,7;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
+<treenode node="EmailFunctions;PHP:Class Name;662705607;f0;6;1;381;;;;vpos;;v;;a;;r;;d0,7;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 <treenode node="__construct;PHP:Function Name;662705607;f8;12;2;17;;;;vpos;;v;;a;;r;;d1,13;;b1,0;;m0;;e0;;i0;;o;;k;;ltype;;p;;x;;n">
 </treenode>
-<treenode node="mydayemail_add_log;PHP:Function Name;662705607;f1;121;2;138;;;;vpos;;v;;a;;r;;d1,122;;b0,0;;m0;;e0;;i0;;o;;k;;lentry;;p;;x;;n">
+<treenode node="getBirthdaySentMetaKey;PHP:Function Name;662705607;f8;19;2;22;;;;vpos;;v;;a;;r;;d1,20;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
-<treenode node="mydayemail_coupon_category;PHP:Function Name;662705607;f1;250;2;268;;;;vpos;;v;;a;;r;;d1,251;;b0,0;;m0;;e0;;i0;;o;;k;;lnew_coupon_id;;pcat_slug;;p;;x;;x;;n">
+<treenode node="mydayemail_add_log;PHP:Function Name;662705607;f1;147;2;165;;;;vpos;;v;;a;;r;;d1,148;;b0,0;;m0;;e0;;i0;;o;;k;;lentry;;p;;x;;n">
 </treenode>
-<treenode node="mydayemail_create;PHP:Function Name;662705607;f1;19;2;81;;;;vpos;;v;;a;;r;;d1,20;;b0,0;;m0;;e0;;i0;;o;;k;;luser;;pistest;;p;;x;;x;;n">
+<treenode node="mydayemail_coupon_category;PHP:Function Name;662705607;f1;278;2;296;;;;vpos;;v;;a;;r;;d1,279;;b0,0;;m0;;e0;;i0;;o;;k;;lnew_coupon_id;;pcat_slug;;p;;x;;x;;n">
 </treenode>
-<treenode node="mydayemail_delete_expired;PHP:Function Name;662705607;f1;296;2;328;;;;vpos;;v;;a;;r;;d1,297;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
+<treenode node="mydayemail_create;PHP:Function Name;662705607;f1;39;2;107;;;;vpos;;v;;a;;r;;d1,40;;b0,0;;m0;;e0;;i0;;o;;k;;luser;;pistest;;p;;x;;x;;n">
 </treenode>
-<treenode node="mydayemail_get_cat_slug_id;PHP:Function Name;662705607;f1;270;2;278;;;;vpos;;v;;a;;r;;d1,271;;b0,0;;m0;;e0;;i0;;o;;k;;lcat_slug;;p;;x;;n">
+<treenode node="mydayemail_delete_expired;PHP:Function Name;662705607;f1;324;2;356;;;;vpos;;v;;a;;r;;d1,325;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
-<treenode node="mydayemail_get_unique_coupon;PHP:Function Name;662705607;f1;156;2;248;;;;vpos;;v;;a;;r;;d1,157;;b0,0;;m0;;e0;;i0;;o;;k;;luser;;p;;x;;n">
+<treenode node="mydayemail_get_cat_slug_id;PHP:Function Name;662705607;f1;298;2;306;;;;vpos;;v;;a;;r;;d1,299;;b0,0;;m0;;e0;;i0;;o;;k;;lcat_slug;;p;;x;;n">
 </treenode>
-<treenode node="mydayemail_headers;PHP:Function Name;662705607;f1;140;2;154;;;;vpos;;v;;a;;r;;d1,141;;b0,0;;m0;;e0;;i0;;o;;k;;lfrom_name;;pfrom_address;;pemail_cc;;pemail_bcc;;pistest;;p;;x;;x;;x;;x;;x;;n">
+<treenode node="mydayemail_get_unique_coupon;PHP:Function Name;662705607;f1;183;2;276;;;;vpos;;v;;a;;r;;d1,184;;b0,0;;m0;;e0;;i0;;o;;k;;luser;;p;;x;;n">
 </treenode>
-<treenode node="mydayemail_replace_placeholders;PHP:Function Name;662705607;f1;83;2;119;;;;vpos;;v;;a;;r;;d1,84;;b0,0;;m0;;e0;;i0;;o;;k;;lcontent;;puser;;poptions;;p;;x;;x;;x;;n">
+<treenode node="mydayemail_headers;PHP:Function Name;662705607;f1;167;2;181;;;;vpos;;v;;a;;r;;d1,168;;b0,0;;m0;;e0;;i0;;o;;k;;lfrom_name;;pfrom_address;;pemail_cc;;pemail_bcc;;pistest;;p;;x;;x;;x;;x;;x;;n">
 </treenode>
-<treenode node="mydayemail_send_wc_email_html;PHP:Function Name;662705607;f1;280;2;294;;;;vpos;;v;;a;;r;;d1,281;;b0,0;;m0;;e0;;i0;;o;;k;;lsubject;;precipient;;pbody;;pheading;;p;;x;;x;;x;;x;;n">
+<treenode node="mydayemail_replace_placeholders;PHP:Function Name;662705607;f1;109;2;145;;;;vpos;;v;;a;;r;;d1,110;;b0,0;;m0;;e0;;i0;;o;;k;;lcontent;;puser;;poptions;;p;;x;;x;;x;;n">
 </treenode>
-<treenode node="namedayemail_get_next_names;PHP:Function Name;662705607;f1;330;2;352;;;;vpos;;v;;a;;r;;d1,331;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
+<treenode node="mydayemail_send_wc_email_html;PHP:Function Name;662705607;f1;308;2;322;;;;vpos;;v;;a;;r;;d1,309;;b0,0;;m0;;e0;;i0;;o;;k;;lsubject;;precipient;;pbody;;pheading;;p;;x;;x;;x;;x;;n">
+</treenode>
+<treenode node="mydayemail_set_sent;PHP:Function Name;662705607;f1;24;2;37;;;;vpos;;v;;a;;r;;d1,25;;b0,0;;m0;;e0;;i0;;o;;k;;luser;;pistest;;p;;x;;x;;n">
+</treenode>
+<treenode node="namedayemail_get_next_names;PHP:Function Name;662705607;f1;358;2;380;;;;vpos;;v;;a;;r;;d1,359;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
 <treenode node="$options_array;PHP:Var Name;662705607;f11;10;25;10;;;;vpos;;v;;a;;r;;d-1,-1;;b2,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
@@ -182,10 +186,6 @@
 <treenode node="My_Day_Email_Admin;PHP:Class Name;3128880818;f0;22;1;200;;;;vpos;;v;;a;;r&#10;&lt;b&gt;Definition&lt;/b&gt;&#10;    class My_Day_Email_Admin&#10;&#10;&lt;b&gt;Description&lt;/b&gt;&#10;    The admin-specific functionality of the plugin.&#10;Defines the plugin name, version, and two examples hooks for how to&#10;enqueue the admin-specific stylesheet and JavaScript.&#10;&lt;b&gt;package&lt;/b&gt;: My_Day_Email&#10;&lt;b&gt;subpackage&lt;/b&gt;: My_Day_Email/admin&#10;&lt;b&gt;author&lt;/b&gt;: Vlado Laco &lt;vlado&#10;&lt;b&gt;perties&lt;/b&gt;: .sk&gt;;;d25,22;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 <treenode node="__construct;PHP:Function Name;3128880818;f8;49;2;54;;;;vpos;;v;;a;;r&#10;&lt;b&gt;Definition&lt;/b&gt;&#10;    __construct( $plugin_name, $version )&#10;&#10;&lt;b&gt;Description&lt;/b&gt;&#10;    Initialize the class and set its properties.&#10;&lt;b&gt;since&lt;/b&gt;: 1.0.0&#10;&#10;&lt;b&gt;Parameters:&lt;/b&gt;&#10;    string &lt;b&gt;$plugin_name&lt;/b&gt;: The name of this plugin.&#10;    string &lt;b&gt;$version&lt;/b&gt;: The version of this plugin.;;d55,49;;b1,0;;m0;;e0;;i0;;o;;k;;l $plugin_name;;p $version;;p;;x;;x;;n">
 </treenode>
-<treenode node="anniversaryemail_restore_settings;PHP:Function Name;3128880818;f8;153;2;159;;;;vpos;;v;;a;;r;;d1,154;;b1,0;;m0;;e0;;i0;;o;;k;;ladd_new;;p;;x;;n">
-</treenode>
-<treenode node="anniversaryemail_validate_options;PHP:Function Name;3128880818;f1;99;2;102;;;;vpos;;v;;a;;r;;d1,100;;b0,0;;m0;;e0;;i0;;o;;k;;linput;;p;;x;;n">
-</treenode>
 <treenode node="birthdayemail_make_test;PHP:Function Name;3128880818;f8;135;2;143;;;;vpos;;v;;a;;r;;d1,136;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
 <treenode node="birthdayemail_restore_settings;PHP:Function Name;3128880818;f8;169;2;175;;;;vpos;;v;;a;;r;;d1,170;;b1,0;;m0;;e0;;i0;;o;;k;;ladd_new;;p;;x;;n">
@@ -217,6 +217,10 @@
 <treenode node="onetimeemail_restore_settings;PHP:Function Name;3128880818;f8;161;2;167;;;;vpos;;v;;a;;r;;d1,162;;b1,0;;m0;;e0;;i0;;o;;k;;ladd_new;;p;;x;;n">
 </treenode>
 <treenode node="onetimeemail_validate_options;PHP:Function Name;3128880818;f1;95;2;98;;;;vpos;;v;;a;;r;;d1,96;;b0,0;;m0;;e0;;i0;;o;;k;;linput;;p;;x;;n">
+</treenode>
+<treenode node="reorderemail_restore_settings;PHP:Function Name;3128880818;f8;153;2;159;;;;vpos;;v;;a;;r;;d1,154;;b1,0;;m0;;e0;;i0;;o;;k;;ladd_new;;p;;x;;n">
+</treenode>
+<treenode node="reorderemail_validate_options;PHP:Function Name;3128880818;f1;99;2;102;;;;vpos;;v;;a;;r;;d1,100;;b0,0;;m0;;e0;;i0;;o;;k;;linput;;p;;x;;n">
 </treenode>
 <treenode node="$plugin_name;PHP:Var Name;3128880818;f9;31;21;31;;;;vposstring;;v;;a;;r;;d-1,-1;;b3,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
@@ -267,43 +271,43 @@
 </treenode>
 <treenode node="activate_my_day_email;PHP:Function Name;2371161731;f0;44;1;47;;;;vpos;;v;;a;;r&#10;&lt;b&gt;Definition&lt;/b&gt;&#10;    activate_my_day_email()&#10;&#10;&lt;b&gt;Description&lt;/b&gt;&#10;    The code that runs during plugin activation.&#10;This action is documented in includes/class-my-day-email-activator.php;;d33,44;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
-<treenode node="anniversaryemail_save_defaults;PHP:Function Name;2371161731;f0;129;1;163;;;;vpos;;v;;a;;r;;d0,130;;b0,0;;m0;;e0;;i0;;o;;k;;ladd_new;;p;;x;;n">
-</treenode>
 <treenode node="birthdayemail_event;PHP:Function Name;69822534;f0;29;1;32;;;;vpos;;v;;a;;r;;d0,30;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
-<treenode node="birthdayemail_event_setup;PHP:Function Name;69822534;f0;33;1;49;;;;vpos;;v;;a;;r;;d0,34;;b0,0;;m0;;e0;;i0;;o;;k;;ltype;;p;;x;;n">
+<treenode node="birthdayemail_event_setup;PHP:Function Name;69822534;f0;33;1;67;;;;vpos;;v;;a;;r;;d0,34;;b0,0;;m0;;e0;;i0;;o;;k;;ltype;;p;;x;;n">
 </treenode>
 <treenode node="birthdayemail_plugin_save_defaults;PHP:Function Name;2371161731;f0;88;1;91;;;;vpos;;v;;a;;r;;d0,89;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
-<treenode node="birthdayemail_run_cron;PHP:Function Name;69822534;f0;50;1;52;;;;vpos;;v;;a;;r;;d34,50;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
+<treenode node="birthdayemail_run_cron;PHP:Function Name;69822534;f0;68;1;70;;;;vpos;;v;;a;;r;;d34,68;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
-<treenode node="birthdayemail_save_defaults;PHP:Function Name;2371161731;f0;93;1;127;;;;vpos;;v;;a;;r;;d0,94;;b0,0;;m0;;e0;;i0;;o;;k;;ladd_new;;p;;x;;n">
+<treenode node="birthdayemail_save_defaults;PHP:Function Name;2371161731;f0;93;1;128;;;;vpos;;v;;a;;r;;d0,94;;b0,0;;m0;;e0;;i0;;o;;k;;ladd_new;;p;;x;;n">
 </treenode>
 <treenode node="deactivate_my_day_email;PHP:Function Name;2371161731;f0;53;1;56;;;;vpos;;v;;a;;r&#10;&lt;b&gt;Definition&lt;/b&gt;&#10;    deactivate_my_day_email()&#10;&#10;&lt;b&gt;Description&lt;/b&gt;&#10;    The code that runs during plugin deactivation.&#10;This action is documented in includes/class-my-day-email-deactivator.php;;d35,53;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
-<treenode node="mydayemail_run_cron_setup;PHP:Function Name;69822534;f0;54;1;75;;;;vpos;;v;;a;;r;;d0,55;;b0,0;;m0;;e0;;i0;;o;;k;;ltype;;p;;x;;n">
+<treenode node="mydayemail_run_cron_setup;PHP:Function Name;69822534;f0;72;1;94;;;;vpos;;v;;a;;r;;d0,73;;b0,0;;m0;;e0;;i0;;o;;k;;ltype;;p;;x;;n">
 </treenode>
-<treenode node="mydayemail_settings_link;PHP:Function Name;2371161731;f0;240;3;245;;;;vpos;;v;;a;;r;;d50,240;;b0,0;;m0;;e0;;i0;;o;;k;;llinks;;p;;x;;n">
+<treenode node="mydayemail_settings_link;PHP:Function Name;2371161731;f0;239;3;244;;;;vpos;;v;;a;;r;;d50,239;;b0,0;;m0;;e0;;i0;;o;;k;;llinks;;p;;x;;n">
 </treenode>
 <treenode node="namedayemail_event;PHP:Function Name;69822534;f0;4;1;6;;;;vpos;;v;;a;;r;;d29,4;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
 <treenode node="namedayemail_event_setup;PHP:Function Name;69822534;f0;8;1;24;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e0;;i0;;o;;k;;ltype;;p;;x;;n">
 </treenode>
-<treenode node="namedayemail_plugin_deactivation;PHP:Function Name;2371161731;f0;236;1;238;;;;vpos;;v;;a;;r;;d44,236;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
+<treenode node="namedayemail_plugin_deactivation;PHP:Function Name;2371161731;f0;235;1;237;;;;vpos;;v;;a;;r;;d44,235;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
 <treenode node="namedayemail_plugin_save_defaults;PHP:Function Name;2371161731;f0;84;1;86;;;;vpos;;v;;a;;r&#10;&lt;b&gt;Definition&lt;/b&gt;&#10;    namedayemail_plugin_save_defaults()&#10;&#10;&lt;b&gt;Description&lt;/b&gt;&#10;    The core plugin class that is used to define internationalization,&#10;admin-specific hooks, and public-facing site hooks.;;d45,84;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
 <treenode node="namedayemail_run_cron;PHP:Function Name;69822534;f0;25;1;27;;;;vpos;;v;;a;;r;;d33,25;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
-<treenode node="namedayemail_save_defaults;PHP:Function Name;2371161731;f0;201;2;234;;;;vpos;;v;;a;;r;;d53,201;;b0,0;;m0;;e0;;i0;;o;;k;;ladd_new;;p;;x;;n">
+<treenode node="namedayemail_save_defaults;PHP:Function Name;2371161731;f0;200;2;233;;;;vpos;;v;;a;;r;;d53,200;;b0,0;;m0;;e0;;i0;;o;;k;;ladd_new;;p;;x;;n">
 </treenode>
-<treenode node="onetimeemail_save_defaults;PHP:Function Name;2371161731;f0;165;1;199;;;;vpos;;v;;a;;r;;d0,166;;b0,0;;m0;;e0;;i0;;o;;k;;ladd_new;;p;;x;;n">
+<treenode node="onetimeemail_save_defaults;PHP:Function Name;2371161731;f0;166;1;198;;;;vpos;;v;;a;;r;;d0,167;;b0,0;;m0;;e0;;i0;;o;;k;;ladd_new;;p;;x;;n">
 </treenode>
 <treenode node="rc_psd_admin_css;PHP:Function Name;1179152931;f1;88;1;131;;;;vpos;;v;;a;;r;;d29,88;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
-<treenode node="run_my_day_email;PHP:Function Name;2371161731;f0;255;1;260;;;;vpos;;v;;a;;r&#10;&lt;b&gt;Definition&lt;/b&gt;&#10;    run_my_day_email()&#10;&#10;&lt;b&gt;Description&lt;/b&gt;&#10;    Begins execution of the plugin.&#10;Since everything within the plugin is registered via hooks,&#10;then kicking off the plugin from this point in the file does&#10;not affect the page life cycle.&#10;&lt;b&gt;since&lt;/b&gt;: 1.0.0;;d28,255;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
+<treenode node="reorderemail_save_defaults;PHP:Function Name;2371161731;f0;130;1;164;;;;vpos;;v;;a;;r;;d0,131;;b0,0;;m0;;e0;;i0;;o;;k;;ladd_new;;p;;x;;n">
 </treenode>
-<treenode node="time_utc;PHP:Function Name;69822534;f0;77;1;86;;;;vpos;;v;;astring;;r;;d0,78;;b0,0;;m0;;e0;;i0;;o;;k;;ldateTime;;p;;x;;n">
+<treenode node="run_my_day_email;PHP:Function Name;2371161731;f0;254;1;259;;;;vpos;;v;;a;;r&#10;&lt;b&gt;Definition&lt;/b&gt;&#10;    run_my_day_email()&#10;&#10;&lt;b&gt;Description&lt;/b&gt;&#10;    Begins execution of the plugin.&#10;Since everything within the plugin is registered via hooks,&#10;then kicking off the plugin from this point in the file does&#10;not affect the page life cycle.&#10;&lt;b&gt;since&lt;/b&gt;: 1.0.0;;d28,254;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
+</treenode>
+<treenode node="time_utc;PHP:Function Name;69822534;f0;96;1;105;;;;vpos;;v;;a;;r;;d0,97;;b0,0;;m0;;e0;;i0;;o;;k;;ldateTime;;p;;x;;n">
 </treenode>
 </phptree>
 <jstree>
