@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: My Day Email\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 16:23+0000\n"
+"POT-Creation-Date: 2023-08-29 09:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,25 +16,34 @@ msgstr ""
 "X-Loco-Version: 2.6.4; wp-6.3\n"
 "X-Domain: my-day-email"
 
-#: admin/partials/birth-day-email-admin-display.php:293
-#: admin/partials/birth-day-email-admin-display.php:302
-#: admin/partials/reorder-email-admin-display.php:290
-#: admin/partials/reorder-email-admin-display.php:299
-#: admin/partials/name-day-email-admin-display.php:333
-#: admin/partials/name-day-email-admin-display.php:342
-#: admin/partials/onetime-email-admin-display.php:237
-#: admin/partials/onetime-email-admin-display.php:246
+#: admin/partials/birth-day-email-admin-display.php:291
+#: admin/partials/birth-day-email-admin-display.php:300
+#: admin/partials/reorder-email-admin-display.php:288
+#: admin/partials/reorder-email-admin-display.php:297
+#: admin/partials/name-day-email-admin-display.php:330
+#: admin/partials/name-day-email-admin-display.php:339
+#: admin/partials/onetime-email-admin-display.php:201
+#: admin/partials/onetime-email-admin-display.php:415
+#: admin/partials/onetime-email-admin-display.php:424
 msgid "Add multiple emails separated by comma ( , )."
 msgstr ""
 
-#: admin/partials/name-day-email-admin-display.php:104
+#: admin/partials/my-day-admin-display.php:30
+msgid "After Order"
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:67
+msgid "All roles"
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:103
 msgid "Austrian calendar"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:298
-#: admin/partials/reorder-email-admin-display.php:295
-#: admin/partials/name-day-email-admin-display.php:338
-#: admin/partials/onetime-email-admin-display.php:242
+#: admin/partials/birth-day-email-admin-display.php:296
+#: admin/partials/reorder-email-admin-display.php:293
+#: admin/partials/name-day-email-admin-display.php:335
+#: admin/partials/onetime-email-admin-display.php:420
 msgid "BCC and Test email address"
 msgstr ""
 
@@ -48,24 +57,24 @@ msgstr ""
 #: admin/partials/birth-day-email-admin-display.php:105
 #: admin/partials/birth-day-email-admin-display.php:106
 #: admin/partials/birth-day-email-admin-display.php:107
-#: admin/partials/reorder-email-admin-display.php:98
 #: admin/partials/reorder-email-admin-display.php:99
 #: admin/partials/reorder-email-admin-display.php:100
 #: admin/partials/reorder-email-admin-display.php:101
 #: admin/partials/reorder-email-admin-display.php:102
 #: admin/partials/reorder-email-admin-display.php:103
+#: admin/partials/reorder-email-admin-display.php:104
+#: admin/partials/name-day-email-admin-display.php:141
 #: admin/partials/name-day-email-admin-display.php:142
 #: admin/partials/name-day-email-admin-display.php:143
 #: admin/partials/name-day-email-admin-display.php:144
 #: admin/partials/name-day-email-admin-display.php:145
 #: admin/partials/name-day-email-admin-display.php:146
-#: admin/partials/name-day-email-admin-display.php:147
-#: admin/partials/onetime-email-admin-display.php:45
-#: admin/partials/onetime-email-admin-display.php:46
-#: admin/partials/onetime-email-admin-display.php:47
-#: admin/partials/onetime-email-admin-display.php:48
-#: admin/partials/onetime-email-admin-display.php:49
-#: admin/partials/onetime-email-admin-display.php:50
+#: admin/partials/onetime-email-admin-display.php:226
+#: admin/partials/onetime-email-admin-display.php:227
+#: admin/partials/onetime-email-admin-display.php:228
+#: admin/partials/onetime-email-admin-display.php:229
+#: admin/partials/onetime-email-admin-display.php:230
+#: admin/partials/onetime-email-admin-display.php:231
 msgid "characters"
 msgstr ""
 
@@ -74,14 +83,7 @@ msgctxt "Check out"
 msgid "Date of birth - Year is not important but helps"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:109
-#: admin/partials/reorder-email-admin-display.php:105
-#: admin/partials/name-day-email-admin-display.php:149
-#: admin/partials/onetime-email-admin-display.php:52
-msgid "Choose how many characters will be in generated coupons."
-msgstr ""
-
-#: admin/partials/name-day-email-admin-display.php:106
+#: admin/partials/name-day-email-admin-display.php:105
 msgid "Choose the calendar country to be used"
 msgstr ""
 
@@ -94,81 +96,86 @@ msgid "Common"
 msgstr ""
 
 #: admin/partials/birth-day-email-admin-display.php:99
-#: admin/partials/reorder-email-admin-display.php:95
-#: admin/partials/name-day-email-admin-display.php:139
-#: admin/partials/onetime-email-admin-display.php:42
+#: admin/partials/reorder-email-admin-display.php:96
+#: admin/partials/name-day-email-admin-display.php:138
+#: admin/partials/onetime-email-admin-display.php:223
 msgid "Count of coupon characters"
 msgstr ""
 
-#: my-day-email.php:124
+#: my-day-email.php:125
 msgctxt "Coupon category"
 msgid "birth-day"
 msgstr ""
 
-#: my-day-email.php:229
+#: my-day-email.php:232
 msgctxt "Coupon category"
 msgid "name-day"
 msgstr ""
 
-#: my-day-email.php:194
+#: my-day-email.php:197
 msgctxt "Coupon category"
 msgid "one-time"
 msgstr ""
 
-#: my-day-email.php:160
+#: my-day-email.php:161
 msgctxt "Coupon category"
 msgid "reorder"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:259
-#: admin/partials/reorder-email-admin-display.php:255
-#: admin/partials/name-day-email-admin-display.php:299
-#: admin/partials/onetime-email-admin-display.php:202
+#: admin/partials/birth-day-email-admin-display.php:256
+#: admin/partials/reorder-email-admin-display.php:253
+#: admin/partials/name-day-email-admin-display.php:295
+#: admin/partials/onetime-email-admin-display.php:380
 msgid "Coupon category slug"
 msgstr ""
 
-#: my-day-email.php:115
+#: my-day-email.php:116
 msgctxt "Coupon description"
 msgid "Birthday {fname} {lname}: {email}"
 msgstr ""
 
-#: my-day-email.php:220
+#: my-day-email.php:223
 msgctxt "Coupon description"
 msgid "Name Day {fname}: {email}"
 msgstr ""
 
-#: my-day-email.php:185
+#: my-day-email.php:188
 msgctxt "Coupon description"
 msgid "One time {fname} {lname}: {email}"
 msgstr ""
 
-#: my-day-email.php:151
+#: my-day-email.php:152
 msgctxt "Coupon description"
 msgid "Reorder {fname} {lname}: {email}"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:146
-#: admin/partials/reorder-email-admin-display.php:142
+#: admin/partials/birth-day-email-admin-display.php:147
+#: admin/partials/reorder-email-admin-display.php:144
 #: admin/partials/name-day-email-admin-display.php:186
-#: admin/partials/onetime-email-admin-display.php:89
+#: admin/partials/onetime-email-admin-display.php:271
 msgid "Coupon expires in days"
 msgstr ""
 
 #: admin/partials/birth-day-email-admin-display.php:89
-#: admin/partials/reorder-email-admin-display.php:84
-#: admin/partials/name-day-email-admin-display.php:129
-#: admin/partials/onetime-email-admin-display.php:31
+#: admin/partials/reorder-email-admin-display.php:86
+#: admin/partials/name-day-email-admin-display.php:128
+#: admin/partials/onetime-email-admin-display.php:212
 msgid "Coupon settings"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:349
-#: admin/partials/reorder-email-admin-display.php:347
+#: admin/partials/birth-day-email-admin-display.php:347
+#: admin/partials/reorder-email-admin-display.php:345
 #: admin/partials/name-day-email-admin-display.php:386
+#: admin/partials/onetime-email-admin-display.php:472
 msgid "Create a test"
 msgstr ""
 
-#: admin/partials/name-day-email-admin-display.php:102
+#: admin/partials/name-day-email-admin-display.php:101
 msgid "Czech calendar"
+msgstr ""
+
+#: admin/partials/reorder-email-admin-display.php:65
+msgid "Days after last order"
 msgstr ""
 
 #: admin/partials/common-settings-admin-display.php:31
@@ -176,10 +183,10 @@ msgid "Delete unused coupons in days after expiration"
 msgstr ""
 
 #: admin/partials/birth-day-email-admin-display.php:95
-#: admin/partials/reorder-email-admin-display.php:91
-#: admin/partials/name-day-email-admin-display.php:135
-#: admin/partials/onetime-email-admin-display.php:38
-msgid "Description will be used in Coupons page."
+#: admin/partials/reorder-email-admin-display.php:92
+#: admin/partials/name-day-email-admin-display.php:134
+#: admin/partials/onetime-email-admin-display.php:219
+msgid "Description will be used on Coupons page."
 msgstr ""
 
 #: includes/class-birthdayfield.php:54 includes/class-birthdayfield.php:84
@@ -187,33 +194,46 @@ msgctxt "DOB note"
 msgid "Year is not important but helps"
 msgstr ""
 
+#: admin/partials/birth-day-email-admin-display.php:108
+#: admin/partials/reorder-email-admin-display.php:105
+#: admin/partials/name-day-email-admin-display.php:147
+#: admin/partials/onetime-email-admin-display.php:232
+msgid "Don't generate coupon"
+msgstr ""
+
 #: admin/partials/birth-day-email-admin-display.php:84
-#: admin/partials/reorder-email-admin-display.php:79
-#: admin/partials/name-day-email-admin-display.php:107
+#: admin/partials/reorder-email-admin-display.php:81
+#: admin/partials/name-day-email-admin-display.php:106
+#: admin/partials/onetime-email-admin-display.php:207
 msgid "Download csv"
 msgstr ""
 
 #: admin/partials/birth-day-email-admin-display.php:85
-#: admin/partials/reorder-email-admin-display.php:80
+#: admin/partials/reorder-email-admin-display.php:82
 msgid "Download csv file with brith days of users."
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:208
+msgid "Download csv file with selected users."
 msgstr ""
 
 #: admin/partials/birth-day-email-admin-display.php:82
 msgid "Download file with all users"
 msgstr ""
 
-#: admin/partials/reorder-email-admin-display.php:77
+#: admin/partials/reorder-email-admin-display.php:79
+#: admin/partials/onetime-email-admin-display.php:205
 msgid "Download file with users to send email"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:324
-#: admin/partials/reorder-email-admin-display.php:321
-#: admin/partials/name-day-email-admin-display.php:364
-#: admin/partials/onetime-email-admin-display.php:268
+#: admin/partials/birth-day-email-admin-display.php:322
+#: admin/partials/reorder-email-admin-display.php:319
+#: admin/partials/name-day-email-admin-display.php:361
+#: admin/partials/onetime-email-admin-display.php:446
 msgid "Email body"
 msgstr ""
 
-#: my-day-email.php:117
+#: my-day-email.php:118
 msgctxt "Email Body"
 msgid ""
 "<p style='font-size: 20px;font-weight:600;'>Have a nice birthday, {fname}!"
@@ -231,7 +251,7 @@ msgid ""
 "exluded from the discount.</p>"
 msgstr ""
 
-#: my-day-email.php:222
+#: my-day-email.php:225
 msgctxt "Email Body"
 msgid ""
 "<p style='font-size: 20px;font-weight:600;'>Have a nice name day, {fname}!"
@@ -249,7 +269,7 @@ msgid ""
 "exluded from the discount.</p>"
 msgstr ""
 
-#: my-day-email.php:153
+#: my-day-email.php:154
 msgctxt "Email Body"
 msgid ""
 "<p style='font-size: 20px;font-weight:600;'>We have a special discount for "
@@ -267,7 +287,7 @@ msgid ""
 "exluded from the discount.</p>"
 msgstr ""
 
-#: my-day-email.php:187
+#: my-day-email.php:190
 msgctxt "Email Body"
 msgid ""
 "<p style='font-size: 20px;font-weight:600;'>We have a special discount for "
@@ -284,74 +304,74 @@ msgid ""
 "exluded from the discount.</p>"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:290
-#: admin/partials/reorder-email-admin-display.php:287
-#: admin/partials/name-day-email-admin-display.php:330
-#: admin/partials/onetime-email-admin-display.php:234
+#: admin/partials/birth-day-email-admin-display.php:288
+#: admin/partials/reorder-email-admin-display.php:285
+#: admin/partials/name-day-email-admin-display.php:327
+#: admin/partials/onetime-email-admin-display.php:412
 msgid "Email CC"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:283
-#: admin/partials/reorder-email-admin-display.php:280
-#: admin/partials/name-day-email-admin-display.php:323
-#: admin/partials/onetime-email-admin-display.php:227
+#: admin/partials/birth-day-email-admin-display.php:281
+#: admin/partials/reorder-email-admin-display.php:278
+#: admin/partials/name-day-email-admin-display.php:320
+#: admin/partials/onetime-email-admin-display.php:405
 msgid "Email from address"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:277
-#: admin/partials/reorder-email-admin-display.php:274
-#: admin/partials/name-day-email-admin-display.php:317
-#: admin/partials/onetime-email-admin-display.php:221
+#: admin/partials/birth-day-email-admin-display.php:275
+#: admin/partials/reorder-email-admin-display.php:272
+#: admin/partials/name-day-email-admin-display.php:314
+#: admin/partials/onetime-email-admin-display.php:399
 msgid "Email from name"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:318
-#: admin/partials/reorder-email-admin-display.php:315
-#: admin/partials/name-day-email-admin-display.php:358
-#: admin/partials/onetime-email-admin-display.php:262
+#: admin/partials/birth-day-email-admin-display.php:316
+#: admin/partials/reorder-email-admin-display.php:313
+#: admin/partials/name-day-email-admin-display.php:355
+#: admin/partials/onetime-email-admin-display.php:440
 msgid "Email header"
 msgstr ""
 
-#: my-day-email.php:102 my-day-email.php:208
+#: my-day-email.php:103 my-day-email.php:211
 msgctxt "Email Header"
 msgid "Congratulations"
 msgstr ""
 
-#: my-day-email.php:139 my-day-email.php:175
+#: my-day-email.php:140 my-day-email.php:176
 msgctxt "Email Header"
 msgid "Your discount"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:312
-#: admin/partials/reorder-email-admin-display.php:309
-#: admin/partials/name-day-email-admin-display.php:352
-#: admin/partials/onetime-email-admin-display.php:256
+#: admin/partials/birth-day-email-admin-display.php:310
+#: admin/partials/reorder-email-admin-display.php:307
+#: admin/partials/name-day-email-admin-display.php:349
+#: admin/partials/onetime-email-admin-display.php:434
 msgid "Email subject"
 msgstr ""
 
-#: my-day-email.php:101
+#: my-day-email.php:102
 msgctxt "Email Subject"
 msgid "{fname}, here is your birthday gift"
 msgstr ""
 
-#: my-day-email.php:174
+#: my-day-email.php:175
 msgctxt "Email Subject"
 msgid "{fname}, here is your discount coupon"
 msgstr ""
 
-#: my-day-email.php:207
+#: my-day-email.php:210
 msgctxt "Email Subject"
 msgid "{fname}, here is your name day gift"
 msgstr ""
 
-#: my-day-email.php:138
+#: my-day-email.php:139
 msgctxt "Email Subject"
 msgid "{fname}, it's time to order again"
 msgstr ""
 
 #: admin/partials/birth-day-email-admin-display.php:51
-#: admin/partials/reorder-email-admin-display.php:51
-#: admin/partials/name-day-email-admin-display.php:86
+#: admin/partials/reorder-email-admin-display.php:53
+#: admin/partials/name-day-email-admin-display.php:85
 msgid "Enable auto sending emails"
 msgstr ""
 
@@ -359,22 +379,28 @@ msgstr ""
 msgid "Enable logs"
 msgstr ""
 
-#: admin/partials/reorder-email-admin-display.php:66
+#: admin/partials/reorder-email-admin-display.php:68
 msgid ""
-"Enter number of day after last order when to send this email with coupon."
+"Enter number of days after last order when to send this email with coupon."
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:252
-#: admin/partials/reorder-email-admin-display.php:248
-#: admin/partials/name-day-email-admin-display.php:292
-#: admin/partials/onetime-email-admin-display.php:195
+#: admin/partials/onetime-email-admin-display.php:193
+msgid ""
+"Enter the minimum number of days since customer's last order after which "
+"this coupon email should be sent."
+msgstr ""
+
+#: admin/partials/birth-day-email-admin-display.php:249
+#: admin/partials/reorder-email-admin-display.php:246
+#: admin/partials/name-day-email-admin-display.php:288
+#: admin/partials/onetime-email-admin-display.php:373
 msgid "Exclude discounted products"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:160
-#: admin/partials/reorder-email-admin-display.php:156
+#: admin/partials/birth-day-email-admin-display.php:161
+#: admin/partials/reorder-email-admin-display.php:158
 #: admin/partials/name-day-email-admin-display.php:200
-#: admin/partials/onetime-email-admin-display.php:103
+#: admin/partials/onetime-email-admin-display.php:285
 msgid "Good only for products"
 msgstr ""
 
@@ -383,8 +409,15 @@ msgstr ""
 msgid "https://starlogic.net/"
 msgstr ""
 
-#: admin/partials/name-day-email-admin-display.php:103
+#: admin/partials/name-day-email-admin-display.php:102
 msgid "Hungarian calendar"
+msgstr ""
+
+#: admin/partials/common-settings-admin-display.php:34
+msgid ""
+"If you leave this blank, the coupons will not be deleted. To automatically "
+"delete coupons, enter the number of days after the expiration date and "
+"unused coupons will be deleted."
 msgstr ""
 
 #: includes/class-birthdayfield.php:68 includes/class-birthdayfield.php:102
@@ -392,26 +425,36 @@ msgstr ""
 msgid "Invalid date format for date of birth"
 msgstr ""
 
-#: admin/partials/common-settings-admin-display.php:34
-msgid ""
-"Leave empty and coupons will not be deleted. Otherwise enter number of days "
-"after expiration when unused coupons will be deleted."
+#: admin/partials/onetime-email-admin-display.php:190
+msgid "Last order made more than X days before today"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:149
-#: admin/partials/reorder-email-admin-display.php:145
+#: admin/partials/birth-day-email-admin-display.php:150
+#: admin/partials/reorder-email-admin-display.php:147
 #: admin/partials/name-day-email-admin-display.php:189
-#: admin/partials/onetime-email-admin-display.php:92
-msgid "Leave empty for coupon with no expiration date."
+#: admin/partials/onetime-email-admin-display.php:274
+msgid "Leave this field blank if unexpired coupons are to be created."
 msgstr ""
 
-#: admin/partials/name-day-email-admin-display.php:108
+#: admin/partials/name-day-email-admin-display.php:107
 msgid "Make sure the selection is saved before download."
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:183
+msgid "Maximum"
 msgstr ""
 
 #: admin/class-name-day-email-admin.php:68
 msgctxt "menu"
 msgid "My Day Emails"
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:181
+msgid "Minimum"
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:172
+msgid "Minimum orders made by a user"
 msgstr ""
 
 #: includes/class-birthdayfield.php:83
@@ -431,18 +474,22 @@ msgstr ""
 msgid "Name Day"
 msgstr ""
 
-#: admin/partials/name-day-email-admin-display.php:98
+#: admin/partials/name-day-email-admin-display.php:97
 msgid "Name days calendar"
 msgstr ""
 
-#: admin/partials/my-day-admin-display.php:30
+#: admin/partials/onetime-email-admin-display.php:84
+msgid "No roles"
+msgstr ""
+
+#: admin/partials/my-day-admin-display.php:34
 msgid "One Time"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:338
-#: admin/partials/reorder-email-admin-display.php:335
-#: admin/partials/name-day-email-admin-display.php:376
-#: admin/partials/onetime-email-admin-display.php:282
+#: admin/partials/birth-day-email-admin-display.php:336
+#: admin/partials/reorder-email-admin-display.php:333
+#: admin/partials/name-day-email-admin-display.php:375
+#: admin/partials/onetime-email-admin-display.php:460
 msgid "Placeholders"
 msgstr ""
 
@@ -461,24 +508,43 @@ msgid "Reorder"
 msgstr ""
 
 #: admin/partials/birth-day-email-admin-display.php:39
-#: admin/partials/reorder-email-admin-display.php:37
+#: admin/partials/reorder-email-admin-display.php:38
 #: admin/partials/name-day-email-admin-display.php:70
 #: admin/partials/universary-email-admin-display.php:9
-#: admin/partials/onetime-email-admin-display.php:10
+#: admin/partials/onetime-email-admin-display.php:44
 msgid "Restore Defaults"
 msgstr ""
 
 #: admin/partials/birth-day-email-admin-display.php:57
-#: admin/partials/reorder-email-admin-display.php:57
-#: admin/partials/name-day-email-admin-display.php:92
-#: admin/partials/onetime-email-admin-display.php:25
+#: admin/partials/reorder-email-admin-display.php:59
+#: admin/partials/name-day-email-admin-display.php:91
+#: admin/partials/onetime-email-admin-display.php:59
 msgid "Run in test mode"
 msgstr ""
 
+#: admin/partials/birth-day-email-admin-display.php:110
+#: admin/partials/reorder-email-admin-display.php:107
+#: admin/partials/name-day-email-admin-display.php:149
+#: admin/partials/onetime-email-admin-display.php:234
+msgid "Select how many characters the generated coupons should consist of."
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:95
+msgid "Select user roles to exclude from sending the emails."
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:78
+msgid "Select user roles to send the emails to."
+msgstr ""
+
 #: admin/partials/birth-day-email-admin-display.php:69
-#: admin/partials/reorder-email-admin-display.php:70
-#: admin/partials/name-day-email-admin-display.php:122
+#: admin/partials/reorder-email-admin-display.php:72
+#: admin/partials/name-day-email-admin-display.php:121
 msgid "Send email every day at"
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:197
+msgid "Send email only to these addresses"
 msgstr ""
 
 #. Description of the plugin
@@ -490,11 +556,11 @@ msgstr ""
 msgid "Send email X days before birthday"
 msgstr ""
 
-#: admin/partials/name-day-email-admin-display.php:112
+#: admin/partials/name-day-email-admin-display.php:111
 msgid "Send email X days before name day"
 msgstr ""
 
-#: admin/partials/reorder-email-admin-display.php:349
+#: admin/partials/onetime-email-admin-display.php:473
 msgid "Send emails"
 msgstr ""
 
@@ -508,10 +574,10 @@ msgid ""
 "DOB was changed."
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:121
-#: admin/partials/reorder-email-admin-display.php:117
+#: admin/partials/birth-day-email-admin-display.php:122
+#: admin/partials/reorder-email-admin-display.php:119
 #: admin/partials/name-day-email-admin-display.php:161
-#: admin/partials/onetime-email-admin-display.php:64
+#: admin/partials/onetime-email-admin-display.php:246
 msgid "Set the discount type."
 msgstr ""
 
@@ -530,7 +596,7 @@ msgctxt "Setting"
 msgid "Name Day Emails Settings"
 msgstr ""
 
-#: admin/partials/onetime-email-admin-display.php:15
+#: admin/partials/onetime-email-admin-display.php:49
 msgctxt "Setting"
 msgid "One Time Emails Settings"
 msgstr ""
@@ -540,15 +606,15 @@ msgctxt "Setting"
 msgid "Order anniversary Emails Settings"
 msgstr ""
 
-#: admin/partials/reorder-email-admin-display.php:42
+#: admin/partials/reorder-email-admin-display.php:43
 msgctxt "Setting"
 msgid "Order Reorder Emails Settings"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:274
-#: admin/partials/reorder-email-admin-display.php:271
-#: admin/partials/name-day-email-admin-display.php:314
-#: admin/partials/onetime-email-admin-display.php:218
+#: admin/partials/birth-day-email-admin-display.php:272
+#: admin/partials/reorder-email-admin-display.php:269
+#: admin/partials/name-day-email-admin-display.php:311
+#: admin/partials/onetime-email-admin-display.php:396
 msgctxt "Setting section"
 msgid "Email message setting"
 msgstr ""
@@ -558,56 +624,105 @@ msgctxt "Setting section"
 msgid "Logs"
 msgstr ""
 
-#: admin/partials/name-day-email-admin-display.php:101
+#: admin/partials/onetime-email-admin-display.php:201
+msgid "Settings of other filters will be ignored if not empty."
+msgstr ""
+
+#: admin/partials/name-day-email-admin-display.php:100
 msgid "Slovak calendar"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:156
-#: admin/partials/reorder-email-admin-display.php:152
+#: admin/partials/onetime-email-admin-display.php:133
+msgid ""
+"The email will be sent to users who have never purchased any of the selected "
+"products."
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:167
+msgid ""
+"The email will be sent to users who have never purchased products in the "
+"selected categories."
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:114
+msgid ""
+"The email will be sent to users who have previously purchased at least one "
+"of the selected products. Select the main product if you want it to include "
+"all variants."
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:150
+msgid ""
+"The email will be sent to users who have previously purchased products in "
+"the selected categories."
+msgstr ""
+
+#: admin/partials/birth-day-email-admin-display.php:157
+#: admin/partials/reorder-email-admin-display.php:154
 #: admin/partials/name-day-email-admin-display.php:196
-#: admin/partials/onetime-email-admin-display.php:99
+#: admin/partials/onetime-email-admin-display.php:281
 msgid ""
-"The generated coupon could be used for maximum number of products. Leave "
-"empty for no limit."
+"The generated coupon can be used for a maximum number of products. For "
+"unlimited use, leave blank."
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:269
-#: admin/partials/reorder-email-admin-display.php:265
-#: admin/partials/name-day-email-admin-display.php:309
-#: admin/partials/onetime-email-admin-display.php:212
+#: admin/partials/onetime-email-admin-display.php:185
 msgid ""
-"This could be used only by plugin Advanced Coupons for WooCommerce (free) "
-"plugin. Enter coupon category slug, which has to exist."
+"These fields allow you to filter users by the minimum and maximum amount of "
+"their total spending."
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:302
-#: admin/partials/reorder-email-admin-display.php:299
-#: admin/partials/name-day-email-admin-display.php:342
-#: admin/partials/onetime-email-admin-display.php:246
+#: admin/partials/birth-day-email-admin-display.php:266
+#: admin/partials/reorder-email-admin-display.php:263
+#: admin/partials/name-day-email-admin-display.php:305
+#: admin/partials/onetime-email-admin-display.php:390
 msgid ""
-"This is email address used when testing as well as for all email messages as "
-"blind copy address."
+"This can only be used if the Advanced Coupons for WooCommerce (free) plugin "
+"is installed. Specify the slug of the coupon category that must exist."
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:321
-#: admin/partials/reorder-email-admin-display.php:318
-#: admin/partials/name-day-email-admin-display.php:361
-#: admin/partials/onetime-email-admin-display.php:265
+#: admin/partials/birth-day-email-admin-display.php:300
+#: admin/partials/reorder-email-admin-display.php:297
+#: admin/partials/name-day-email-admin-display.php:339
+#: admin/partials/onetime-email-admin-display.php:424
+msgid ""
+"This email address is used for testing as well as for all email messages as "
+"a blind copy address."
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:175
+msgid ""
+"This field allows you to set the minimum number of orders that the customer "
+"has placed. If the field is empty, all users will be selected, even if they "
+"have never ordered. If this field is 0, only users who have no orders will "
+"be selected, regardless of the selections in the product and category "
+"filters."
+msgstr ""
+
+#: includes/class-my-day-email-functions.php:87
+#, php-format
+msgid "This is a test email sent to %s instead of to"
+msgstr ""
+
+#: admin/partials/birth-day-email-admin-display.php:319
+#: admin/partials/reorder-email-admin-display.php:316
+#: admin/partials/name-day-email-admin-display.php:358
+#: admin/partials/onetime-email-admin-display.php:443
 msgid "This is short text on the top of the email."
 msgstr ""
 
 #: admin/partials/birth-day-email-admin-display.php:72
-#: admin/partials/reorder-email-admin-display.php:73
-#: admin/partials/name-day-email-admin-display.php:125
+#: admin/partials/reorder-email-admin-display.php:75
+#: admin/partials/name-day-email-admin-display.php:124
 msgid "This is time when cron sends the email messages."
 msgstr ""
 
-#: includes/class-my-day-email-functions.php:358
+#: includes/class-my-day-email-functions.php:392
 #, php-format
 msgid "Today %s is Name Day celebrated by"
 msgstr ""
 
-#: includes/class-my-day-email-functions.php:360
+#: includes/class-my-day-email-functions.php:394
 #, php-format
 msgid "Tomorrow is Name Day celebrated by"
 msgid_plural "In %s days is Name Day celebrated by"
@@ -615,41 +730,74 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: admin/partials/birth-day-email-admin-display.php:53
-#: admin/partials/reorder-email-admin-display.php:53
-#: admin/partials/name-day-email-admin-display.php:88
+#: admin/partials/reorder-email-admin-display.php:55
+#: admin/partials/name-day-email-admin-display.php:87
 msgid "Turn on and off the automatic functionality of email sending"
 msgstr ""
 
+#: admin/partials/onetime-email-admin-display.php:61
+msgid ""
+"Turn on when testing. The actual users will not get emails. All emails will "
+"be sent to BCC/Test address."
+msgstr ""
+
 #: admin/partials/birth-day-email-admin-display.php:59
-#: admin/partials/reorder-email-admin-display.php:59
-#: admin/partials/name-day-email-admin-display.php:94
-#: admin/partials/onetime-email-admin-display.php:27
+#: admin/partials/reorder-email-admin-display.php:61
+#: admin/partials/name-day-email-admin-display.php:93
 msgid ""
 "Turn on when testing. The user will not get emails. All emails will be sent "
 "to BCC/Test address."
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:308
-#: admin/partials/reorder-email-admin-display.php:305
-#: admin/partials/name-day-email-admin-display.php:348
-#: admin/partials/onetime-email-admin-display.php:252
-msgid ""
-"Turn on when you want to have your email look the same as regular "
-"WooCommerce email."
-msgstr ""
-
 #: admin/partials/birth-day-email-admin-display.php:306
 #: admin/partials/reorder-email-admin-display.php:303
-#: admin/partials/name-day-email-admin-display.php:346
-#: admin/partials/onetime-email-admin-display.php:250
+#: admin/partials/name-day-email-admin-display.php:345
+#: admin/partials/onetime-email-admin-display.php:430
+msgid ""
+"Turn this on if you want your email to look just like a regular WooCommerce "
+"email."
+msgstr ""
+
+#: admin/partials/birth-day-email-admin-display.php:304
+#: admin/partials/reorder-email-admin-display.php:301
+#: admin/partials/name-day-email-admin-display.php:343
+#: admin/partials/onetime-email-admin-display.php:428
 msgid "Use WooCommerce email template"
 msgstr ""
 
-#: admin/partials/birth-day-email-admin-display.php:340
-#: admin/partials/reorder-email-admin-display.php:337
+#: admin/partials/birth-day-email-admin-display.php:338
+#: admin/partials/reorder-email-admin-display.php:335
 #: admin/partials/name-day-email-admin-display.php:377
-#: admin/partials/onetime-email-admin-display.php:284
+#: admin/partials/onetime-email-admin-display.php:462
 msgid "Use {fname5} for Czech salutation."
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:82
+msgid "User Roles to exclude from sending"
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:65
+msgid "User Roles to include"
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:99
+msgid "Users who bought one of these products"
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:137
+msgid "Users who bought products in these categories"
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:154
+msgid "Users who never bought products in these categories"
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:118
+msgid "Users who never bought these products"
+msgstr ""
+
+#: admin/partials/onetime-email-admin-display.php:179
+msgid "Users who total spent"
 msgstr ""
 
 #. Author of the plugin

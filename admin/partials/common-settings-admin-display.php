@@ -31,7 +31,7 @@ $options = get_option('mydayemail_options');
 	<th class="titledesc"><?php echo __( 'Delete unused coupons in days after expiration', 'my-day-email' ); ?>:</th>
 	<td>
 		<input type="number" id="mydayemail_options[days_delete]" name="mydayemail_options[days_delete]"  style="width: 60px;" value="<?php echo $options['days_delete'] ?? ''; ?>"</input>
-		<?php  echo wc_help_tip(__( 'Leave empty and coupons will not be deleted. Otherwise enter number of days after expiration when unused coupons will be deleted.', 'my-day-email' ), false); ?>
+		<?php  echo wc_help_tip(__( 'If you leave this blank, the coupons will not be deleted. To automatically delete coupons, enter the number of days after the expiration date and unused coupons will be deleted.', 'my-day-email' ), false); ?>
 	</td>
 </tr>
 <tr valign="top">
@@ -52,7 +52,7 @@ $options = get_option('mydayemail_options');
 			<table id="log-table" class="form-table">	
 				<tr>
 					<td colspan="2" class="textarea_">						
-						<textarea class="textarea_" id="mydayemail_logs[logs]" name="mydayemail_logs[logs]" rows="15" type='textarea'><?php echo $options['logs'] ?? ''; ?></textarea>
+						<textarea class="textarea_" id="mydayemail_logs[logs]" name="mydayemail_logs[logs]" rows="25" type='textarea'><?php echo $options['logs'] ?? ''; ?></textarea>
 					</td>
 				</tr>			
 			</table>

@@ -3,12 +3,12 @@ namespace MYDAYEMAIL;
 
 class Reorders
 {
-	public function get_users_reorders()
+	public function get_users_reorders($as_objects = false)
 	{
 		global $wpdb;
 
 		$options = get_option('reorderemail_options');
-		$days = $options['days_after_order'];
+		$days = isset( $options['days_after_order']) ? $options['days_after_order'] : 0;
 		$sql = "SELECT  fpm.meta_value AS user_firstname, lpm.meta_value AS user_lastname,
 			epm.meta_value AS user_email, upm.meta_value AS user_id,   max(DATE(p.post_date)) AS last_order_date
 			FROM $wpdb->posts AS p
@@ -21,7 +21,13 @@ class Reorders
 			GROUP BY upm.meta_value
 			HAVING  MAX( DATE(p.post_date)) = ADDDATE(CURRENT_DATE( ), -{$days})
 			ORDER BY MAX( p.post_date) DESC  ";
-		$result = $wpdb->get_results($sql, ARRAY_A);
+			
+			if ($as_objects) {
+				$result = $wpdb->get_results($sql, OBJECT);
+			} else {
+				$result = $wpdb->get_results($sql, ARRAY_A);
+			}
+		
 
 		return $result;
 	}
@@ -36,9 +42,11 @@ class Reorders
 			$m = intval(date("m", $dateValue));
 			$d = intval(date("d", $dateValue));
 			$funcs = new EmailFunctions('reorderemail');
-			$users = $this->get_users_reorders();
+			$users = $this->get_users_reorders(true);
+			
 			foreach ($users as $user) {
-					$success = $funcs->mydayemail_create($user);
+
+				$success = $funcs->mydayemail_create($user);
 			}
 			$funcs->mydayemail_delete_expired();
 		}

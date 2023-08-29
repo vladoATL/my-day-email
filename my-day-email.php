@@ -16,7 +16,7 @@
  * Plugin Name:       My Day Email
  * Plugin URI:        https://starlogic.net/
  * Description:       Send email with a coupon to users on birthday, name day and order reorder.
- * Version:           0.2.5
+ * Version:           0.2.7
  * Author:            Vlado Laco
  * Author URI:        https://starlogic.net/
  * License:           GPL-2.0+
@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'MY_DAY_EMAIL_VERSION', '0.2.6.2' );
+define( 'MY_DAY_EMAIL_VERSION', '0.2.7.1' );
 
 /**
  * The code that runs during plugin activation.
@@ -74,9 +74,11 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-name-day-email-inflection.
 require plugin_dir_path( __FILE__ ) . 'includes/class-my-day-email-cron.php';
 
 require_once plugin_dir_path( __FILE__ ) .  'includes/class-birthdays.php';
+require_once plugin_dir_path( __FILE__ ) .  'includes/class-afterorder.php';
 require_once plugin_dir_path( __FILE__ ) .  'includes/class-namedays.php';
 require_once plugin_dir_path( __FILE__ ) .  'includes/class-birthdayfield.php';
 require_once plugin_dir_path( __FILE__ ) .  'includes/class-reorders.php';
+require_once plugin_dir_path( __FILE__ ) .  'includes/class-onetimes.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-calendars.php';
 
 \MYDAYEMAIL\BirthdayField::register();
@@ -175,8 +177,10 @@ function onetimeemail_save_defaults($add_new = false)
 	'header'  =>	_x('Your discount','Email Header','my-day-email') ,
 	'characters' =>	7,
 	'wc_template' =>	1,
+	'roles' => array('customer'),
 	'test' =>	1,
 	'expires'	=>	14,
+	'minimum_orders' => 1,
 	'from_name'	=>	get_bloginfo('name'),
 	'from_address'	=>	get_bloginfo('admin_email'),
 	'bcc_address' => $current_user->user_email,

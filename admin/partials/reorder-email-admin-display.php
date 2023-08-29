@@ -28,6 +28,7 @@ if ( isset( $_GET['reorderexport'] ) ) {
 	echo $csv;
 	exit();
 }
+
 ?>
 
 <div class="wrap woocommerce">
@@ -61,10 +62,10 @@ id="restore_reorder_values_btn" />
 			</td>
 		</tr>
 		<tr>
-			<th class="titledesc"><?php echo __( 'Days after last order', 'woocommerce' ); ?>:</th>
+			<th class="titledesc"><?php echo __( 'Days after last order', 'my-day-email' ); ?>:</th>
 			<td>
 				<input type="number" id="reorderemail_options[days_after_order]" name="reorderemail_options[days_after_order]"  style="width: 100px;" value="<?php echo $options['days_after_order'] ?? ''; ?>"</input>
-				<?php  echo wc_help_tip(__( 'Enter number of day after last order when to send this email with coupon.', 'my-day-email'), false); ?>
+				<?php  echo wc_help_tip(__( 'Enter number of days after last order when to send this email with coupon.', 'my-day-email'), false); ?>
 			</td>
 		</tr>		
 		<tr>
@@ -83,13 +84,12 @@ id="restore_reorder_values_btn" />
 		</tr>		
 	</table>	
 	<h3><?php echo __('Coupon settings', 'my-day-email'); ?> </h3>
-	
 	<table id="coupon-table" class="form-table">
 		<tr>
 			<th class="titledesc"><?php echo __( 'Description', 'woocommerce' ); ?>:</th>
 			<td>
 				<input type="text" id="reorderemail_options[description]" name="reorderemail_options[description]"  style="width: 500px;" value="<?php echo $options['description'] ?? ''; ?>"</input>
-				<?php  echo wc_help_tip(__( 'Description will be used in Coupons page.', 'my-day-email' ), false); ?>
+				<?php  echo wc_help_tip(__( 'Description will be used on Coupons page.', 'my-day-email' ), false); ?>
 			</td>
 		</tr>
 		<tr>
@@ -102,8 +102,9 @@ id="restore_reorder_values_btn" />
 					<option value='8' <?php selected( $options['characters'] ?? '', 8 ); ?>><?php echo '8 ' . __( 'characters', 'my-day-email' ); ?>&nbsp;</option>
 					<option value='9' <?php selected( $options['characters'] ?? '', 9 ); ?>><?php echo '9 ' . __( 'characters', 'my-day-email' ); ?>&nbsp;</option>
 					<option value='10' <?php selected( $options['characters'] ?? '', 10 ); ?>><?php echo '10 ' . __( 'characters', 'my-day-email' ); ?>&nbsp;</option>
+					<option value='0' <?php selected( $options['characters'] ?? '', 0 ); ?>><?php echo  __( "Don't generate coupon", 'my-day-email' ); ?>&nbsp;</option>
 				</select>
-				<?php  echo wc_help_tip(__( 'Choose how many characters will be in generated coupons.', 'my-day-email' ), false); ?>
+				<?php  echo wc_help_tip(__( 'Select how many characters the generated coupons should consist of.', 'my-day-email' ), false); ?>
 			</td>
 		</tr>
 
@@ -136,21 +137,21 @@ id="restore_reorder_values_btn" />
 			<th class="titledesc"><?php echo __( 'Maximum spend', 'woocommerce' ); ?>:</th>
 			<td>
 				<input type="number" id="reorderemail_options[maximum_amount]" name="reorderemail_options[maximum_amount]"  style="width: 60px;" value="<?php echo $options['maximum_amount'] ?? ''; ?>"</input>
-				<?php  echo wc_help_tip(__( 'This field allows you to set the maximum spend (subtotal) allowed when using the coupon.', 'woocommerce'  ), false); ?>
+				<?php  echo wc_help_tip(__( 'This field allows you to set the maximum spend (subtotal) allowed to use the coupon.', 'woocommerce'  ), false); ?>
 			</td>
 		</tr>
 		<tr>
 			<th class="titledesc"><?php echo __( 'Coupon expires in days', 'my-day-email' ); ?>:</th>
 			<td>
 				<input type="number" id="reorderemail_options[expires]" name="reorderemail_options[expires]"  style="width: 60px;" value="<?php echo $options['expires'] ?? ''; ?>"</input>
-				<?php  echo wc_help_tip(__( 'Leave empty for coupon with no expiration date.', 'my-day-email' ), false); ?>
+				<?php  echo wc_help_tip(__( 'Leave this field blank if unexpired coupons are to be created.', 'my-day-email' ), false); ?>
 			</td>
 		</tr>
 		<tr>
 			<th class="titledesc"><?php echo __( 'Limit usage to X items', 'woocommerce' ); ?>:</th>
 			<td>
 				<input type="number" id="reorderemail_options[max_products]" name="reorderemail_options[max_products]"  style="width: 60px;" value="<?php echo $options['max_products'] ?? ''; ?>"</input>
-				<?php  echo wc_help_tip(__( 'The generated coupon could be used for maximum number of products. Leave empty for no limit.', 'my-day-email' ), false); ?>
+				<?php  echo wc_help_tip(__( 'The generated coupon can be used for a maximum number of products. For unlimited use, leave blank.', 'my-day-email' ), false); ?>
 			</td>
 		</tr>
 		<tr>
@@ -196,13 +197,11 @@ id="restore_reorder_values_btn" />
 			<td>
 				<select id="reorderemail_options[only_cats]" name="reorderemail_options[only_cats][]" style="width: 50%;"  class="wc-enhanced-select" multiple="multiple" data-placeholder="<?php esc_attr_e( 'No categories', 'woocommerce' ); ?>">
 					<?php
-	if (isset($options['only_cats'])) {
-		$category_ids = $options['only_cats'];
-		$categories   = get_terms( 'product_cat', 'orderby=name&hide_empty=0' );
-		if ( $categories ) {
-			foreach ( $categories as $cat ) {
-				echo '<option value="' . esc_attr( $cat->term_id ) . '"' . wc_selected( $cat->term_id, $category_ids ) . '>' . esc_html( $cat->name ) . '</option>';
-			}
+	$category_ids = $options['only_cats'];
+	$categories   = get_terms( 'product_cat', 'orderby=name&hide_empty=0' );
+	if ( $categories ) {
+		foreach ( $categories as $cat ) {
+			echo '<option value="' . esc_attr( $cat->term_id ) . '"' . wc_selected( $cat->term_id, $category_ids ) . '>' . esc_html( $cat->name ) . '</option>';
 		}
 	}
 	?>
@@ -215,13 +214,11 @@ id="restore_reorder_values_btn" />
 			<td>
 				<select id="reorderemail_options[exclude_cats]" name="reorderemail_options[exclude_cats][]" style="width: 50%;"  class="wc-enhanced-select" multiple="multiple" data-placeholder="<?php esc_attr_e( 'No categories', 'woocommerce' ); ?>">
 					<?php
-	if (isset($options['only_cats'])) {
-		$category_ids = $options['exclude_cats'];
-		$categories   = get_terms( 'product_cat', 'orderby=name&hide_empty=0' );
-		if ( $categories ) {
-			foreach ( $categories as $cat ) {
-				echo '<option value="' . esc_attr( $cat->term_id ) . '"' . wc_selected( $cat->term_id, $category_ids ) . '>' . esc_html( $cat->name ) . '</option>';
-			}
+	$category_ids = $options['exclude_cats'];
+	$categories   = get_terms( 'product_cat', 'orderby=name&hide_empty=0' );
+	if ( $categories ) {
+		foreach ( $categories as $cat ) {
+			echo '<option value="' . esc_attr( $cat->term_id ) . '"' . wc_selected( $cat->term_id, $category_ids ) . '>' . esc_html( $cat->name ) . '</option>';
 		}
 	}
 	?>
@@ -263,12 +260,12 @@ id="restore_reorder_values_btn" />
 	?>
 				<input type="text" id="reorderemail_options[category]" name="reorderemail_options[category]"  style="width: 200px;" value="<?php echo $options['category'] ?? ''; ?>"
 				<?php echo $acfw; ?>>
-				<?php  echo wc_help_tip(__( 'This could be used only by plugin Advanced Coupons for WooCommerce (free) plugin. Enter coupon category slug, which has to exist.', 'my-day-email' ), false); ?>
+				<?php  echo wc_help_tip(__( 'This can only be used if the Advanced Coupons for WooCommerce (free) plugin is installed. Specify the slug of the coupon category that must exist.', 'my-day-email' ), false); ?>
 			</td>
 		</tr>
 
 	</table>
-	
+
 	<h3><?php echo _x('Email message setting','Setting section', 'my-day-email'); ?> </h3>
 	<table id="email-table" class="form-table">
 		<tr>
@@ -297,13 +294,13 @@ id="restore_reorder_values_btn" />
 			</th>
 			<td>
 				<input type="email" id="reorderemail_options[bcc_address]" name="reorderemail_options[bcc_address]"  style="width: 200px;" value="<?php echo $options['bcc_address'] ?? ''; ?>"</input>
-				<?php  echo wc_help_tip(__( 'This is email address used when testing as well as for all email messages as blind copy address.', 'my-day-email' ) . ' ' .  __( 'Add multiple emails separated by comma ( , ).', 'my-day-email' ), false); ?>
+				<?php  echo wc_help_tip(__( 'This email address is used for testing as well as for all email messages as a blind copy address.', 'my-day-email' ) . ' ' .  __( 'Add multiple emails separated by comma ( , ).', 'my-day-email' ), false); ?>
 			</td>
 		</tr>
 		<tr valign="top">
 			<th class="titledesc"><?php echo __( 'Use WooCommerce email template', 'my-day-email' ); ?>:</th>
 			<td><input type="checkbox" name="reorderemail_options[wc_template]" id="reorderemail_options[wc_template]"  value="1" <?php echo checked( 1, $options['wc_template'] ?? '', false ) ?? '' ; ?>>
-				<?php  echo wc_help_tip(__( 'Turn on when you want to have your email look the same as regular WooCommerce email.', 'my-day-email' ), false); ?>
+				<?php  echo wc_help_tip(__( 'Turn this on if you want your email to look just like a regular WooCommerce email.', 'my-day-email' ), false); ?>
 			</td>
 		</tr>
 		<tr>
@@ -339,7 +336,7 @@ id="restore_reorder_values_btn" />
 						</i>
 					</p></td>
 			</tr></tfoot>
-	</table>	
+	</table>		
 	<p class="submit">
 		<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
 	</p>			

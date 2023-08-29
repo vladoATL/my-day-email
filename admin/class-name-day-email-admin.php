@@ -91,8 +91,15 @@ class My_Day_Email_Admin {
 		 );	
 		 register_setting( 'reorderemail_plugin_options', 'reorderemail_options',
 		 array('sanitize_callback' => array( $this, 'reorderemail_validate_options' ),)
-		 );			 		 	   
+		 );	
+		 register_setting( 'afterorderemail_plugin_options', 'afterorderemail_options',
+		 array('sanitize_callback' => array( $this, 'afterorderemail_validate_options' ),)
+		 );	
 	}
+	function afterorderemail_validate_options($input)
+	{
+		return $input;
+	}	
 	function onetimeemail_validate_options($input)
 	{
 		return $input;

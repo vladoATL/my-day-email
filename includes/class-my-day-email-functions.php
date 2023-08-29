@@ -28,6 +28,8 @@ class EmailFunctions
 		$from_address = $options['from_address'];
 		$header  = $options['header'];	
 		
+
+				
 		if ($istest == true) {
 			$headers_user   = $this->mydayemail_headers($from_name, $from_address,"", "", true);
 			$email = $options['bcc_address'];
@@ -36,20 +38,25 @@ class EmailFunctions
 			$email = $user->user_email;
 		}		
 		
-		if (str_contains($html_body, '{coupon}') && (array)$user) {
-			$coupon = $this->mydayemail_get_unique_coupon($user);
-			
-			if (empty($coupon)) {
-				$this->mydayemail_add_log("No available coupons to create.");
-				$success = false;
-				return $success;
+		$char_length = $options['characters'];
+		if ($char_length != 0) {
+			if ((array)$user) {
+				$coupon = $this->mydayemail_get_unique_coupon($user);
+
+				if (empty($coupon)) {
+					$this->mydayemail_add_log("No available coupons to create.");
+					$success = false;
+					return $success;
+				}
+				$html_body = str_replace('{coupon}',$coupon,$html_body);
 			}
-			$html_body = str_replace('{coupon}',$coupon,$html_body);
+		} else {
+			$html_body = str_replace('{coupon}','',$html_body);
 		}
+	
 	
 		$html_body = $this->mydayemail_replace_placeholders($html_body, $user, $options);
 		$subject_user = $this->mydayemail_replace_placeholders($subject_user, $user, $options);
-
 		
 		if ((!str_contains(get_home_url(), 'test') && !str_contains(get_home_url(), 'stage') && $options['test'] != 1) || $istest == true) {
 			if (is_email($email)) {
@@ -71,12 +78,14 @@ class EmailFunctions
 				$success = false;
 			}
 		} else {
+			
 			if (isset($options['bcc_address'])) {
 				$admin_email = $options['bcc_address'];
 			} else {
 				$admin_email = get_bloginfo('admin_email');
 			}
-
+			$html_body = $html_body . "<p style='font-size: 9px;'>" .  sprintf(__( "This is a test email sent to %s instead of to", 'my-day-email' ), $admin_email)  . ': ' . $email . "</p>";
+			
 			if ($options['wc_template'] == 1) {
 				$this->mydayemail_send_wc_email_html($subject_user, $admin_email, $html_body, $header);
 			} else {
@@ -150,6 +159,22 @@ class EmailFunctions
 		}
 	}
 
+	static function test_add_log($entry)
+	{
+		$options = get_option('mydayemail_options');
+			if ( is_array( $entry ) ) {
+				$entry = json_encode( $entry );
+			}
+			$options = get_option('mydayemail_logs');
+
+			if (empty($options)) {
+				add_option( 'mydayemail_logs', array('logs'	=>	$entry) );
+			} else {
+				$log = $options['logs'];
+				update_option( 'mydayemail_logs',array('logs'	=>	$log . "\r\n" .  $entry . "\r\n" ) );
+			}		
+	}
+	
 	function mydayemail_headers($from_name, $from_address, $email_cc, $email_bcc, $istest = false)
 	{
 		$headers_user   = array();
@@ -173,7 +198,7 @@ class EmailFunctions
 		$coupon_codes = $wpdb->get_col("SELECT post_name FROM $wpdb->posts WHERE post_type = 'shop_coupon'");		
 		$characters = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
 		$char_length = $options['characters'];
-
+		if ($char_length == 0) 	return "";
 		$stp = 0;
 		$max_stp = 10000;
 		for ( $i = 0; $i < 1; $i++ ) {

@@ -21,13 +21,19 @@ $tab = isset($_GET['tab']) ? $_GET['tab'] : $default_tab;
 	endif; ?>"> <?php echo  __( 'Birthday', 'my-day-email' ); ?></a>	
 	<a href="?page=mydayemail&tab=name-day" class="nav-tab 
 		<?php if ($tab==='name-day') : ?>nav-tab-active<?php endif; ?>"> <?php echo  __( 'Name Day', 'my-day-email' ); ?></a>
+	<a href="?page=mydayemail&tab=after-order" class="nav-tab
+		<?php
+		if ($tab==='after-order') : ?>nav-tab-active<?php
+		endif; ?>"> <?php echo  __( 'After Order', 'my-day-email' ); ?></a>			
 	<a href="?page=mydayemail&tab=reorder" class="nav-tab <?php
 			if ($tab==='reorder') : ?>nav-tab-active<?php
 	endif; ?>"><?php echo  __( 'Reorder', 'my-day-email' ); ?></a>
+		
 	<a href="?page=mydayemail&tab=one-time" class="nav-tab
 		<?php
 		if ($tab==='one-time') : ?>nav-tab-active<?php
-	endif; ?>"> <?php echo  __( 'One Time', 'my-day-email' ); ?></a>	
+	endif; ?>"> <?php echo  __( 'One Time', 'my-day-email' ); ?></a>
+
 </nav>
 	
 <div class="tab-content">
@@ -61,6 +67,13 @@ case 'name-day':
 	</div>
 	<?php
 	break;
+case 'after-order':
+	?>
+	<div class="metabox-holder">
+		<?php include('afterorder-email-admin-display.php'); ?>		
+	</div>
+	<?php
+	break;	
 default:	
 	?>
 	<div class="metabox-holder">
