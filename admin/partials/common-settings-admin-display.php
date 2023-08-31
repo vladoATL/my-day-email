@@ -38,6 +38,10 @@ $options = get_option('mydayemail_options');
 	<th scope="row" class="titledesc"><?php echo __( 'Enable logs', 'my-day-email' ); ?>:</th>
 	<td><input type="checkbox" name="mydayemail_options[enable_logs]" id="mydayemail_options[enable_logs]"  value="1" <?php echo checked( 1, $options['enable_logs'] ?? '', false ) ?? '' ; ?>></td>
 </tr>
+<tr valign="top">
+	<th scope="row" class="titledesc"><?php echo __( 'Enable SQL log', 'my-day-email' ); ?>:</th>
+	<td><input type="checkbox" name="mydayemail_options[enable_sql_logs]" id="mydayemail_options[enable_sql_logs]"  value="1" <?php echo checked( 1, $options['enable_sql_logs'] ?? '', false ) ?? '' ; ?>></td>
+</tr>
 </table>
 <p class="submit">
 <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />

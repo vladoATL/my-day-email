@@ -159,7 +159,28 @@ class My_Day_Email_Admin {
 			die();
 		}
 	}
-			
+
+	public function onetimeemail_make_test()
+	{
+		if ( isset( $_POST['nonce'] ) && '' !== $_POST['nonce'] && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), '_onetime_nonce_test' ) ) {
+			$user = wp_get_current_user();
+			$funcs = new \MYDAYEMAIL\EmailFunctions("onetimeemail");
+			$funcs->	mydayemail_create($user, true);
+			die();
+		}
+	}		
+
+	public function afterorderemail_make_test()
+	{			
+		if ( isset( $_POST['nonce'] ) && '' !== $_POST['nonce'] && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), '_afterorder_nonce_test' ) ) {
+			$user = wp_get_current_user();
+			$funcs = new \MYDAYEMAIL\EmailFunctions("afterorderemail");
+			$funcs->	mydayemail_create($user, true);
+			die();
+		}
+	}			
+	
+		
  	public function namedayemail_restore_settings($add_new = false) {
 		if ( isset( $_POST['nonce'] ) && '' !== $_POST['nonce'] && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), '_namedayemail_nonce' ) || $add_new == true) 
 		{
@@ -176,6 +197,14 @@ class My_Day_Email_Admin {
 		}
 	}
 	
+	public function afterorderemail_restore_settings($add_new = false)
+	{
+		if ( isset( $_POST['nonce'] ) && '' !== $_POST['nonce'] && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), '_afterorderemail_nonce' ) || $add_new == true) {
+			afterorderemail_save_defaults($add_new);
+			die();
+		}
+	}
+		
 	public function onetimeemail_restore_settings($add_new = false)
 	{
 		if ( isset( $_POST['nonce'] ) && '' !== $_POST['nonce'] && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), '_onetimeemail_nonce' ) || $add_new == true) {

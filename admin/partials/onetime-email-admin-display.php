@@ -183,7 +183,6 @@ id="restore_one_values_btn" />
 				<?php echo __( 'Maximum', 'my-day-email' ); ?>:
 				<input type="number" id="onetimeemail_options[maximum_spent]" name="onetimeemail_options[maximum_spent]"  style="width: 80px;" value="<?php echo $options['maximum_spent'] ?? ''; ?>"</input>
 				<?php  echo wc_help_tip(__( 'These fields allow you to filter users by the minimum and maximum amount of their total spending.', 'my-day-email'), false); ?>				
-				
 			</td>
 		</tr>		
 		<tr>
@@ -458,7 +457,7 @@ id="restore_one_values_btn" />
 				<td colspan="2">
 					<p class="description">
 						<?php echo __( 'Placeholders', 'my-day-email' ); ?>:
-						<i>{fname}, {fname5}, {lname}, {coupon}, {percent}, {products_cnt}, {expires}, {expires_in_days}, {my_day_date}, {site_name}, {site_url}, {site_name_url}<br>
+						<i>{fname}, {fname5}, {lname}, {coupon}, {percent}, {products_cnt}, {expires}, {expires_in_days}, {last_order_date}, {my_day_date}, {site_name}, {site_url}, {site_name_url}<br>
 							<small><?php echo __( 'Use {fname5} for Czech salutation.', 'my-day-email' ); ?></small>
 						</i>
 					</p></td>

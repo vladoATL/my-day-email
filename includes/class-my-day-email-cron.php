@@ -54,8 +54,8 @@ function mydayemail_run_cron_setup($type)
 				$logs->mydayemail_add_log("Cron scheduling error" );
 			
 	} else {
-		wp_clear_scheduled_hook( $type . '_cron' );
-		$logs->mydayemail_add_log("Cron removed" );
+		//wp_clear_scheduled_hook( $type . '_cron' );
+		//$logs->mydayemail_add_log("Cron removed" );
 	}	
 }
 

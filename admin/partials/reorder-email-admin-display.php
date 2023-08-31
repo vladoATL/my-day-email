@@ -5,7 +5,7 @@ namespace MYDAYEMAIL;
 if ( isset( $_GET['reorderexport'] ) ) {
 	global $wpdb;
 	ob_end_clean();
-	$table_head = array('First Name', 'Last Name', 'Email', 'User ID', 'Order Date' );
+	$table_head = array('First Name', 'Last Name', 'Email', 'User ID', 'Orders count', 'Order total', 'Last order' );
 	$csv = implode( ';' , $table_head );
 	$csv .= "\n";
 	
@@ -67,19 +67,101 @@ id="restore_reorder_values_btn" />
 				<input type="number" id="reorderemail_options[days_after_order]" name="reorderemail_options[days_after_order]"  style="width: 100px;" value="<?php echo $options['days_after_order'] ?? ''; ?>"</input>
 				<?php  echo wc_help_tip(__( 'Enter number of days after last order when to send this email with coupon.', 'my-day-email'), false); ?>
 			</td>
-		</tr>		
+		</tr>	
 		<tr>
 			<th class="titledesc"><?php echo __( 'Send email every day at', 'my-day-email' ); ?>:</th>
 			<td>
 				<input type="time" id="reorderemail_options[send_time]" name="reorderemail_options[send_time]"  style="width: 100px;" value="<?php echo $options['send_time'] ?? ''; ?>"</input>
 				<?php  echo wc_help_tip(__( 'This is time when cron sends the email messages.', 'my-day-email' ), false); ?>
 			</td>
+		</tr>		
+		<tr>
+			<th class="titledesc"><?php echo __( 'Users who bought one of these products', 'my-day-email' ); ?>:</th>
+			<td>
+				<select class="wc-product-search" multiple="multiple" style="width: 50%;" id="reorderemail_options[bought_products]" name="reorderemail_options[bought_products][]" data-placeholder="<?php esc_attr_e( 'Search for a product&hellip;', 'woocommerce' ); ?>" data-action="woocommerce_json_search_products_and_variations" >
+					<?php
+		if (isset($options['bought_products'])) {
+			$product_ids = $options['bought_products'];
+			foreach ( $product_ids as $product_id ) {
+				$product = wc_get_product( $product_id );
+				if ( is_object( $product ) ) {
+					echo '<option value="' . esc_attr( $product_id ) . '"' . selected( true, true, false ) . '>' . wp_kses_post( $product->get_formatted_name() ) . '</option>';
+				}
+			}
+		}
+		?>
+				</select>
+				<?php  echo wc_help_tip(__( 'The email will be sent to users who have previously purchased at least one of the selected products. Select the main product if you want it to include all variants.', 'my-day-email' ), false); ?>
+			</td>
 		</tr>
 		<tr>
-			<th class="titledesc"><?php echo __( 'Download file with users to send email', 'my-day-email' ); ?>:</th>
+			<th class="titledesc"><?php echo __( 'Users who never bought these products', 'my-day-email' ); ?>:</th>
+			<td>
+				<select class="wc-product-search" multiple="multiple" style="width: 50%;" id="reorderemail_options[not_bought_products]" name="reorderemail_options[not_bought_products][]" data-placeholder="<?php esc_attr_e( 'Search for a product&hellip;', 'woocommerce' ); ?>" data-action="woocommerce_json_search_products_and_variations" >
+					<?php
+		if (isset($options['not_bought_products'])) {
+			$ex_product_ids = $options['not_bought_products'];
+			foreach ( $ex_product_ids as $product_id ) {
+				$product = wc_get_product( $product_id );
+				if ( is_object( $product ) ) {
+					echo '<option value="' . esc_attr( $product_id ) . '"' . selected( true, true, false ) . '>' . wp_kses_post( $product->get_formatted_name() ) . '</option>';
+				}
+			}
+		}
+		?>
+				</select>
+				<?php  echo wc_help_tip(__( 'The email will be sent to users who have never purchased any of the selected products.', 'my-day-email' ), false) ; ?>
+			</td>
+		</tr>
+		<tr>
+			<th class="titledesc"><?php echo __( 'Users who bought products in these categories', 'my-day-email' ); ?>:</th>
+			<td>
+				<select id="reorderemail_options[bought_cats]" name="reorderemail_options[bought_cats][]" style="width: 50%;"  class="wc-enhanced-select" multiple="multiple" data-placeholder="<?php esc_attr_e( 'All categories', 'woocommerce' ); ?>">
+					<?php
+		$category_ids = $options['bought_cats'];
+		$categories   = get_terms( 'product_cat', 'orderby=name&hide_empty=0' );
+		if ( $categories ) {
+			foreach ( $categories as $cat ) {
+				echo '<option value="' . esc_attr( $cat->term_id ) . '"' . wc_selected( $cat->term_id, $category_ids ) . '>' . esc_html( $cat->name ) . '</option>';
+			}
+		}
+		?>
+				</select>
+				<?php  echo wc_help_tip(__(  'The email will be sent to users who have previously purchased products in the selected categories.', 'my-day-email'), false) ; ?>
+			</td>
+		</tr>
+		<tr>
+			<th class="titledesc"><?php echo __( 'Users who never bought products in these categories', 'my-day-email' ); ?>:</th>
+			<td>
+				<select id="reorderemail_options[not_bought_cats]" name="reorderemail_options[not_bought_cats][]" style="width: 50%;"  class="wc-enhanced-select" multiple="multiple" data-placeholder="<?php esc_attr_e( 'No categories', 'woocommerce' ); ?>">
+					<?php
+		$category_ids = $options['not_bought_cats'];
+		$categories   = get_terms( 'product_cat', 'orderby=name&hide_empty=0' );
+		if ( $categories ) {
+			foreach ( $categories as $cat ) {
+				echo '<option value="' . esc_attr( $cat->term_id ) . '"' . wc_selected( $cat->term_id, $category_ids ) . '>' . esc_html( $cat->name ) . '</option>';
+			}
+		}
+		?>
+				</select>
+				<?php  echo wc_help_tip(__('The email will be sent to users who have never purchased products in the selected categories.', 'my-day-email' ), false) ; ?>
+			</td>
+		</tr>
+		<tr>
+			<th class="titledesc"><?php echo __( 'Users who total spent', 'my-day-email' ); ?>:</th>
+			<td>
+				<?php echo __( 'Minimum', 'my-day-email' ); ?>:
+				<input type="number" id="reorderemail_options[minimum_spent]" name="reorderemail_options[minimum_spent]"  style="width: 80px;" value="<?php echo $options['minimum_spent'] ?? ''; ?>"</input>&nbsp;
+				<?php echo __( 'Maximum', 'my-day-email' ); ?>:
+				<input type="number" id="reorderemail_options[maximum_spent]" name="reorderemail_options[maximum_spent]"  style="width: 80px;" value="<?php echo $options['maximum_spent'] ?? ''; ?>"</input>
+				<?php  echo wc_help_tip(__( 'These fields allow you to filter users by the minimum and maximum amount of their total spending.', 'my-day-email'), false); ?>
+			</td>
+		</tr>			
+		<tr>
+			<th class="titledesc"><?php echo __( 'Download file with users to send email today', 'my-day-email' ); ?>:</th>
 			<td>
 				<a class="button button-primary" href="admin.php?page=mydayemail&tab=reorder&reorderexport=table&noheader=1"><?php echo __( 'Download csv', 'my-day-email' ); ?></a>
-				<?php  echo wc_help_tip(__( 'Download csv file with brith days of users.', 'my-day-email' ), false); ?>
+				<?php  echo wc_help_tip(__( 'Download csv file with filtered users.', 'my-day-email' ), false); ?>
 			</td>
 		</tr>		
 	</table>	
@@ -331,7 +413,7 @@ id="restore_reorder_values_btn" />
 				<td colspan="2">
 					<p class="description">
 						<?php echo __( 'Placeholders', 'my-day-email' ); ?>:
-						<i>{fname}, {fname5}, {lname}, {coupon}, {percent}, {products_cnt}, {expires}, {expires_in_days}, {my_day_date}, {site_name}, {site_url}, {site_name_url}<br>
+						<i>{fname}, {fname5}, {lname}, {coupon}, {percent}, {products_cnt}, {expires}, {expires_in_days}, {last_order_date}, {my_day_date}, {site_name}, {site_url}, {site_name_url}<br>
 							<small><?php echo __( 'Use {fname5} for Czech salutation.', 'my-day-email' ); ?></small>
 						</i>
 					</p></td>

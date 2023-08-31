@@ -16,7 +16,7 @@
  * Plugin Name:       My Day Email
  * Plugin URI:        https://starlogic.net/
  * Description:       Send email with a coupon to users on birthday, name day and order reorder.
- * Version:           0.2.7
+ * Version:           0.3.0
  * Author:            Vlado Laco
  * Author URI:        https://starlogic.net/
  * License:           GPL-2.0+
@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'MY_DAY_EMAIL_VERSION', '0.2.7.1' );
+define( 'MY_DAY_EMAIL_VERSION', '0.3.0.1' );
 
 /**
  * The code that runs during plugin activation.
@@ -44,6 +44,8 @@ define( 'MY_DAY_EMAIL_VERSION', '0.2.7.1' );
  */
 function activate_my_day_email() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-my-day-email-activator.php';
+	require_once __DIR__.'/vendors/woocommerce/action-scheduler/action-scheduler.php';
+	//require_once( plugin_dir_path( __FILE__ ) . '/libraries/action-scheduler/action-scheduler.php' );
 	My_Day_Email_Activator::activate();	
 }
 
@@ -79,7 +81,8 @@ require_once plugin_dir_path( __FILE__ ) .  'includes/class-namedays.php';
 require_once plugin_dir_path( __FILE__ ) .  'includes/class-birthdayfield.php';
 require_once plugin_dir_path( __FILE__ ) .  'includes/class-reorders.php';
 require_once plugin_dir_path( __FILE__ ) .  'includes/class-onetimes.php';
-require_once plugin_dir_path( __FILE__ ) . 'includes/class-calendars.php';
+require_once plugin_dir_path( __FILE__ ) .  'includes/class-calendars.php';
+require_once plugin_dir_path( __FILE__ ) . 	'includes/class-prepare-sql.php';
 
 \MYDAYEMAIL\BirthdayField::register();
 
@@ -168,6 +171,44 @@ function reorderemail_save_defaults($add_new = false)
 	}
 }
 
+function afterorderemail_save_defaults($add_new = false)
+{
+	$current_user = wp_get_current_user();
+
+	$option_array = array(
+	'subject'	=>	_x('{fname}, thank you for your order','Email Subject','my-day-email') ,
+	'header'  =>	_x('Your discount','Email Header','my-day-email') ,
+	'characters' =>	7,
+	'wc_template' =>	1,
+	'test' =>	1,
+	'days_after_order' =>	7,
+	'send_time'  =>	'05:00',	
+	'expires'	=>	14,
+	'minimum_orders' => 1,
+	'from_name'	=>	get_bloginfo('name'),
+	'from_address'	=>	get_bloginfo('admin_email'),
+	'bcc_address' => $current_user->user_email,
+	'email_footer' => '{site_name_url}',
+	'disc_type' => 1,
+	'description' => _x('After order {fname} {lname}: {email}','Coupon description','my-day-email') ,
+	'coupon_amount'	=>	15,
+	'email_body'	=> _x("<p style='font-size: 20px;font-weight:600;'>We have a special discount for you, {fname}!</p>
+	<p style='font-size: 18px;'>Thank you
+	for your order dated  {last_order_date}. If you like our products, take advantage of this offer and order again. Here is the discount code:</p>
+<p style='font-size: 24px;font-weight:800;'>{coupon}</p>
+	<p style='font-size: 18px;'>During the next {expires_in_days} days (until {expires}) you can use it in our online store {site_name_url} and get a special discount of <strong>{percent}%</strong> on {products_cnt} non-discounted products.</p>
+<p style='font-size: 18px;font-weight:600;'>ENJOY !</p>
+<p style='font-size: 18px;'>The Team of {site_name}</p>
+<p style='font-size: 14px;'>The coupon can only be used after logging into your account and cannot be used with other discounts. Some products are exluded from the discount.</p>" ,'Email Body', 'my-day-email'	) ,
+	'category' =>	_x('after-order','Coupon category', 'my-day-email'	) ,
+	);
+	if ($add_new == true) {
+		add_option( 'afterorderemail_options', $option_array );
+	} else {
+		update_option( 'afterorderemail_options', $option_array );
+	}
+}
+
 function onetimeemail_save_defaults($add_new = false)
 {
 	$current_user = wp_get_current_user();
@@ -241,6 +282,9 @@ function namedayemail_save_defaults($add_new = false){
 	
 function namedayemail_plugin_deactivation() {
     wp_clear_scheduled_hook( 'namedayemail_cron' );
+	wp_clear_scheduled_hook( 'birthdayemail_cron' );
+	wp_clear_scheduled_hook( 'reorderemail_cron' );
+	wp_clear_scheduled_hook( 'onetimeemail_cron' );
 }
 
 function mydayemail_settings_link( array $links ) {

@@ -117,6 +117,39 @@
 	}
 	);
 	
+	jQuery( document ).on(
+	"click",
+	"#afterorderemail-setting #restore_afterorder_values_btn",
+	function() {
+		event.preventDefault();
+		var nonce = jQuery( this ).attr( 'attr-nonce' );
+		var data  = {
+			action: 'afterorderemail_restore_settings',
+			nonce: nonce,
+		};
+		jQuery.ajax(
+		{
+			type: "post",
+			url: ajaxurl,
+			data: data,
+			beforeSend: function(response) {
+				jQuery( "#afterorderemail-setting .loader_cover" ).addClass( 'active' );
+				jQuery( "#afterorderemail-setting .afterorder_loader" ).addClass( 'loader' );
+			},
+			complete: function(response) {
+				jQuery( "#afterorderemail-setting .loader_cover" ).removeClass( 'active' );
+				jQuery( "#afterorderemail-setting .afterorder_loader" ).removeClass( 'loader' );
+			},
+			success: function(response) {
+				location.reload();
+			}
+		}
+		);
+		return false;
+	}
+	);	
+	
+	
 	 	jQuery( document ).on(
 	"click",
 	"#birthdaysemail-setting #restore_bd_values_btn",
@@ -300,6 +333,70 @@ function() {
 		complete: function(response) {
 			jQuery( "#reorderemail-setting .loader_cover" ).removeClass( 'active' );
 			jQuery( "#reorderemail-setting .reorder_loader" ).removeClass( 'loader' );
+		},
+		success: function(response) {
+			location.reload();
+		}
+	}
+	);
+	return false;
+}
+);
+
+jQuery( document ).on(
+"click",
+"#onetimeemail-setting #test_onetime_btn",
+function() {
+	event.preventDefault();
+	var nonce = jQuery( this ).attr( 'attr-nonce' );
+	var data  = {
+		action: 'onetimeemail_make_test',
+		nonce: nonce,
+	};
+	jQuery.ajax(
+	{
+		type: "post",
+		url: ajaxurl,
+		data: data,
+		beforeSend: function(response) {
+			jQuery( "#onetimeemail-setting .loader_cover" ).addClass( 'active' );
+			jQuery( "#onetimeemail-setting .onetime_loader" ).addClass( 'loader' );
+		},
+		complete: function(response) {
+			jQuery( "#onetimeemail-setting .loader_cover" ).removeClass( 'active' );
+			jQuery( "#onetimeemail-setting .onetime_loader" ).removeClass( 'loader' );
+		},
+		success: function(response) {
+			location.reload();
+		}
+	}
+	);
+	return false;
+}
+);
+
+jQuery( document ).on(
+"click",
+"#afterorderemail-setting #test_afterorder_btn",
+function() {
+	event.preventDefault();
+	var nonce = jQuery( this ).attr( 'attr-nonce' );
+	var data  = {
+		action: 'afterorderemail_make_test',
+		nonce: nonce,
+	};
+	jQuery.ajax(
+	{
+		type: "post",
+		url: ajaxurl,
+		data: data,
+		beforeSend: function(response) {
+			jQuery( "#afterorderemail-setting .loader_cover" ).addClass( 'active' );
+			jQuery( "#afterorderemail-setting .afterorder_loader" ).addClass( 'loader' );
+		},
+		complete: function(response) {
+			jQuery( "#afterorderemail-setting .loader_cover" ).removeClass( 'active' );
+			jQuery( "#afterorderemail-setting .afterorder_loader" ).removeClass( 'loader' );
 		},
 		success: function(response) {
 			location.reload();

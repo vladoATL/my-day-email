@@ -163,12 +163,16 @@ class My_Day_Email {
 		$this->loader->add_action( 'wp_ajax_onetimeemail_restore_settings', $plugin_admin, 'onetimeemail_restore_settings' );
 		$this->loader->add_action( 'wp_ajax_reorderemail_restore_settings', $plugin_admin, 'reorderemail_restore_settings' );				
 		$this->loader->add_action( 'wp_ajax_birthdayemail_restore_settings', $plugin_admin, 'birthdayemail_restore_settings' );
+		$this->loader->add_action( 'wp_ajax_afterorderemail_restore_settings', $plugin_admin, 'afterorderemail_restore_settings' );
+		
 		$this->loader->add_action( 'wp_ajax_mydayemail_clear_log', $plugin_admin, 'mydayemail_clear_log' );
 		$this->loader->add_action( 'wp_ajax_namedayemail_make_test', $plugin_admin, 'namedayemail_make_test' );	
 		$this->loader->add_action( 'wp_ajax_birthdayemail_make_test', $plugin_admin, 'birthdayemail_make_test' );	
 		$this->loader->add_action( 'wp_ajax_reorderemail_make_test', $plugin_admin, 'reorderemail_make_test' );	
+		$this->loader->add_action( 'wp_ajax_onetimeemail_make_test', $plugin_admin, 'onetimeemail_make_test' );	
+		$this->loader->add_action( 'wp_ajax_afterorderemail_make_test', $plugin_admin, 'afterorderemail_make_test' );			
 		
-		
+
 	}
 
 	/**

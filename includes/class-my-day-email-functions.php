@@ -11,7 +11,7 @@ class EmailFunctions
 	protected $options_name;
 	protected $options_array;
 	
-	public function __construct($type)
+	public function __construct($type = "")
 	{
 		$this->type = $type;
 		$this->options_name = $type . '_options';
@@ -27,8 +27,7 @@ class EmailFunctions
 		$from_name = $options['from_name'];
 		$from_address = $options['from_address'];
 		$header  = $options['header'];	
-		
-
+		$coupon = "";
 				
 		if ($istest == true) {
 			$headers_user   = $this->mydayemail_headers($from_name, $from_address,"", "", true);
@@ -61,7 +60,7 @@ class EmailFunctions
 		if ((!str_contains(get_home_url(), 'test') && !str_contains(get_home_url(), 'stage') && $options['test'] != 1) || $istest == true) {
 			if (is_email($email)) {
 
-				if ($options['wc_template'] == 1) {
+				if (isset($options['wc_template']) && $options['wc_template'] == 1) {
 					$this->mydayemail_send_wc_email_html($subject_user, $email, $html_body, $header);
 				} else {
 					$sendmail_user = wp_mail( $email, $subject_user, $html_body, $headers_user );
@@ -99,6 +98,7 @@ class EmailFunctions
 
 	function mydayemail_replace_placeholders($content, $user, $options)
 	{
+		$date_format = get_option( 'date_format' );
 		if (isset($options['days_before'])) {
 			$days_before = is_numeric($options['days_before']) ? $options['days_before'] : 0;
 		} else {
@@ -119,26 +119,42 @@ class EmailFunctions
 		'{lname}',
 		'{products_cnt}',
 		'{email}',
+		'{last_order_date}',
 		),
 		array(
 		get_option( 'blogname' ),
 		home_url(),
 		'<a href=' . home_url() . '>' . get_option( 'blogname' ) . '</a>',
-		$options['expires'],
-		date('d.m.Y', strtotime('+' . $options['expires'] . ' days')),
-		date('d.m.Y', strtotime('+' . $days_before . ' days')),
+		$options['expires'],		
+		date($date_format, strtotime('+' . $options['expires'] . ' days')),
+		date($date_format, strtotime('+' . $days_before . ' days')),
 		$options['coupon_amount'],
 		ucfirst(strtolower($user->user_firstname)),
 		$inflection->inflect(ucfirst(strtolower($user->user_firstname)))[5],
 		ucfirst(strtolower($user->user_lastname)),
 		isset($options['max_products'] ) ? $options['max_products'] : '' ,
 		strtolower($user-> user_email),
+		$this->get_last_order_date($user-> user_email),
 		),
 		$content
 		);
 		return $replaced_text;
 	}
 
+	function get_last_order_date($user_email)
+	{
+		global $wpdb;
+		$sql = "SELECT max(DATE(p.post_date)) AS last_order_date
+		FROM {$wpdb->prefix}posts AS p
+		JOIN {$wpdb->prefix}postmeta AS upm ON upm.post_id = p.ID AND upm.meta_key = '_customer_user'
+		JOIN {$wpdb->prefix}users AS u ON upm.meta_value = u.ID AND  u.user_email = '{$user_email}'
+		WHERE p.post_type = 'shop_order' AND p.post_status = 'wc-completed'
+		GROUP BY upm.meta_value" ;
+		$order_date = $wpdb->get_var($wpdb->prepare($sql));
+		$date_format = get_option( 'date_format' );
+		return date($date_format, strtotime($order_date));
+	}
+	
 	function mydayemail_add_log($entry)
 	{
 		$options = get_option('mydayemail_options');
@@ -154,14 +170,15 @@ class EmailFunctions
 				add_option( 'mydayemail_logs', array('logs'	=>	$entry) );
 			} else {
 				$log = $options['logs'];
-				update_option( 'mydayemail_logs',array('logs'	=>	$log . "\n" .  $entry) );
+				update_option( 'mydayemail_logs',array('logs'	=>	$log . PHP_EOL .  $entry) );
 			}
 		}
 	}
 
-	static function test_add_log($entry)
+	static function test_add_log($entry) 
 	{
 		$options = get_option('mydayemail_options');
+		if ($options['enable_sql_logs'] == "1") {
 			if ( is_array( $entry ) ) {
 				$entry = json_encode( $entry );
 			}
@@ -171,8 +188,9 @@ class EmailFunctions
 				add_option( 'mydayemail_logs', array('logs'	=>	$entry) );
 			} else {
 				$log = $options['logs'];
-				update_option( 'mydayemail_logs',array('logs'	=>	$log . "\r\n" .  $entry . "\r\n" ) );
-			}		
+				update_option( 'mydayemail_logs',array('logs'	=>	$log . PHP_EOL .  $entry . PHP_EOL . PHP_EOL ) );
+			}
+		}	
 	}
 	
 	function mydayemail_headers($from_name, $from_address, $email_cc, $email_bcc, $istest = false)
@@ -231,7 +249,7 @@ class EmailFunctions
 				break;
 		}
 
-		$expiration_date = $options['expires'] + 1;
+		$expiration_date = is_numeric( $options['expires']) ? $options['expires'] + 1 : 0;
 		$expiry_date   = date('Y-m-d', strtotime('+' . $expiration_date . ' days'));
 		$max_products = isset( $options['max_products']) ? $options['max_products'] : '';
 		$description = $options['description'];

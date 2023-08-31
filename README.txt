@@ -37,6 +37,11 @@ Name Day Email is officially compatible with the following plugins:
 - [Advanced Coupons](https://wordpress.org/plugins/advanced-coupons-for-woocommerce-free/)
 
 == Changelog ==
+= 0.3.0 =
+- Add after order  email with coupon
+- Generate SQL refactoring
+- Enable SQL log
+
 = 0.2.7 =
 - Add one time email with coupon
 
