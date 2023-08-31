@@ -13,7 +13,7 @@
 - emailový text je vložený buď do **WooCommerce šablóny** alebo jednoducho v HTML
 - generovanie **unikátnych kupónov** s ľubovoľnou hodnotou a exspiráciou
 - konfigurácia kupónov: platný na max počet produktov, neplatný na zľavnené produkty, počet znakov...
-- automatické zasielielanie emailov v určený deň pred narodeninami, meninami alebo výročím objednávky zákazníkov
+- automatické zasielielanie emailov v určený deň pred narodeninami, meninami, po objednaní alebo výročím objednávky zákazníkov
 - automatické mazanie nevyužitých kupónov po určených dňoch
 - nastavenie času zasielania
 - prevencia zaslania dvoch narodeninvých kupónov za rok pre jedného zákazníka ak si zmení dátum narodenia
