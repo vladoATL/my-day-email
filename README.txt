@@ -1,21 +1,20 @@
-=== Plugin Name ===
-Contributors: perties2
-Tags: Name Day, meniny, jmeniny, svátek, slovak, czech, austria
-Requires at least: 3.0.1
+=== My Day Email ===
+Contributors: Vlado Laco
+Tags: coupon, Name Day, meniny, slovak, czech, email
+Requires at least: 4.3
 Tested up to: 3.4
 Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Plugin generuje emaily pre zákazníkov zo Slovenska, Česka, Maďarska a Rakúska, ktorý oslavujú meniny. Automaticky vytvorí a zasiela kód so zľavou.
+The plugin generates emails with unique coupons for customers' birthdays, their name day and after ordering with many customization options.
 
 == Description ==
+This plugin is an excellent tool when marketing with discount coupons. It generates unique coupons for each customer according to configurable filters. The coupon email can be sent on the customer's birthday, their name day, a certain number of days after the order, to customers who haven't ordered anything for a long time or to one-time filtered customers.
 
-The plugin is in beta stage now.
+The date of birth field is automatically added to the checkout and user profile page. Name days are currently available for Slovakia, Czech Republic, Austria and Hungary. For Czech names, it is possible to set a Czech salutation.
 
-### **Inštalácia**
-
-1. Stiahnite si obsah tohto archívu kliknutím na zelené tlačidlo Code -> Download ZIP
+### Installation 
 
 1. Upload `my-day-email` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
@@ -23,15 +22,10 @@ The plugin is in beta stage now.
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
-An answer to that question.
-= What about foo bar? =
-Answer to foo bar dilemma.
 
 == Screenshots ==
 
 = Third Party Plugin Support =
-
 Name Day Email is officially compatible with the following plugins:
 - [WooCommerce]
 - [Advanced Coupons](https://wordpress.org/plugins/advanced-coupons-for-woocommerce-free/)
